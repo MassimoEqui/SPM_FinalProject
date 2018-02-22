@@ -13,7 +13,7 @@ public:
 	Var(){ this->x = 0.0; }
 	~Var(){}
 	double evaluate();
-	INode* expand(int p_id);
+	void expand(int p_id, int depth);
 
 	void setValue(double x_val);
 };

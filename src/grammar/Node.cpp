@@ -4,6 +4,4 @@ double Node::evaluate(){
 	return 0.0;
 };
 
-INode* Node::expand(int p_id){
-	return new Node();
-}
+void Node::expand(int p_id, int depth){};

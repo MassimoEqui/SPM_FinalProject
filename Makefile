@@ -1,10 +1,10 @@
 CC =g++
-CFLAGS = -I.
+CFLAGS = -I. -std=c++11
 
 .PHONY: all clean
 
-main.out: main.o Node.o Const.o Var.o
-	$(CC) $(CFLAGS) -o main.out main.o Node.o Const.o Var.o
+main.out: main.o Node.o Const.o Var.o Leaf.o
+	$(CC) $(CFLAGS) -o main.out main.o Node.o Const.o Var.o Leaf.o
 	
 main.o: ./src/main/main.cpp
 	$(CC) $(CFLAGS) -c ./src/main/main.cpp 
@@ -17,6 +17,9 @@ Const.o: ./include/grammar/Const.h ./src/grammar/Const.cpp
 
 Var.o: ./include/grammar/Var.h ./src/grammar/Var.cpp
 	$(CC) $(CFLAGS) -c ./src/grammar/Var.cpp
+
+Leaf.o: ./include/grammar/Leaf.h ./src/grammar/Leaf.cpp
+	$(CC) $(CFLAGS) -c ./src/grammar/Leaf.cpp
 
 clean:
 	@for s in *.o ; do if [ -e $$s ] ; then rm $$s ; fi done

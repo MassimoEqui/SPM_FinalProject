@@ -6,8 +6,9 @@
 class Node : public INode{
 	public:
 	Node(){};
+	~Node(){};
 	double evaluate();
-	INode* expand(int p_id);
+	void expand(int p_id, int depth);
 };
 
 #endif
