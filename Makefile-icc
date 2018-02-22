@@ -1,4 +1,4 @@
-CC =g++
+CC = icc -mmic
 CFLAGS = -I.
 
 .PHONY: all clean
