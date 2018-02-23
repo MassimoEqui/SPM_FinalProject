@@ -8,4 +8,4 @@ double Const::evaluate(){
     return this->val;
 };
 
-void Const::expand(int p_id, int depth){};
+void Const::expand(int depth){};

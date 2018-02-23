@@ -11,7 +11,7 @@ public:
 	Const(double val);
 	~Const();
 	double evaluate();
-	void expand(int p_id, int depth);
+	void expand(int depth);
 };
 
 #endif

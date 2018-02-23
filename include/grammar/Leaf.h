@@ -1,19 +1,20 @@
 #ifndef _INCLUDE_GRAMMAR_LEAF_H
 #define _INCLUDE_GRAMMAR_LEAF_H
 
+#define _LEAF_PROD_NUM 2
+
 #include "include/grammar/INode.h"
 
 class Leaf : public INode{
     private:
     INode* child;
-    int randseed;
     double randmax;
 
     public:
-    Leaf(double randmax);
+    Leaf(double randmax, int randseed);
     ~Leaf();
     double evaluate();
-    void expand(int p_id, int depth);
+    void expand(int depth);
 };
 
 #endif

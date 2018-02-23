@@ -6,23 +6,32 @@
 #include "include/grammar/Const.h"
 #include "include/grammar/Var.h"
 
-Leaf::Leaf(double randmax){
+Leaf::Leaf(double randmax, int randseed){
+    this->child = nullptr;
     this->randmax = randmax;
-    this->randseed = std::time(nullptr);
+    std::srand(randseed); 
 };
+
+Leaf::~Leaf(){
+    if(this->child != nullptr)
+        delete this->child;
+}
 
 double Leaf::evaluate(){
     return this->child->evaluate();
 };
 
-void Leaf::expand(int p_id, int depth){
-    delete this->child;
+void Leaf::expand(int depth){    
+    if(this->child != nullptr)
+        delete this->child;
+    
+    int p_id = 1 + (std::rand() % _LEAF_PROD_NUM);
     switch(p_id){
         case 1:
         {
-            std::srand(this->randseed);
             double c = (double)std::rand();
-            c = c/(double)RAND_MAX*this->randmax;
+            c = (c/(double)RAND_MAX)*this->randmax;
+
             this->child = new Const(c);
             break;
         }
