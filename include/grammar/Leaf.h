@@ -15,6 +15,7 @@ class Leaf : public INode{
     ~Leaf();
     double evaluate();
     void expand(int depth);
+	void expand(int p_id, int depth);
 };
 
 #endif

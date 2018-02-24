@@ -9,3 +9,4 @@ double Const::evaluate(){
 };
 
 void Const::expand(int depth){};
+void Const::expand(int p_id, int depth){};

@@ -21,11 +21,19 @@ double Leaf::evaluate(){
     return this->child->evaluate();
 };
 
-void Leaf::expand(int depth){    
+void Leaf::expand(int depth){
+    int p_id = 1 + (std::rand() % _LEAF_PROD_NUM);
+    this->expand(p_id, depth);    
+};
+
+void Leaf::expand(int p_id, int depth){
+    if(depth < 0)
+        return;
+    if(p_id < 1 || p_id >_LEAF_PROD_NUM)
+        return;
     if(this->child != nullptr)
         delete this->child;
-    
-    int p_id = 1 + (std::rand() % _LEAF_PROD_NUM);
+
     switch(p_id){
         case 1:
         {
