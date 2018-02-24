@@ -13,6 +13,7 @@ public:
 	double evaluate();
 	void expand(int depth);
 	void expand(int p_id, int depth);
+	std::string toString();
 };
 
 #endif

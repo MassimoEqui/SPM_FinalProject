@@ -51,3 +51,7 @@ void Leaf::expand(int p_id, int depth){
         default : break;
     }
 };
+
+std::string Leaf::toString(){
+    return std::to_string(this->child->evaluate());
+};

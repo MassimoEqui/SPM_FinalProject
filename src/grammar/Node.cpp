@@ -126,3 +126,62 @@ void Node::expand(int p_id, int depth){
 		default: break;
 	}
 };
+
+std::string Node::toString(){    
+	switch(this->p_id){
+		case 1: return this->children[0]->toString();
+		case 2: {
+			switch(this->unop){
+				case EXP :{
+					return "exp("+this->children[0]->toString()+")";
+				}
+				case SIN :{
+					return "sin("+this->children[0]->toString()+")";
+				}
+				case COS :{
+					return "cos("+this->children[0]->toString()+")";
+				}
+				case LOG :{
+					return "log("+this->children[0]->toString()+")";
+				}
+				default : return nullptr;
+			}			
+		}
+		case 3: {
+			switch(this->binop){
+				case MIN :{
+					return
+						"("+this->children[0]->toString()+
+						"-"+
+						this->children[1]->toString()+")";
+				}
+				case PLUS :{
+					return
+						"("+this->children[0]->toString()+
+						"+"+
+						this->children[1]->toString()+")";
+				}
+				case TIMES :{
+					return
+						"("+this->children[0]->toString()+
+						"*"+
+						this->children[1]->toString()+")";
+				}
+				case DIV :{
+					return
+						"("+this->children[0]->toString()+
+						"/"+
+						this->children[1]->toString()+")";
+				}
+				case POW :{
+					return
+						"("+this->children[0]->toString()+
+						"^"+
+						this->children[1]->toString()+")";
+				}
+				default : return nullptr;
+			}
+		}
+		default : return nullptr;
+	}
+};

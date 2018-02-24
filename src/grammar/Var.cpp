@@ -10,3 +10,7 @@ void Var::expand(int p_id, int depth){};
 void Var::setValue(double x_val){
     this->x = x_val;
 };
+
+std::string Var::toString(){
+    return std::to_string(this->evaluate());
+};
