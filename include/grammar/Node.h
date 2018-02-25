@@ -4,16 +4,18 @@
 #define CHILDREN_NUM 2
 #define _NODE_PROD_NUM 3
 #define _UNOP_PROD_NUM 4
-#define EXP 1
-#define SIN 2
-#define COS 3
-#define LOG 4
+#define UNOP 1
+#define EXP 11
+#define SIN 12
+#define COS 13
+#define LOG 14
 #define _BINOP_PROD_NUM 5
-#define MIN 1
-#define PLUS 2
-#define TIMES 3
-#define DIV 4
-#define POW 5
+#define BINOP 2
+#define MIN 21
+#define PLUS 22
+#define TIMES 23
+#define DIV 24
+#define POW 25
 
 #include "include/grammar/INode.h"
 
@@ -28,8 +30,10 @@ class Node : public INode{
 	~Node();
 	double evaluate();
 	void expand(int depth);
-	void expand(int p_id, int depth);
 	std::string toString();
+	
+	void expand(int p_id, int depth);
+	INode** expandByOne(int p_id, int op);
 };
 
 #endif

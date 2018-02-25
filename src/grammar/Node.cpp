@@ -76,17 +76,35 @@ double Node::evaluate(){
 };
 
 void Node::expand(int depth){
+	int children_depth = depth-1;	
 	if(depth < 0)
 		return;
-	if(depth == 0)
+	if(depth == 0){
 		this->p_id = 1;
+		children_depth = 0;
+	}
 	else
 		this->p_id = 2 + (std::rand() % (_NODE_PROD_NUM-1));
 	
-	this->expand(this->p_id, depth);
+	//this->expand(this->p_id, depth);
+	int op;
+	switch(this->p_id){
+		case 1:{ op = -1; break; }
+		case 2:{ op = EXP + (std::rand() % _UNOP_PROD_NUM);	break; }
+		case 3:{ op = MIN + (std::rand() % _BINOP_PROD_NUM); break; }
+		default:{ op = -1; break; }
+	}
+
+	INode** chldr = this->expandByOne(this->p_id,op);
+	
+	for(int i=0; i<CHILDREN_NUM; i++){
+		if(this->children[i] != nullptr){
+			this->children[i] = chldr[i];
+			this->children[i]->expand(children_depth);
+		}		
+	}
 };
-
-
+/*
 void Node::expand(int p_id, int depth){
 	if(depth < 0)
 		return;
@@ -110,13 +128,13 @@ void Node::expand(int p_id, int depth){
 			break;
 		}
 		case 2: {//<unop> <node>
-			this->unop = 1 + (std::rand() % _UNOP_PROD_NUM);
+			this->unop = EXP + (std::rand() % _UNOP_PROD_NUM);
 			this->children[0] = new Node(this->randmax, std::rand());
 			this->children[0]->expand(depth-1);
 			break;
 		}
 		case 3: {//<node> <binop> <node>
-			this->binop = 1 + (std::rand() % _BINOP_PROD_NUM);
+			this->binop = MIN + (std::rand() % _BINOP_PROD_NUM);
 			this->children[0] = new Node(this->randmax, std::rand());
 			this->children[1] = new Node(this->randmax, std::rand());
 			this->children[0]->expand(depth-1);
@@ -126,62 +144,111 @@ void Node::expand(int p_id, int depth){
 		default: break;
 	}
 };
+*/
+INode** Node::expandByOne(int p_id, int op){
+	if(p_id<1 || p_id>_NODE_PROD_NUM)
+		return nullptr;
 
-std::string Node::toString(){    
+	for(int i=0; i<CHILDREN_NUM; i++)
+		if(children[i] != nullptr){
+			delete children[i];
+			children[i] = nullptr;
+		}
+	
+	this->p_id = p_id;
+	this->unop = -1;
+	this->binop = -1;
+
+	switch(p_id){
+		case 1: {//<leaf>
+			this->children[0] = new Leaf(this->randmax, std::rand());
+			break;
+		}
+		case 2: {//<unop> <node>
+			this->unop = op;
+			this->children[0] = new Node(this->randmax, std::rand());
+			break;
+		}
+		case 3: {//<node> <binop> <node>
+			this->binop = op;
+			this->children[0] = new Node(this->randmax, std::rand());
+			this->children[1] = new Node(this->randmax, std::rand());
+			break;
+		}
+		default: break;
+	}
+
+	INode** chldr = new INode*[CHILDREN_NUM];
+	for(int i=0; i<CHILDREN_NUM; i++)
+		chldr[i] = this->children[i];
+	return chldr;
+};
+
+std::string Node::toString(){
+	std::string s = "";  
 	switch(this->p_id){
-		case 1: return this->children[0]->toString();
+		case 1: {
+			s = this->children[0]->toString();
+			break;
+		}
 		case 2: {
 			switch(this->unop){
 				case EXP :{
-					return "exp("+this->children[0]->toString()+")";
+					s = "exp";
+					break;
 				}
 				case SIN :{
-					return "sin("+this->children[0]->toString()+")";
+					s = "sin";
+					break;
 				}
 				case COS :{
-					return "cos("+this->children[0]->toString()+")";
+					s = "cos";
+					break;
 				}
 				case LOG :{
-					return "log("+this->children[0]->toString()+")";
+					s = "logs";
+					break;
 				}
-				default : return nullptr;
-			}			
+				default : break;
+			}
+			if(!s.empty())
+				s = s + "("+this->children[0]->toString()+")";
+			break;			
 		}
 		case 3: {
 			switch(this->binop){
 				case MIN :{
-					return
-						"("+this->children[0]->toString()+
-						"-"+
-						this->children[1]->toString()+")";
+					s = "-";
+					break;
 				}
 				case PLUS :{
-					return
-						"("+this->children[0]->toString()+
-						"+"+
-						this->children[1]->toString()+")";
+					s = "+";
+					break;
 				}
 				case TIMES :{
-					return
-						"("+this->children[0]->toString()+
-						"*"+
-						this->children[1]->toString()+")";
+					s = "*";
+					break;
 				}
 				case DIV :{
-					return
-						"("+this->children[0]->toString()+
-						"/"+
-						this->children[1]->toString()+")";
+					s = "/";
+					break;
 				}
 				case POW :{
-					return
-						"("+this->children[0]->toString()+
-						"^"+
-						this->children[1]->toString()+")";
+					s = "^";
+					break;
 				}
 				default : return nullptr;
 			}
+
+			if(!s.empty())
+				s = "["+this->children[0]->toString()+
+					s+
+					this->children[1]->toString()+"]";
+
+			break;
 		}
-		default : return nullptr;
+		default : break;
 	}
+
+	return s;
 };
