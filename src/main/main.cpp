@@ -49,25 +49,13 @@ int main(int argc, char const *argv[])
 
 	//Test Node (deterministic)
 	std::cout << "TEST: Node (deterministic)\n";
-/*
 	Node* node_1 = new Node(1000.0,std::rand());
-	INode** children_1 = node_1->expandByOne(3,PLUS);
-	Node* node_1a = (Node*)children_1[0];
-	Node* node_1b = (Node*)children_1[1];
-	INode** children_1a = node_1a->expandByOne(2,EXP);
-	INode** children_1b = node_1b->expandByOne(2,SIN);
-	Node* node_1aa = (Node*)children_1a[0];
-	Node* node_1bb = (Node*)children_1b[0];
-	INode** children_1aa = node_1aa->expandByOne(1,-1);
-	INode** children_1bb = node_1bb->expandByOne(1,-1);
-	Leaf* leaf_1aa = (Leaf*)children_1aa[0];
-	Leaf* leaf_1bb = (Leaf*)children_1bb[0];
-	leaf_1aa->expandLast(1,5.67);
-	leaf_1bb->expandLast(2,0.0);
-	std::cout << "(Node_1,p_id=3,depth=1)node string = " << node_1->toString() << "\n";
-	std::cout << "(Node_1,p_id=3,depth=1)node value = " << node_1->evaluate() << "\n\n";
-*/
-	Node* node_1 = new Node(1000.0,std::rand());
+	((Leaf*)((Node*)node_1->expandByOne(2,SIN)[0])->expandByOne(1,-1)[0])->expandLast(1,5.67);
+	std::cout << "(Node_1)node string = " << node_1->toString() << "\n";
+	std::cout << "(Node_1)node value = " << node_1->evaluate() << "\n\n";
+	delete node_1;
+
+	node_1 = new Node(1000.0,std::rand());
 	INode** children_1 = node_1->expandByOne(3,PLUS);
 	((Leaf*)
 	((Node*)
@@ -112,13 +100,7 @@ int main(int argc, char const *argv[])
 		node->expand(i);
 		std::cout << "(Node,p_id=rand(),depth="<<i<<")node string = " << node->toString() << "\n";
 		std::cout << "(Node,p_id=rand(),depth="<<i<<")node value = " << node->evaluate() << "\n\n";
-	};/*
-	node->expand(2);
-	std::cout << "(Node,p_id=rand(),depth=2)node string = " << node->toString() << "\n";
-	std::cout << "(Node,p_id=rand(),depth=2)node value = " << node->evaluate() << "\n\n";
-	node->expand(3);
-	std::cout << "(Node,p_id=rand(),depth=3)node string = " << node->toString() << "\n";
-	std::cout << "(Node,p_id=rand(),depth=3)node value = " << node->evaluate() << "\n";*/
+	};
 	delete node;
 
 	//getchar();

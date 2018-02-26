@@ -2,6 +2,8 @@
 
 #include<cstdlib>
 #include<ctime>
+#include<cmath>
+#include<limits>
 //DEBUG
 #include<iostream>
 #include "include/grammar/Leaf.h"
@@ -28,20 +30,16 @@ double Node::evaluate(){
 		case 2: {
 			switch(this->unop){
 				case EXP :{
-					//TODO
-					return 0.1;
+					return std::exp(this->children[0]->evaluate());
 				}
 				case SIN :{
-					//TODO
-					return 0.2;
+					return std::sin(this->children[0]->evaluate());
 				}
 				case COS :{
-					//TODO
-					return 0.3;
+					return std::cos(this->children[0]->evaluate());
 				}
 				case LOG :{
-					//TODO
-					return 0.4;
+					return std::log(this->children[0]->evaluate());
 				}
 				default : return 2.0;
 			}			
@@ -49,26 +47,31 @@ double Node::evaluate(){
 		case 3: {
 			switch(this->binop){
 				case MIN :{
-					//TODO
-					return 0.1;
+					return
+						this->children[0]->evaluate() -
+						this->children[1]->evaluate();
 				}
 				case PLUS :{
-					//TODO
-					return 0.2;
+					return
+						this->children[0]->evaluate() +
+						this->children[1]->evaluate();
 				}
 				case TIMES :{
-					//TODO
-					return 0.3;
+					return
+						this->children[0]->evaluate() *
+						this->children[1]->evaluate();
 				}
 				case DIV :{
-					//TODO
-					return 0.4;
+					return
+						this->children[0]->evaluate() /
+						this->children[1]->evaluate();
 				}
 				case POW :{
-					//TODO
-					return 0.5;
+					return std::pow(
+						this->children[0]->evaluate(),
+						this->children[1]->evaluate());
 				}
-				default : return 3.0;
+				default : return std::numeric_limits<double>::quiet_NaN();
 			}
 		}
 		default : return 0.0;
@@ -86,7 +89,6 @@ void Node::expand(int depth){
 	else
 		this->p_id = 2 + (std::rand() % (_NODE_PROD_NUM-1));
 	
-	//this->expand(this->p_id, depth);
 	int op;
 	switch(this->p_id){
 		case 1:{ op = -1; break; }
@@ -104,47 +106,7 @@ void Node::expand(int depth){
 		}		
 	}
 };
-/*
-void Node::expand(int p_id, int depth){
-	if(depth < 0)
-		return;
-	if(p_id<1 || p_id>_NODE_PROD_NUM)
-		return;
 
-	for(int i=0; i<CHILDREN_NUM; i++)
-		if(children[i] != nullptr){
-			delete children[i];
-			children[i] = nullptr;
-		}
-	
-	this->p_id = p_id;
-	this->unop = -1;
-	this->binop = -1;
-
-	switch(p_id){
-		case 1: {//<leaf>
-			children[0] = new Leaf(this->randmax, std::rand());
-			children[0]->expand(0);
-			break;
-		}
-		case 2: {//<unop> <node>
-			this->unop = EXP + (std::rand() % _UNOP_PROD_NUM);
-			this->children[0] = new Node(this->randmax, std::rand());
-			this->children[0]->expand(depth-1);
-			break;
-		}
-		case 3: {//<node> <binop> <node>
-			this->binop = MIN + (std::rand() % _BINOP_PROD_NUM);
-			this->children[0] = new Node(this->randmax, std::rand());
-			this->children[1] = new Node(this->randmax, std::rand());
-			this->children[0]->expand(depth-1);
-			this->children[1]->expand(depth-1);
-			break;
-		}
-		default: break;
-	}
-};
-*/
 INode** Node::expandByOne(int p_id, int op){
 	if(p_id<1 || p_id>_NODE_PROD_NUM)
 		return nullptr;
@@ -206,7 +168,7 @@ std::string Node::toString(){
 					break;
 				}
 				case LOG :{
-					s = "logs";
+					s = "log";
 					break;
 				}
 				default : break;
@@ -241,9 +203,9 @@ std::string Node::toString(){
 			}
 
 			if(!s.empty())
-				s = "["+this->children[0]->toString()+
+				s = "[ "+this->children[0]->toString()+
 					s+
-					this->children[1]->toString()+"]";
+					this->children[1]->toString()+" ]";
 
 			break;
 		}
