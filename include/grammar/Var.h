@@ -6,18 +6,13 @@
 #include "include/grammar/INode.h"
 
 class Var : public INode {
-private:
-    double x;
-
 public:
 	Var();
 	~Var();
 	//From INode
-	double evaluate();
+	double evaluate(double x_val);
 	void expand(int depth);
 	std::string toString();
-
-	void setValue(double x_val);
 };
 
 #endif

@@ -10,7 +10,7 @@ private:
 public:
 	Const(double val);
 	~Const();
-	double evaluate();
+	double evaluate(double x_val);
 	void expand(int depth);
 	std::string toString();
 };

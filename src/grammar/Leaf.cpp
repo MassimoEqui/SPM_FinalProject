@@ -17,8 +17,8 @@ Leaf::~Leaf(){
         delete this->child;
 }
 
-double Leaf::evaluate(){
-    return this->child->evaluate();
+double Leaf::evaluate(double x_val){
+    return this->child->evaluate(x_val);
 };
 
 void Leaf::expand(int depth){

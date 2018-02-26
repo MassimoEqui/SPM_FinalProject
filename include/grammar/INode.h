@@ -6,7 +6,7 @@
 class INode {
 public:
 	~INode(){};
-	virtual double evaluate() = 0;
+	virtual double evaluate(double x_val) = 0;
 	virtual void expand(int depth) = 0;
 	virtual std::string toString() = 0;
 };

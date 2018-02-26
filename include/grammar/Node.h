@@ -28,7 +28,7 @@ class Node : public INode{
 	public:
 	Node(double randmax, int randseed);
 	~Node();
-	double evaluate();
+	double evaluate(double x_val);
 	void expand(int depth);
 	std::string toString();
 	

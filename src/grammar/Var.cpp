@@ -1,20 +1,14 @@
 #include "include/grammar/Var.h"
 
-Var::Var(){
-    this->x = 0.0;
-};
+Var::Var(){};
 
 Var::~Var(){};
 
-double Var::evaluate(){
-    return this->x;
+double Var::evaluate(double x_val){
+    return x_val;
 };
 
 void Var::expand(int depth){};
-
-void Var::setValue(double x_val){
-    this->x = x_val;
-};
 
 std::string Var::toString(){
     return "x";

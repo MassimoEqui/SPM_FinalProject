@@ -24,22 +24,22 @@ Node::~Node(){
 			delete children[i];
 }
 
-double Node::evaluate(){
+double Node::evaluate(double x_val){
 	switch(this->p_id){
-		case 1: return this->children[0]->evaluate();
+		case 1: return this->children[0]->evaluate(x_val);
 		case 2: {
 			switch(this->unop){
 				case EXP :{
-					return std::exp(this->children[0]->evaluate());
+					return std::exp(this->children[0]->evaluate(x_val));
 				}
 				case SIN :{
-					return std::sin(this->children[0]->evaluate());
+					return std::sin(this->children[0]->evaluate(x_val));
 				}
 				case COS :{
-					return std::cos(this->children[0]->evaluate());
+					return std::cos(this->children[0]->evaluate(x_val));
 				}
 				case LOG :{
-					return std::log(this->children[0]->evaluate());
+					return std::log(this->children[0]->evaluate(x_val));
 				}
 				default : return 2.0;
 			}			
@@ -48,28 +48,28 @@ double Node::evaluate(){
 			switch(this->binop){
 				case MIN :{
 					return
-						this->children[0]->evaluate() -
-						this->children[1]->evaluate();
+						this->children[0]->evaluate(x_val) -
+						this->children[1]->evaluate(x_val);
 				}
 				case PLUS :{
 					return
-						this->children[0]->evaluate() +
-						this->children[1]->evaluate();
+						this->children[0]->evaluate(x_val) +
+						this->children[1]->evaluate(x_val);
 				}
 				case TIMES :{
 					return
-						this->children[0]->evaluate() *
-						this->children[1]->evaluate();
+						this->children[0]->evaluate(x_val) *
+						this->children[1]->evaluate(x_val);
 				}
 				case DIV :{
 					return
-						this->children[0]->evaluate() /
-						this->children[1]->evaluate();
+						this->children[0]->evaluate(x_val) /
+						this->children[1]->evaluate(x_val);
 				}
 				case POW :{
 					return std::pow(
-						this->children[0]->evaluate(),
-						this->children[1]->evaluate());
+						this->children[0]->evaluate(x_val),
+						this->children[1]->evaluate(x_val));
 				}
 				default : return std::numeric_limits<double>::quiet_NaN();
 			}
