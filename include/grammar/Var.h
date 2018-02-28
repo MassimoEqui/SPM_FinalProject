@@ -11,7 +11,11 @@ public:
 	~Var();
 	//From INode
 	double evaluate(double x_val);
-	void expand(int depth);
+	void expandRandom(int depth);
+	INode** getChildren();
+	int getChildrenNum();
+	INode* setChild(int child_id, INode* child);
+	INode* copyToEnd();
 	std::string toString();
 };
 

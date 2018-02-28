@@ -13,20 +13,24 @@ Leaf::Leaf(double randmax, int randseed){
 };
 
 Leaf::~Leaf(){
-    if(this->child != nullptr)
+    if(this->child != nullptr){
         delete this->child;
+    }
 }
 
 double Leaf::evaluate(double x_val){
-    return this->child->evaluate(x_val);
+    if(this->child != nullptr)
+        return this->child->evaluate(x_val);
+    else
+        return -1.0;
 };
 
-void Leaf::expand(int depth){
+void Leaf::expandRandom(int depth){
     if(depth < 0)
         return;
-    int p_id = 1 + (std::rand() % _LEAF_PROD_NUM);
+    int p_id = _LEAF_FIRST_PROD + (std::rand() % _LEAF_PROD_NUM);
     double c = 0.0;
-    if(p_id == 1){
+    if(p_id == _LEAF_FIRST_PROD){
         while(c == 0.0){
             c = (double)std::rand();
             c = (c/(double)RAND_MAX)*this->randmax;
@@ -36,18 +40,18 @@ void Leaf::expand(int depth){
 };
 
 void Leaf::expandLast(int p_id, double c){
-    if(p_id < 1 || p_id >_LEAF_PROD_NUM)
+    if(p_id < _LEAF_FIRST_PROD || p_id >_LEAF_PROD_NUM)
         return;
     if(this->child != nullptr)
         delete this->child;
     
     switch(p_id){
-        case 1:
+        case _LEAF_FIRST_PROD:
         {
             this->child = new Const(c);
             break;
         }
-        case 2:
+        case _LEAF_SECOND_PROD:
         {
             this->child = new Var();
             break;
@@ -56,6 +60,39 @@ void Leaf::expandLast(int p_id, double c){
     }
 };
 
+INode** Leaf::getChildren(){
+    INode** children = new INode*[CHILDREN_NUM];
+    for(int i=0; i<CHILDREN_NUM; i++)
+        children[i] = nullptr;
+    children[0] = this->child;
+    return children;
+};
+
+int Leaf::getChildrenNum(){ 
+    if(this->child != nullptr)
+        return 1;
+    else
+        return 0;
+};
+
+INode* Leaf::setChild(int child_id, INode* child){
+    INode* oldChild = this->child;
+    this->child = child;
+    return oldChild;
+};
+
+INode* Leaf::copyToEnd(){
+    INode* newLeaf = new Leaf(this->randmax, std::rand());;
+    if(this->child != nullptr){
+        INode* newChild = this->child->copyToEnd();
+        newLeaf->setChild(0, newChild);
+    }
+    return newLeaf;
+};
+
 std::string Leaf::toString(){
-    return this->child->toString();
+    if(this->child != nullptr)
+        return this->child->toString();
+    else
+        return "";
 };

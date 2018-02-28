@@ -2,11 +2,13 @@
 #include <stdio.h>
 #include<cstdlib>
 #include<ctime>
-
+/*
 #include "include/grammar/Const.h"
 #include "include/grammar/Var.h"
 #include "include/grammar/Leaf.h"
 #include "include/grammar/Node.h"
+*/
+#include "include/grammar/grammar.h"
 
 //using namespace std;
 
@@ -41,7 +43,7 @@ int main(int argc, char const *argv[])
 
 	//Test Leaf (random)
 	std::cout << "TEST: Leaf (random)\n";
-	leaf->expand(0);
+	leaf->expandRandom(0);
 	std::cout << "(Leaf,p_id=rand())leaf string = " << leaf->toString() << "\n";
 	std::cout << "(Leaf,p_id=rand())leaf value = " << leaf->evaluate(1) << "\n\n";
 	delete leaf;
@@ -53,7 +55,6 @@ int main(int argc, char const *argv[])
 	std::cout << "(Node_1)node string = " << node_1->toString() << "\n";
 	std::cout << "(Node_1)node value = " << node_1->evaluate(1) << "\n\n";
 	delete node_1;
-
 	node_1 = new Node(1000.0,std::rand());
 	INode** children_1 = node_1->expandByOne(3,PLUS);
 	((Leaf*)
@@ -96,7 +97,7 @@ int main(int argc, char const *argv[])
 	Node* node = new Node(1000.0, std::rand());
 	for(int i=0; i<5; i++){
 		std::cout <<"Depth="<<i<<"\n";
-		node->expand(i);
+		node->expandRandom(i);
 		std::cout << "(Node,p_id=rand(),depth="<<i<<")node string = " << node->toString() << "\n";
 		std::cout << "(Node,p_id=rand(),depth="<<i<<")node value = " << node->evaluate(1) << "\n\n";
 	};
