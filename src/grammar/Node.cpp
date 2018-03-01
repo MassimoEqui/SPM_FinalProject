@@ -89,7 +89,7 @@ void Node::expandRandom(int depth){
 	else
 		this->p_id = _NODE_SECOND_PROD + (std::rand() % (_NODE_PROD_NUM-1));
 	
-	int op;
+	int op = -1;
 	switch(this->p_id){
 		case _NODE_FIRST_PROD:{ op = -1; break; }
 		case _NODE_SECOND_PROD:{ op = EXP + (std::rand() % _UNOP_PROD_NUM);	break; }
@@ -97,8 +97,8 @@ void Node::expandRandom(int depth){
 		default:{ op = -1; break; }
 	}
 
-	this->expandByOne(this->p_id,op);
-	
+	INode** children = this->expandByOne(this->p_id,op);
+	delete children;
 	for(int i=0; i<CHILDREN_NUM; i++)
 		if(this->children[i] != nullptr)
 			this->children[i]->expandRandom(children_depth);

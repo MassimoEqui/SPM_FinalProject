@@ -7,7 +7,7 @@
 
 class INode {
 public:
-	~INode(){};
+	virtual ~INode(){};
 	virtual double evaluate(double x_val) = 0;
 	virtual void expandRandom(int depth) = 0;
 	virtual INode** getChildren() = 0;

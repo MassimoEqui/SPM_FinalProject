@@ -1,6 +1,8 @@
 #ifndef _INCLUDE_GRAMMAR_TREE_H
 #define _INCLUDE_GRAMMAR_TREE_H
 
+#include<string>
+
 #include "include/grammar/grammar.h"
 
 class Tree{
@@ -14,6 +16,7 @@ class Tree{
     double evaluate(double x_val);
     void mutation(int depth);
     INode* getRandomSubtree(int depth);
+    std::string toString();
 };
 
 #endif

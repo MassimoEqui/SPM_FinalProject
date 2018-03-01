@@ -6,9 +6,7 @@ Const::Const(double val){
 
 Const::~Const(){};
 
-double Const::evaluate(double x_val){
-    return this->val;
-};
+double Const::evaluate(double x_val){ return this->val; };
 
 void Const::expandRandom(int depth){};
 

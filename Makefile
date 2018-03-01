@@ -9,19 +9,19 @@ main.out: main.o Node.o Const.o Var.o Leaf.o Tree.o
 main.o: ./src/main/main.cpp
 	$(CC) $(CFLAGS) -c ./src/main/main.cpp
 
-Node.o: ./include/grammar/Node.h ./src/grammar/Node.cpp
+Node.o: ./include/grammar/Node.h ./include/grammar/INode.h ./src/grammar/Node.cpp 
 	$(CC) $(CFLAGS) -c ./src/grammar/Node.cpp
 
-Const.o: ./include/grammar/Const.h ./src/grammar/Const.cpp
+Const.o: ./include/grammar/Const.h ./include/grammar/INode.h ./src/grammar/Const.cpp
 	$(CC) $(CFLAGS) -c ./src/grammar/Const.cpp
 
-Var.o: ./include/grammar/Var.h ./src/grammar/Var.cpp
+Var.o: ./include/grammar/Var.h ./include/grammar/INode.h ./src/grammar/Var.cpp
 	$(CC) $(CFLAGS) -c ./src/grammar/Var.cpp
 
-Leaf.o: ./include/grammar/Leaf.h ./src/grammar/Leaf.cpp
+Leaf.o: ./include/grammar/Leaf.h ./include/grammar/INode.h ./src/grammar/Leaf.cpp
 	$(CC) $(CFLAGS) -c ./src/grammar/Leaf.cpp
 
-Tree.o: ./include/genetics/Tree.h ./src/genetics/Tree.cpp
+Tree.o: ./include/genetics/Tree.h ./include/grammar/INode.h ./src/genetics/Tree.cpp
 	$(CC) $(CFLAGS) -c ./src/genetics/Tree.cpp
 
 clean:
