@@ -42,6 +42,16 @@ INode* Tree::getRandomSubtree(int depth){
     return subtree_root;
 };
 
+int Tree::getDepth(){ return this->depth; };
+
+INode* Tree::getRoot(){ return this->root; }
+
+INode* Tree::setRoot(Node* root){
+    INode* oldRoot = this->root;
+    this->root = root;
+    return oldRoot;
+}
+
 std::string Tree::toString(){
     if(this->root != nullptr)
         return this->root->toString();

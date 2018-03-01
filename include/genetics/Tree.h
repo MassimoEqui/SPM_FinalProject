@@ -16,6 +16,9 @@ class Tree{
     double evaluate(double x_val);
     void mutation(int depth);
     INode* getRandomSubtree(int depth);
+    int getDepth();
+    INode* getRoot();
+    INode* setRoot(Node* root);
     std::string toString();
 };
 
