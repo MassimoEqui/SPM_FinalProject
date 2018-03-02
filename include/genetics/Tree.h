@@ -8,7 +8,7 @@
 class Tree{
     private:
     Node* root;
-    int depth;
+    int depth, randmax;
 
     public:
     Tree(int depth, int randmax, int randseed);
@@ -17,8 +17,10 @@ class Tree{
     void mutation(int depth);
     INode* getRandomSubtree(int depth);
     int getDepth();
+    void setDepth(int depth);
     INode* getRoot();
     INode* setRoot(Node* root);
+    Tree* copy();
     std::string toString();
 };
 

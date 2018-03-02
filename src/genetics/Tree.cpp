@@ -7,8 +7,12 @@
 Tree::Tree(int depth, int randmax, int randseed){
     std::srand(randseed);
     this->depth = depth;
-    this->root = new Node(randmax, std::rand());
-    this->root->expandRandom(depth);
+    this->randmax = randmax;
+    this->root = nullptr;
+    if(depth >= 0){
+        this->root = new Node(randmax, std::rand());
+        this->root->expandRandom(depth);
+    }
 };
 
 Tree::~Tree(){ delete this->root; };
@@ -44,12 +48,21 @@ INode* Tree::getRandomSubtree(int depth){
 
 int Tree::getDepth(){ return this->depth; };
 
+void Tree::setDepth(int depth){ this->depth = depth; }
+
 INode* Tree::getRoot(){ return this->root; }
 
 INode* Tree::setRoot(Node* root){
     INode* oldRoot = this->root;
     this->root = root;
     return oldRoot;
+}
+
+Tree* Tree::copy(){
+    Tree* newTree = new Tree(-1, this->randmax, std::rand());
+    newTree->setDepth(this->depth);
+    newTree->setRoot((Node*)this->root->copyToEnd());
+    return newTree;
 }
 
 std::string Tree::toString(){

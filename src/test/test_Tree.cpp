@@ -30,7 +30,16 @@ int main(int argc, char const *argv[]){
         printRepresentation(tree, "tree", 1.0);
     }
 
+    //Tree->copy(...)
+    std::cout << "\nOPERATION: tree->copy();\n";
+    Tree* tree_1 = tree->copy();
+    std::cout << "REPRESENTATION\n";
+    printRepresentation(tree, "tree", 1.0);
     delete tree;
+    std::cout << "\n";
+    printRepresentation(tree_1, "tree_1", 1.0);
+
+    delete tree_1;
 
     return 0;
 }
