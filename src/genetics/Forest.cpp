@@ -8,16 +8,16 @@ Forest::Forest(int treeNum, int depthmax, int threshold, int randmax, int randse
         return;
     std::srand(randseed);
     this->treePool = new Tree*[treeNum];
-    this->bestTrees = new std::pair<Tree*, double>[threshold];
+    //this->bestTrees = new std::pair<int, double>[threshold];
     this->treeNum = treeNum;
     this->threshold = threshold;
     this->depthmax = depthmax;
     for(int i=0; i<treeNum; i++)
         this->treePool[i] = new Tree(std::rand()%(depthmax+1), randmax, std::rand());
-    for(int i=0; i<threshold; i++){
-        this->bestTrees[i].first = nullptr;
-        this->bestTrees[i].second = 0.0;
-    }
+    /*for(int i=0; i<threshold; i++){
+        this->bestTrees[i].first = -1;
+        this->bestTrees[i].second = -1.0;
+    }*/
 };
 
 Forest::~Forest(){
@@ -34,34 +34,52 @@ double Forest::fitness(Tree* f, double* x_vals, double* y_vals, int pointsNum){
     return std::sqrt(E);
 };
 
-void Forest::selectBests(double* x_vals, double* y_vals, int pointsNum){
+int* Forest::selectBests(double* x_vals, double* y_vals, int pointsNum){
+    int* bestTrees_idx = new int[this->threshold];
+    double bestTrees_E[this->threshold];/*
+    for(int i=0; i<this->threshold; i++){
+        bestTrees_idx[i] = -1;
+        bestTrees_E[i] = -1.0;
+    }*/
+
+    bool full = false;
+    int j = 0;
     for(int i=0; i<this->treeNum; i++){
         bool done = false;
-        int j = 0, maxE_idx = -1;
+        int maxE_idx = -1;
         double E = this->fitness(this->treePool[i], x_vals, y_vals, pointsNum);
         double maxE = E;
-        while(!done && j<this->threshold){
-            if(this->bestTrees[j].first == nullptr){
-                this->bestTrees[j].first = this->treePool[i];
-                this->bestTrees[j].second = E;
-                done = true;
-            }
-            else if(this->bestTrees[j].second>maxE){
-                maxE = this->bestTrees[j].second;
-                maxE_idx = j;
-            }
+        if(!full){
+            bestTrees_idx[j] = i;
+            bestTrees_E[j] = E;
+            done = true;
             j++;
+            if(j == threshold)
+                full = true;
         }
+        else{
+            j = 0;
+            while(!done && j<this->threshold){
+                if(bestTrees_E[j]>maxE){
+                    maxE = bestTrees_E[j];
+                    maxE_idx = j;
+                }
+                j++;
+            }
+        }
+
         if(maxE_idx >= 0){
-            this->bestTrees[maxE_idx].first = this->treePool[i];
-            this->bestTrees[maxE_idx].second = E;
+            bestTrees_idx[maxE_idx] = i;
+            bestTrees_E[maxE_idx] = E;
         }
     }
+    return bestTrees_idx;
 };
 
 void Forest::crossover(int tree1_id, int tree2_id){
     if(tree1_id < 0 || tree1_id > this->treeNum ||
-        tree2_id < 0 || tree2_id > this->treeNum)
+        tree2_id < 0 || tree2_id > this->treeNum ||
+            tree1_id == tree2_id)
         return;
     
     //Get the trees
@@ -127,8 +145,16 @@ void Forest::mutation(int tree_id){
     this->treePool[tree_id]->mutation(depth);
 };
 
-void Forest::newGeneration(){
-    //TODO
+void Forest::newGeneration(int* bestTrees){
+    Tree** newTreePool = new Tree*[this->treeNum];
+    for(int i=0; i<this->threshold; i++)
+        newTreePool[i] = this->treePool[bestTrees[i]]->copy();  
+    for(int i=threshold; i<this->treeNum; i++)
+        newTreePool[i] = this->treePool[bestTrees[std::rand()%this->threshold]]->copy();
+    for(int i=0; i<this->treeNum; i++)
+        delete this->treePool[i];
+    delete this->treePool;
+    this->treePool = newTreePool;
 }
 
 std::string Forest::toString(){
@@ -139,10 +165,14 @@ std::string Forest::toString(){
     return s;
 };
 
+std::string Forest::toStringTree(int tree_id){
+    return this->treePool[tree_id]->toString();
+};
+/*
 std::string Forest::toStringBests(){
     std::string s = "";
     for(int i=0; i<this->threshold; i++)
         s = s+"\n\nTree [ "+std::to_string(i)+" ]\n"+this->bestTrees[i].first->toString();
     s += "\n\n";
     return s;
-};
+};*/
