@@ -57,10 +57,11 @@ int* Forest::selectBests(double* x_vals, double* y_vals, int pointsNum){
             if(j == threshold)
                 full = true;
         }
-        else{
+        else if(!std::isnan(E) && !std::isinf(E)){
             j = 0;
             while(!done && j<this->threshold){
-                if(bestTrees_E[j]>maxE){
+                if(bestTrees_E[j]>maxE ||
+                    std::isnan(bestTrees_E[j]) || std::isinf(bestTrees_E[j])){
                     maxE = bestTrees_E[j];
                     maxE_idx = j;
                 }
@@ -155,6 +156,26 @@ void Forest::newGeneration(int* bestTrees){
         delete this->treePool[i];
     delete this->treePool;
     this->treePool = newTreePool;
+}
+
+Tree* Forest::getBest(double* x_vals, double* y_vals, int pointsNum){
+    if(this->treeNum<=0)
+        return nullptr;
+
+    int bestTree_id = 0;
+    double E = this->fitness(this->treePool[bestTree_id], x_vals, y_vals, pointsNum);
+    double bestE = E;
+    for(int i=1; i<this->treeNum; i++){
+        double E = this->fitness(this->treePool[i], x_vals, y_vals, pointsNum);
+        if(!std::isnan(E) && !std::isinf(E)){
+            if(E < bestE || std::isnan(bestE) || std::isinf(bestE)){
+                bestE = E;
+                bestTree_id = i;
+            }
+        }
+    }
+
+    return this->treePool[bestTree_id];
 }
 
 std::string Forest::toString(){
