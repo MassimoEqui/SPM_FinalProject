@@ -18,8 +18,8 @@ void printRepresentation(INode* inode, std::string name){
 };
 
 int main(int argc, char const *argv[]){
-    Const* cnst = new Const(3.14);
-    std::cout << "TEST CONST\ncnst = new Const(3.14);\n\n";
+    Const* cnst = new Const(3);
+    std::cout << "TEST CONST\ncnst = new Const(3);\n\n";
 
     std::cout << "REPRESENTATION\n";
     printRepresentation(cnst, "cnst");
@@ -29,8 +29,8 @@ int main(int argc, char const *argv[]){
     std::cout << "REPRESENTATION\n";
     printRepresentation(cnst, "cnst");
 
-    std::cout << "\nOPERATION: cnst->setChild(0, new Const(5.16));\n";
-    INode* tmpc = new Const(5.16);
+    std::cout << "\nOPERATION: cnst->setChild(0, new Const(5));\n";
+    INode* tmpc = new Const(5);
     cnst->setChild(0, tmpc);
     delete tmpc;
     std::cout << "REPRESENTATION\n";

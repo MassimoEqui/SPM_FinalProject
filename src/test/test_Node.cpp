@@ -56,7 +56,7 @@ int main(int argc, char const *argv[]){
     std::cout << "REPRESENTATION\n";
     printRepresentation(node, "node", 0.0);
 
-    std::cout << "\nOPERATION: node->setChild(1, Node->Leaf->Const(1.59));\n";
+    std::cout << "\nOPERATION: node->setChild(1, Node->Leaf->1.59));\n";
     Node* tmpn_2 = new Node(randmax, std::rand());
     tmpn_2->expandByOne(_NODE_FIRST_PROD, 0);
     ((Leaf*)tmpn_2->getChildren()[0])->expandLast(_LEAF_FIRST_PROD, 1.59);

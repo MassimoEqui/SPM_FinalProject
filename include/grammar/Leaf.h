@@ -23,7 +23,7 @@ class Leaf : public INode{
 	INode* copyToEnd();
 	std::string toString();
 
-	void expandLast(int p_id, double c);
+	void expandLast(int p_id, int c);
 };
 
 #endif

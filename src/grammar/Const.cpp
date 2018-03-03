@@ -1,6 +1,6 @@
 #include "include/grammar/Const.h"
 
-Const::Const(double val){
+Const::Const(int val){
     this->val = val;
 };
 

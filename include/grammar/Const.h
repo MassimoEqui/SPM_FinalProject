@@ -5,10 +5,10 @@
 
 class Const : public INode {
 private:
-    double val;
+    int val;
 
 public:
-	Const(double val);
+	Const(int val);
 	~Const();
 	double evaluate(double x_val);
 	void expandRandom(int depth);

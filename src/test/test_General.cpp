@@ -104,27 +104,6 @@ int main(int argc, char const *argv[]){
     std::cout << bestTree->toString();
     std::cout << "\nFITNESS = "<<forest->fitness(bestTree, x_vals, y_vals, points_num) << "\n";
 
-
-/*
-    double x_vals[POINTS_NUM] = {1.1, 2.89, 34.56, 45.654, 78.75, 123.456, 198.3426, 294.45, 357.865};
-    double y_vals[POINTS_NUM] = {1.1, 2.89, 34.56, 45.654, 78.75, 123.456, 198.3426, 294.45, 357.865};
-
-    std::cout << "\nREAL FUNCTION: f(x) = 2x\n";
-    std::cout << "OPERATION: forest->selectBests(x_vals, y_vals, POINTS_NUM);\n";
-    int* bestTrees = forest->selectBests(x_vals, y_vals, POINTS_NUM);
-    std::cout << "REPRESENTATION\n";
-    printRepresentation(forest, bestTrees, threshold);
-/*
-    std::cout << "\nOPERATION: complete cycle of evolution;\n";
-    int* bestTrees = forest->selectBests(x_vals, y_vals, 10);
-    for(int i=0; i<3; i++)
-        forest->mutation(bestTrees[std::rand()%threshold]);
-    for(int i=0; i<3; i++)
-        forest->crossover(bestTrees[std::rand()%threshold], bestTrees[std::rand()%threshold]);
-    forest->newGeneration(bestTrees);
-    std::cout << "REPRESENTATION\n";
-    printRepresentation(forest, "forest");
-*/
     delete forest;
 
     return 0;

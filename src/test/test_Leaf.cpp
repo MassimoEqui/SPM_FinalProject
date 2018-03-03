@@ -35,8 +35,8 @@ int main(int argc, char const *argv[]){
     }
 
     //Leaf->setChild(...)
-    std::cout << "\nOPERATION: leaf->setChild(0, new Const(5.16));\n";
-    INode* tmpc = new Const(5.16);
+    std::cout << "\nOPERATION: leaf->setChild(0, new Const(5));\n";
+    INode* tmpc = new Const(5);
     delete leaf->setChild(0, tmpc);
     std::cout << "REPRESENTATION\n";
     printRepresentation(leaf, "leaf", 0.0);

@@ -8,16 +8,11 @@ Forest::Forest(int treeNum, int depthmax, int threshold, int randmax, int randse
         return;
     std::srand(randseed);
     this->treePool = new Tree*[treeNum];
-    //this->bestTrees = new std::pair<int, double>[threshold];
     this->treeNum = treeNum;
     this->threshold = threshold;
     this->depthmax = depthmax;
     for(int i=0; i<treeNum; i++)
         this->treePool[i] = new Tree(std::rand()%(depthmax+1), randmax, std::rand());
-    /*for(int i=0; i<threshold; i++){
-        this->bestTrees[i].first = -1;
-        this->bestTrees[i].second = -1.0;
-    }*/
 };
 
 Forest::~Forest(){

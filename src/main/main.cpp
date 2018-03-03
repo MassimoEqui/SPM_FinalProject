@@ -19,7 +19,7 @@ int main(int argc, char const *argv[])
 
 	//Test Const
 	std::cout << "TEST: Const\n";
-	Const* cnst = new Const(4.16);
+	Const* cnst = new Const(4);
 	std::cout << "(Const)cnst string = " << cnst->toString() << "\n";
 	std::cout << "(Const)cnst value = " << cnst->evaluate(1) << "\n\n";
 	delete cnst;

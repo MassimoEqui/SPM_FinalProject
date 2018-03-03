@@ -39,7 +39,7 @@ void Leaf::expandRandom(int depth){
     this->expandLast(p_id, c);
 };
 
-void Leaf::expandLast(int p_id, double c){
+void Leaf::expandLast(int p_id, int c){
     if(p_id < _LEAF_FIRST_PROD || p_id >_LEAF_PROD_NUM)
         return;
     if(this->child != nullptr)
