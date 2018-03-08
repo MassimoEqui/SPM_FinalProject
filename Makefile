@@ -4,7 +4,7 @@ CFLAGS = -I. -std=c++11 -g
 .PHONY: allTests clean
 	
 main.out: main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o
-	$(CC) $(CFLAGS) -o main.out main.o Node.o Const.o Var.o Leaf.o Tree.o
+	$(CC) $(CFLAGS) -o main.out main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o
 
 main.o: ./src/main/main.cpp
 	$(CC) $(CFLAGS) -c ./src/main/main.cpp

@@ -71,6 +71,7 @@ int main(int argc, char const *argv[]){
     std::cout << bestTree->toString();
     std::cout << "\nFITNESS = "<<forest->fitness(bestTree, x_vals, y_vals, points_num) << "\n";
 
+    //complete evolution algorithm
     std::cout << "\n\nEVOLUTION TEST\n";
     forest = new Forest(treeNum, depthmax, threshold, randmax, randseed);
     std::cout << "\nGENERATION 0\nBEST TREE = ";
@@ -97,6 +98,7 @@ int main(int argc, char const *argv[]){
         }
     }
 
+    //returning the best tree
     bestTree = forest->getBest(x_vals, y_vals, points_num);
     double E = forest->fitness(bestTree, x_vals, y_vals, points_num);
     std::cout << "\nGENERATION "<<100<<"\nBEST TREE = ";
