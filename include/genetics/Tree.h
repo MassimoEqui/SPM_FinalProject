@@ -1,5 +1,5 @@
-#ifndef _INCLUDE_GRAMMAR_TREE_H
-#define _INCLUDE_GRAMMAR_TREE_H
+#ifndef _INCLUDE_GENETICS_TREE_H
+#define _INCLUDE_GENETICS_TREE_H
 
 #include<string>
 

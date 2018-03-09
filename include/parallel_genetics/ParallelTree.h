@@ -4,7 +4,6 @@
 #include<string>
 
 #include "include/grammar/grammar.h"
-#include "include/genetics/Tree.h"
 
 class ParallelTree{
     private:
@@ -21,7 +20,7 @@ class ParallelTree{
     void setDepth(int depth);
     INode* getRoot();
     INode* setRoot(Node* root);
-    Tree* copy();
+    ParallelTree* copy();
     std::string toString();
 };
 
