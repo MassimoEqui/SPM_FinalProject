@@ -10,17 +10,23 @@
 class ParallelForest{
     private:
     std::pair<ParallelTree*, double>* treePool;
-    int treeNum, threshold, depthmax;
+    std::pair<ParallelTree*, double> bestTree;
+    int treeNum, depthmax;
+    bool fitnessUpdated, bestTreeUpdated;
+    void updateBestTree(double* x_vals, double* y_vals, int points_no);
+    void updatePoolFitness(double* x_vals, double* y_vals, int points_no);
 
     public:
-    double fitness(ParallelTree* f, double* x_vals, double* y_vals, int pointsNum);
-    ParallelForest(int treeNum, int depthmax, int threshold, int randmax, int randseed);
+    double fitness(ParallelTree* f, double* x_vals, double* y_vals, int points_no);
+    ParallelForest(int treeNum, int depthmax, int randmax, int randseed);
     ~ParallelForest();
-    int* selectBests(double* x_vals, double* y_vals, int pointsNum);
+    int* selectBests(double* x_vals, double* y_vals, int points_no, int threshold);
     ParallelTree* crossover(int tree1_id, int tree2_id);
     ParallelTree* mutation(int tree_id);
     void newGeneration(std::vector<ParallelTree*>& bestTrees);
-    ParallelTree* getBest(double* x_vals, double* y_vals, int pointsNum);
+    ParallelTree* getBest(double* x_vals, double* y_vals, int points_no);
+    ParallelTree* getBestTree(double* x_vals, double* y_vals, int pointsNum);
+    double getBestFitness(double* x_vals, double* y_vals, int pointsNum);
     ParallelTree* getTree(int tree_id);
     std::string toString();
     std::string toStringTree(int tree_id);

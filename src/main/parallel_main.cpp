@@ -51,7 +51,7 @@ int main(int argc, char const *argv[])
 	//good parameter setting: 1000 5 400 10 150 150 1000 0.1
 
 	randseed = std::rand();
-	ParallelForest* forest = new ParallelForest(tree_no, depthmax, threshold, randmax, randseed);
+	ParallelForest* forest = new ParallelForest(tree_no, depthmax, randmax, randseed);
 
 	//Performing the evolution cycle
 	int i = 0;
@@ -61,9 +61,10 @@ int main(int argc, char const *argv[])
 	sel_time = mut_cross_time = newg_time = -1.0;
     while(E >= err && ++i<=generation_no){
 		std::vector<ParallelTree*> newTrees;
+
 		//Selection
 		ffTime(START_TIME);
-        int* bestTrees = forest->selectBests(x_vals, y_vals, points_no);
+        int* bestTrees = forest->selectBests(x_vals, y_vals, points_no, threshold);
 		ffTime(STOP_TIME);
 		sel_time = ffTime(GET_TIME);
 
@@ -90,22 +91,21 @@ int main(int argc, char const *argv[])
 		ffTime(STOP_TIME);
 		newg_time = ffTime(GET_TIME);
 
-		bestTree = forest->getBest(x_vals, y_vals, points_no);
-    	E = forest->fitness(bestTree, x_vals, y_vals, points_no);
 		if(i%1 == 0){
+			bestTree = forest->getBestTree(x_vals, y_vals, points_no);
+			E = forest->getBestFitness(x_vals, y_vals, points_no);
 			std::cout << "Generation "<<i<<
 			"\n\tselection ---> "<<sel_time<<
 			"\n\tmut&cross ---> "<<mut_cross_time<<
 			"\n\tnew generation ---> "<<newg_time<<
 			"\n\tBest Tree = "<< bestTree->toString()<<
-			"\n\tFitness = "<<E<<"\n";
+			"\n\tFitness = "<<E<<"\n\n";
 		}
-
     }
 
 	if(i > generation_no) i--;
-	bestTree = forest->getBest(x_vals, y_vals, points_no);
-    E = forest->fitness(bestTree, x_vals, y_vals, points_no);
+	bestTree = forest->getBestTree(x_vals, y_vals, points_no);
+    E = forest->getBestFitness(x_vals, y_vals, points_no);
     std::cout << "\nGENERATION "<<i<<"\nBEST TREE = ";
     bestTree = forest->getBest(x_vals, y_vals, points_no);
     std::cout << bestTree->toString();

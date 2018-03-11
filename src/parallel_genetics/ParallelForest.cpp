@@ -10,14 +10,17 @@ using namespace ff;
 #include<iostream>
 #include<iomanip>
 
-ParallelForest::ParallelForest(int treeNum, int depthmax, int threshold, int randmax, int randseed){
+ParallelForest::ParallelForest(int treeNum, int depthmax, int randmax, int randseed){
     if(treeNum < 0)
         return;
     std::srand(randseed);
     this->treePool = new std::pair<ParallelTree*, double>[treeNum];
     this->treeNum = treeNum;
-    this->threshold = threshold;
     this->depthmax = depthmax;
+    this->bestTree.first = nullptr;
+    this->bestTree.second = -1;
+    this->fitnessUpdated = false;
+    this->bestTreeUpdated = false;
     for(int i=0; i<treeNum; i++){
         this->treePool[i].first = new ParallelTree(std::rand()%(depthmax+1), randmax, std::rand());
         this->treePool[i].second = -1.0;
@@ -30,11 +33,11 @@ ParallelForest::~ParallelForest(){
     delete this->treePool;
 }
 
-double ParallelForest::fitness(ParallelTree* f, double* x_vals, double* y_vals, int pointsNum){
+double ParallelForest::fitness(ParallelTree* f, double* x_vals, double* y_vals, int points_no){
     double E = 0.0;
     ParallelForReduce<double> pfr(4);
     pfr.parallel_reduce(E, 0.0,
-        0, pointsNum, 1, 0,
+        0, points_no, 1, 0,
             [&](const long i, double& E){
                 double delta = y_vals[i] - f->evaluate(x_vals[i]);
                 E += delta*delta; },
@@ -47,32 +50,59 @@ double ParallelForest::fitness(ParallelTree* f, double* x_vals, double* y_vals, 
     return std::sqrt(E);
 };
 
-int* ParallelForest::selectBests(double* x_vals, double* y_vals, int pointsNum){
-    int* bestTrees_idx = new int[this->threshold];
-    double bestTrees_E[this->threshold];/*
-    for(int i=0; i<this->threshold; i++){
-        bestTrees_idx[i] = -1;
-        bestTrees_E[i] = -1.0;
-    }*/
+void ParallelForest::updatePoolFitness(double* x_vals, double* y_vals, int points_no){
+    if(this->fitnessUpdated) return;
+
+    for(int i=0; i<this->treeNum; i++)
+        this->treePool[i].second = this->fitness(this->treePool[i].first, x_vals, y_vals, points_no);
+    this->fitnessUpdated = true;
+};
+
+void ParallelForest::updateBestTree(double* x_vals, double* y_vals, int points_no){
+    if(this->bestTreeUpdated) return;
+
+    this->updatePoolFitness(x_vals, y_vals, points_no);
+    this->bestTree = this->treePool[0];
+    for(int i=0; i<this->treeNum; i++){
+        double new_E = this->treePool[i].second;
+        double curr_E = this->bestTree.second;
+        if(!std::isnan(new_E) && !std::isinf(new_E)){
+            if(std::isnan(curr_E) || std::isinf(curr_E) || new_E < curr_E)
+                this->bestTree = this->treePool[i];
+        } 
+    }
+    this->bestTreeUpdated = true;
+};
+
+int* ParallelForest::selectBests(double* x_vals, double* y_vals, int points_no, int threshold){
+    if(threshold > this->treeNum) return nullptr;
+
+    this->updatePoolFitness(x_vals, y_vals, points_no);
+
+    int* bestTrees_idx = new int[threshold];
+    double bestTrees_E[threshold];
 
     bool full = false;
     int j = 0;
     for(int i=0; i<this->treeNum; i++){
-        bool done = false;
+        //bool done = false;
         int maxE_idx = -1;
-        double E = this->fitness(this->treePool[i].first, x_vals, y_vals, pointsNum);
+//        double E = this->fitness(this->treePool[i].first, x_vals, y_vals, points_no);
+        double E = this->treePool[i].second;
+
         double maxE = E;
         if(!full){
             bestTrees_idx[j] = i;
             bestTrees_E[j] = E;
-            done = true;
+            //done = true;
             j++;
             if(j == threshold)
                 full = true;
         }
         else if(!std::isnan(E) && !std::isinf(E)){
             j = 0;
-            while(!done && j<this->threshold){
+            bool done = false;
+            while(!done && j<threshold){
                 if(bestTrees_E[j]>maxE ||
                     std::isnan(bestTrees_E[j]) || std::isinf(bestTrees_E[j])){
                     maxE = bestTrees_E[j];
@@ -196,6 +226,8 @@ void ParallelForest::newGeneration(std::vector<ParallelTree*>& bestTrees){
     delete this->treePool;
 
     this->treePool = newTreePool;
+    this->fitnessUpdated = false;
+    this->bestTreeUpdated = false;
 };
 
 ParallelTree* ParallelForest::getBest(double* x_vals, double* y_vals, int pointsNum){
@@ -216,6 +248,16 @@ ParallelTree* ParallelForest::getBest(double* x_vals, double* y_vals, int points
     }
 
     return this->treePool[bestTree_id].first;
+};
+
+ParallelTree* ParallelForest::getBestTree(double* x_vals, double* y_vals, int points_no){
+    this->updateBestTree(x_vals, y_vals, points_no);
+    return this->bestTree.first;
+};
+
+double ParallelForest::getBestFitness(double* x_vals, double* y_vals, int points_no){
+    this->updateBestTree(x_vals, y_vals, points_no);
+    return this->bestTree.second;
 };
 
 ParallelTree* ParallelForest::getTree(int tree_id){
