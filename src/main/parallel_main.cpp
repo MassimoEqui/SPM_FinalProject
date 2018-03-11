@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include<cstdlib>
 #include<ctime>
+#include<vector>
 
 #include<ff/utils.hpp>
 
@@ -23,7 +24,7 @@ int main(int argc, char const *argv[])
 {
 	if(argc != 9){
 		std::cout << "8 parameters needed\n";
-		std::cout << "\t./parallel_main.out tree_no depthmax threshold randmax mut_no cross_no gen_no;\n";
+		std::cout << "\t./parallel_main.out tree_no depthmax threshold randmax mut_no cross_no gen_no err;\n";
 		std::cout << "example\n";
 		std::cout << "\t./parallel_main.out 1000 5 400 10 150 150 100 0.1\n";	
 		return 0;
@@ -75,13 +76,38 @@ int main(int argc, char const *argv[])
 	double sel_time, mut_time, cross_time, newg_time;
 	sel_time = mut_time = cross_time = newg_time = -1.0;
     while(E >= err && ++i<=generation_no){
+		std::vector<ParallelTree*> newTrees;
 		//Selection
 		ffTime(START_TIME);
         int* bestTrees = forest->selectBests(x_vals, y_vals, points_no);
 		ffTime(STOP_TIME);
 		sel_time = ffTime(GET_TIME);
+
+		//Mutation&Crossover
+		ffTime(START_TIME);
+        for(int i=0; i<threshold; i++){
+			int r = std::rand()%3;
+			if(r == 0) newTrees.push_back(forest->getTree(bestTrees[i])->copy());
+			if(r == 1) newTrees.push_back(forest->mutation(bestTrees[i]));
+			if(r == 2) {
+				//Extraction without replacement
+				int tree1_id, tree2_id;
+				tree1_id = bestTrees[i];
+				tree2_id = std::rand()%(threshold-1);
+				if(tree2_id >= tree1_id) ++tree2_id;
+				newTrees.push_back(forest->crossover(tree1_id, tree2_id));
+			}
+			//std::cout << "DEBUG: r="<<r<<"; newTrees["<<i<<"] = "<<newTrees[i]<<"\n";
+		}
+		ffTime(STOP_TIME);
+		mut_time = ffTime(GET_TIME);
 		
-		//Mutation
+		ffTime(START_TIME);
+        forest->newGeneration(newTrees);
+		ffTime(STOP_TIME);
+		newg_time = ffTime(GET_TIME);
+/*		
+		//Mutation&Crossover
 		ffTime(START_TIME);
         for(int i=0; i<mutation_no; i++)
             forest->mutation(bestTrees[std::rand()%threshold]);
@@ -100,15 +126,18 @@ int main(int argc, char const *argv[])
         forest->newGeneration(bestTrees);
 		ffTime(STOP_TIME);
 		newg_time = ffTime(GET_TIME);
-
-		if(i%1 == 0){
-			std::cout << "Generation "<<i<<
-			"\n\tselection ---> "<<sel_time<<"\n\tmutation ---> "<<mut_time<<
-			"\n\tcrossover ---> "<<cross_time<<"\n\tnew generation ---> "<<newg_time<<"\n";
-		}
-
+*/
 		bestTree = forest->getBest(x_vals, y_vals, points_no);
     	E = forest->fitness(bestTree, x_vals, y_vals, points_no);
+		if(i%1 == 0){
+			std::cout << "Generation "<<i<<
+			"\n\tselection ---> "<<sel_time<<
+			"\n\tmutation ---> "<<mut_time<<
+			"\n\tcrossover ---> "<<cross_time<<"\n\tnew generation ---> "<<newg_time<<
+			"\n\tBest Tree = "<< bestTree->toString()<<
+			"\n\tFitness = "<<E<<"\n";
+		}
+
     }
 
 	if(i > generation_no) i--;
