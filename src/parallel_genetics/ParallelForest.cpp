@@ -160,26 +160,29 @@ ParallelTree* ParallelForest::mutation(int tree_id){
     ParallelTree* newTree = this->treePool[tree_id].first->copy();
     newTree->mutation(depth);
     return newTree;
-    /*
-    this->treePool[tree_id].first->mutation(depth);
-    this->treePool[tree_id].second = -1.0;
-    */
 };
 
 void ParallelForest::newGeneration(std::vector<ParallelTree*>& bestTrees){
     std::pair<ParallelTree*, double>* newTreePool = new std::pair<ParallelTree*, double>[this->treeNum];
     int bestTrees_no = bestTrees.size();
-    
+  
+    for(int i=0; i<bestTrees_no; i++){
+        newTreePool[i].first = bestTrees[i];
+        newTreePool[i].second = -1.0;
+    }
+
+    ParallelFor pf(4);
+    pf.parallel_for(bestTrees_no, this->treeNum, 1, 0,
+        [&](const long i){
+            newTreePool[i].first = bestTrees[std::rand()%bestTrees_no]->copy();
+            newTreePool[i].second = -1.0;
+    }, 4);
+
+/*    
     for(int i=0; i<this->threshold; i++){
         newTreePool[i].first = bestTrees[i];
         newTreePool[i].second = -1.0;
     }
-    
-    /*
-    for(int i=0; i<this->threshold; i++){
-        newTreePool[i].first = bestTrees[i];
-        newTreePool[i].second = -1.0;
-    }*/
 
     ParallelFor pf(4);
     pf.parallel_for(this->threshold, this->treeNum, 1, 0,
@@ -187,23 +190,13 @@ void ParallelForest::newGeneration(std::vector<ParallelTree*>& bestTrees){
             newTreePool[i].first = bestTrees[std::rand()%this->threshold]->copy();
             newTreePool[i].second = -1.0;
     }, 4);
-/*
-    for(int i=threshold; i<this->treeNum; i++){
-        int r = std::rand()%this->threshold;
-        newTreePool[i].first = bestTrees[r]->copy();
-        newTreePool[i].second = -1.0;
-    }*/
-/*
-    for(int i=threshold; i<this->treeNum; i++)
-        newTreePool[i] = this->treePool[bestTrees[std::rand()%this->threshold]]->copy();
 */
-
     for(int i=0; i<this->treeNum; i++)
         delete this->treePool[i].first;
     delete this->treePool;
 
     this->treePool = newTreePool;
-}
+};
 
 ParallelTree* ParallelForest::getBest(double* x_vals, double* y_vals, int pointsNum){
     if(this->treeNum<=0)
@@ -223,12 +216,12 @@ ParallelTree* ParallelForest::getBest(double* x_vals, double* y_vals, int points
     }
 
     return this->treePool[bestTree_id].first;
-}
+};
 
 ParallelTree* ParallelForest::getTree(int tree_id){
     if(tree_id < 0 || tree_id > this->treeNum) return nullptr;
     return this->treePool[tree_id].first;
-}
+};
 
 std::string ParallelForest::toString(){
     std::string s = "";
@@ -241,11 +234,3 @@ std::string ParallelForest::toString(){
 std::string ParallelForest::toStringTree(int tree_id){
     return this->treePool[tree_id].first->toString();
 };
-/*
-std::string ParallelForest::toStringBests(){
-    std::string s = "";
-    for(int i=0; i<this->threshold; i++)
-        s = s+"\n\nTree [ "+std::to_string(i)+" ]\n"+this->bestTrees[i].first->toString();
-    s += "\n\n";
-    return s;
-};*/
