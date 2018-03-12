@@ -24,6 +24,7 @@ class ParallelForest{
     ParallelTree* crossover(int tree1_id, int tree2_id);
     ParallelTree* mutation(int tree_id);
     void newGeneration(std::vector<ParallelTree*>& bestTrees);
+    std::pair<ParallelTree*, double>* getTreePool();
     ParallelTree* getBest(double* x_vals, double* y_vals, int points_no);
     ParallelTree* getBestTree(double* x_vals, double* y_vals, int pointsNum);
     double getBestFitness(double* x_vals, double* y_vals, int pointsNum);
