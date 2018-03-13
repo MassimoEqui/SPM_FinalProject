@@ -25,7 +25,7 @@ ParallelForest::ParallelForest(int treeNum, int depthmax, int randmax, int nw_fa
     this->fitnessUpdated = false;
     this->bestTreeUpdated = false;
     for(int i=0; i<treeNum; i++){
-        this->treePool[i].first = new Tree(std::rand()%(depthmax+1), randmax, std::rand());
+        this->treePool[i].first = new Tree(std::rand()%(depthmax+1), randmax);
         this->treePool[i].second = -1.0;
     }
 };

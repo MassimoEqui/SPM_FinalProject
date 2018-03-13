@@ -10,10 +10,10 @@
 class Leaf : public INode{
     private:
     INode* child;
-    double randmax;
+    int randmax;
 
     public:
-    Leaf(double randmax);
+    Leaf(int randmax);
     ~Leaf();
     double evaluate(double x_val);
     void expandRandom(int depth);

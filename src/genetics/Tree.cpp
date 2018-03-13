@@ -9,7 +9,7 @@ Tree::Tree(int depth, int randmax){
     this->randmax = randmax;
     this->root = nullptr;
     if(depth >= 0){
-        this->root = new Node(randmax, std::rand());
+        this->root = new Node(randmax);
         this->root->expandRandom(depth);
     }
 };
@@ -58,7 +58,7 @@ INode* Tree::setRoot(Node* root){
 }
 
 Tree* Tree::copy(){
-    Tree* newTree = new Tree(-1, this->randmax, std::rand());
+    Tree* newTree = new Tree(-1, this->randmax);
     newTree->setDepth(this->depth);
     newTree->setRoot((Node*)this->root->copyToEnd());
     return newTree;

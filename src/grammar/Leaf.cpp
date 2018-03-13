@@ -6,7 +6,7 @@
 #include "include/grammar/Const.h"
 #include "include/grammar/Var.h"
 
-Leaf::Leaf(double randmax){
+Leaf::Leaf(int randmax){
     this->child = nullptr;
     this->randmax = randmax; 
 };
@@ -28,13 +28,9 @@ void Leaf::expandRandom(int depth){
     if(depth < 0)
         return;
     int p_id = _LEAF_FIRST_PROD + (std::rand() % _LEAF_PROD_NUM);
-    double c = 0.0;
-    if(p_id == _LEAF_FIRST_PROD){
-        while(c == 0.0){
-            c = (double)std::rand();
-            c = (c/(double)RAND_MAX)*this->randmax;
-        }
-    }
+    int c = 0.0;
+    if(p_id == _LEAF_FIRST_PROD)
+        c = std::rand()%this->randmax;
     this->expandLast(p_id, c);
 };
 
@@ -81,7 +77,7 @@ INode* Leaf::setChild(int child_id, INode* child){
 };
 
 INode* Leaf::copyToEnd(){
-    INode* newLeaf = new Leaf(this->randmax, std::rand());;
+    INode* newLeaf = new Leaf(this->randmax);
     if(this->child != nullptr){
         INode* newChild = this->child->copyToEnd();
         newLeaf->setChild(0, newChild);

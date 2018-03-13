@@ -120,20 +120,20 @@ INode** Node::expandByOne(int p_id, int op){
 	switch(p_id){
 		case _NODE_FIRST_PROD: {//<leaf>
 			this->children_num = 1;
-			this->children[0] = new Leaf(this->randmax, std::rand());
+			this->children[0] = new Leaf(this->randmax);
 			break;
 		}
 		case _NODE_SECOND_PROD: {//<unop> <node>
 			this->children_num = 1;
 			this->unop = op;
-			this->children[0] = new Node(this->randmax, std::rand());
+			this->children[0] = new Node(this->randmax);
 			break;
 		}
 		case _NODE_THIRD_PROD: {//<node> <binop> <node>
 			this->children_num = 2;
 			this->binop = op;
-			this->children[0] = new Node(this->randmax, std::rand());
-			this->children[1] = new Node(this->randmax, std::rand());
+			this->children[0] = new Node(this->randmax);
+			this->children[1] = new Node(this->randmax);
 			break;
 		}
 		default: break;
@@ -203,7 +203,7 @@ INode* Node::setChild(int child_id, INode* child){
 };
 
 INode* Node::copyToEnd(){
-	Node* newNode = new Node(this->randmax, std::rand());
+	Node* newNode = new Node(this->randmax);
 	newNode->setParameters(this->p_id, this->unop, this->binop, this->children_num);
 	for(int i=0; i<this->children_num; i++)
 		newNode->setChild(i, this->children[i]->copyToEnd());
