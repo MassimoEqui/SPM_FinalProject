@@ -5,8 +5,9 @@
 #include<utility>
 #include<vector>
 
-#include "include/genetics/Tree.h"
-
+#include "include/genetics/Forest.h"
+//#include "include/genetics/Tree.h"
+/*
 class ParallelForest{
     private:
     std::pair<Tree*, double>* treePool;
@@ -32,6 +33,20 @@ class ParallelForest{
     std::string toString();
     //std::string toStringTree(int tree_id);
     //std::string toStringBests();
+};*/
+
+class ParallelForest: public Forest{
+    private:
+    int nw_farm, nw_parallelFor;
+
+    protected:
+    virtual void updatePoolFitness(double* x_vals, double* y_vals, int points_no);
+
+    public:
+    ParallelForest(int treeNum, int depthmax, int randmax, int randseed, int nw_farm, int nw_parallelFor);
+    ~ParallelForest();
+    
+    virtual double fitness(Tree* f, double* x_vals, double* y_vals, int points_no);
 };
 
 #endif
