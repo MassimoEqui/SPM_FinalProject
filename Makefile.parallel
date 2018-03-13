@@ -3,8 +3,8 @@ CFLAGS = -I. -I$(HOME)/fastflow -std=c++11 -g -pthread
 
 .PHONY: allTests clean
 	
-parallel_main.out: parallel_main.o Node.o Const.o Var.o Leaf.o ParallelTree.o ParallelForest.o
-	$(CC) $(CFLAGS) -o3 -o parallel_main.out parallel_main.o Node.o Const.o Var.o Leaf.o ParallelTree.o ParallelForest.o
+parallel_main.out: parallel_main.o Node.o Const.o Var.o Leaf.o Tree.o ParallelForest.o
+	$(CC) $(CFLAGS) -o3 -o parallel_main.out parallel_main.o Node.o Const.o Var.o Leaf.o Tree.o ParallelForest.o
 
 parallel_main.o: ./src/main/parallel_main.cpp
 	$(CC) $(CFLAGS) -c ./src/main/parallel_main.cpp
@@ -21,11 +21,11 @@ Var.o: ./include/grammar/Var.h ./include/grammar/INode.h ./src/grammar/Var.cpp
 Leaf.o: ./include/grammar/Leaf.h ./include/grammar/INode.h ./src/grammar/Leaf.cpp
 	$(CC) $(CFLAGS) -c ./src/grammar/Leaf.cpp
 
-ParallelTree.o: ./include/parallel_genetics/ParallelTree.h ./include/grammar/INode.h ./src/parallel_genetics/ParallelTree.cpp
-	$(CC) $(CFLAGS) -c ./src/parallel_genetics/ParallelTree.cpp
+Tree.o: ./include/genetics/Tree.h ./include/grammar/INode.h ./src/genetics/Tree.cpp
+	$(CC) $(CFLAGS) -c ./src/genetics/Tree.cpp
 
-ParallelForest.o: ./include/parallel_genetics/ParallelForest.h ./include/grammar/INode.h ./src/parallel_genetics/ParallelForest.cpp
-	$(CC) $(CFLAGS) -c ./src/parallel_genetics/ParallelForest.cpp
+ParallelForest.o: ./include/genetics/ParallelForest.h ./include/grammar/INode.h ./src/genetics/ParallelForest.cpp
+	$(CC) $(CFLAGS) -c ./src/genetics/ParallelForest.cpp
 
 clean:
 	@for s in *.o ; do if [ -e $$s ] ; then rm $$s ; fi done

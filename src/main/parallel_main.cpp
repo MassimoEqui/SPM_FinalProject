@@ -6,7 +6,7 @@
 
 #include<ff/utils.hpp>
 
-#include "include/parallel_genetics/ParallelForest.h"
+#include "include/genetics/ParallelForest.h"
 
 using namespace ff;
 
@@ -55,11 +55,11 @@ int main(int argc, char const *argv[])
 	//Performing the evolution cycle
 	int i = 0;
 	double E = err + 1.0;
-	ParallelTree* bestTree;
+	Tree* bestTree;
 	double sel_time, mut_cross_time, newg_time;
 	sel_time = mut_cross_time = newg_time = -1.0;
     while(E >= err && ++i<=generation_no){
-		std::vector<ParallelTree*> newTrees;
+		std::vector<Tree*> newTrees;
 
 		//Selection
 		ffTime(START_TIME);
