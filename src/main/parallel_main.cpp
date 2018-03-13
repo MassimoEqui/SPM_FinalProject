@@ -12,11 +12,11 @@ using namespace ff;
 
 int main(int argc, char const *argv[])
 {
-	if(argc != 7){
-		std::cout << "6 parameters needed\n"<<
-			"\t./parallel_main.out tree_no depthmax threshold randmax gen_no err;\n"<<
+	if(argc != 8){
+		std::cout << "7 parameters needed\n"<<
+			"\t./parallel_main.out tree_no depthmax threshold randmax gen_no err nw;\n"<<
 			"example\n"<<
-			"\t./parallel_main.out 1000 5 400 10 100 0.1\n";	
+			"\t./parallel_main.out 1000 5 400 10 100 0.1 4\n";	
 		return 0;
 	}
 
@@ -39,23 +39,22 @@ int main(int argc, char const *argv[])
 	std::cout << "input data loaded\n";
 	
 	//Generating a new pool of functions (trees)
-	int tree_no, depthmax, threshold, randmax, randseed, generation_no;
-	double E, err;
-	tree_no = std::atoi(argv[1]);
-	depthmax = std::atoi(argv[2]);
-	threshold = std::atoi(argv[3]);
-	randmax = std::atoi(argv[4]);
-	generation_no = std::atoi(argv[5]);
-	err = std::atof(argv[6]);
+	int tree_no = std::atoi(argv[1]);
+	int depthmax = std::atoi(argv[2]);
+	int threshold = std::atoi(argv[3]);
+	int randmax = std::atoi(argv[4]);
+	int generation_no = std::atoi(argv[5]);
+	double err = std::atof(argv[6]);
+	int nw = std::atoi(argv[7]);
 
 	//good parameter setting: 1000 5 400 10 150 150 1000 0.1
 
-	randseed = std::rand();
-	ParallelForest* forest = new ParallelForest(tree_no, depthmax, randmax, randseed);
+	int randseed = std::rand();
+	ParallelForest* forest = new ParallelForest(tree_no, depthmax, randmax, randseed, (nw/2)+(nw%2), 2);
 
 	//Performing the evolution cycle
 	int i = 0;
-	E = err + 1.0;
+	double E = err + 1.0;
 	ParallelTree* bestTree;
 	double sel_time, mut_cross_time, newg_time;
 	sel_time = mut_cross_time = newg_time = -1.0;
@@ -107,7 +106,6 @@ int main(int argc, char const *argv[])
 	bestTree = forest->getBestTree(x_vals, y_vals, points_no);
     E = forest->getBestFitness(x_vals, y_vals, points_no);
     std::cout << "\nGENERATION "<<i<<"\nBEST TREE = ";
-    bestTree = forest->getBest(x_vals, y_vals, points_no);
     std::cout << bestTree->toString();
     std::cout << "\nFITNESS = "<<forest->fitness(bestTree, x_vals, y_vals, points_no) << "\n";
 

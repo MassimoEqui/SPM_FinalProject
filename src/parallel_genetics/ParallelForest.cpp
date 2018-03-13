@@ -10,13 +10,15 @@ using namespace ff;
 #include<iostream>
 #include<iomanip>
 
-ParallelForest::ParallelForest(int treeNum, int depthmax, int randmax, int randseed){
+ParallelForest::ParallelForest(int treeNum, int depthmax, int randmax, int randseed, int nw_farm, int nw_parallelFor){
     if(treeNum < 0)
         return;
     std::srand(randseed);
     this->treePool = new std::pair<ParallelTree*, double>[treeNum];
     this->treeNum = treeNum;
     this->depthmax = depthmax;
+    this->nw_farm = nw_farm;
+    this->nw_parallelFor = nw_parallelFor;
     this->bestTree.first = nullptr;
     this->bestTree.second = -1;
     this->fitnessUpdated = false;
@@ -76,18 +78,15 @@ public:
 
 double ParallelForest::fitness(ParallelTree* f, double* x_vals, double* y_vals, int points_no){
     double E = 0.0;
-    ParallelForReduce<double> pfr(4);
+    ParallelForReduce<double> pfr(this->nw_parallelFor);
     pfr.parallel_reduce(E, 0.0,
         0, points_no, 1, 0,
             [&](const long i, double& E){
                 double delta = y_vals[i] - f->evaluate(x_vals[i]);
                 E += delta*delta; },
             [&](double& s, const double& e){ s += e; },
-    4);
-/*
-    for(int i=0; i<pointsNum; i++)
-        E += std::pow(y_vals[i] - f->evaluate(x_vals[i]), 2);
-*/
+    this->nw_parallelFor);
+
     return std::sqrt(E);
 };
 
@@ -95,20 +94,14 @@ void ParallelForest::updatePoolFitness(double* x_vals, double* y_vals, int point
     if(this->fitnessUpdated) return;
 
     std::vector<ff_node*> workers;
-	int nw = 4;
-	Emitter* emitter = new Emitter(nw, this->treeNum);
-	for(int i=0; i<nw; i++)
+	Emitter* emitter = new Emitter(this->nw_farm, this->treeNum);
+	for(int i=0; i<this->nw_farm; i++)
 		workers.push_back(new Worker(this, x_vals, y_vals, points_no));
 	ff_farm<> F;
 	F.add_emitter(emitter);
 	F.add_workers(workers);
 	F.remove_collector();
 	F.run_and_wait_end();
-/*
-    for(int i=0; i<this->treeNum; i++)
-        this->treePool[i].second = this->fitness(this->treePool[i].first, x_vals, y_vals, points_no);
-    this->fitnessUpdated = true;
-*/
 };
 
 void ParallelForest::updateBestTree(double* x_vals, double* y_vals, int points_no){
@@ -138,16 +131,13 @@ int* ParallelForest::selectBests(double* x_vals, double* y_vals, int points_no, 
     bool full = false;
     int j = 0;
     for(int i=0; i<this->treeNum; i++){
-        //bool done = false;
         int maxE_idx = -1;
-//        double E = this->fitness(this->treePool[i].first, x_vals, y_vals, points_no);
         double E = this->treePool[i].second;
 
         double maxE = E;
         if(!full){
             bestTrees_idx[j] = i;
             bestTrees_E[j] = E;
-            //done = true;
             j++;
             if(j == threshold)
                 full = true;
@@ -254,26 +244,11 @@ void ParallelForest::newGeneration(std::vector<ParallelTree*>& bestTrees){
         newTreePool[i].second = -1.0;
     }
 
-    ParallelFor pf(4);
-    pf.parallel_for(bestTrees_no, this->treeNum, 1, 0,
-        [&](const long i){
-            newTreePool[i].first = bestTrees[std::rand()%bestTrees_no]->copy();
-            newTreePool[i].second = -1.0;
-    }, 4);
-
-/*    
-    for(int i=0; i<this->threshold; i++){
-        newTreePool[i].first = bestTrees[i];
+    for(int i=bestTrees_no; i<this->treeNum; i++){
+        newTreePool[i].first = bestTrees[std::rand()%bestTrees_no]->copy();
         newTreePool[i].second = -1.0;
     }
 
-    ParallelFor pf(4);
-    pf.parallel_for(this->threshold, this->treeNum, 1, 0,
-        [&](const long i){
-            newTreePool[i].first = bestTrees[std::rand()%this->threshold]->copy();
-            newTreePool[i].second = -1.0;
-    }, 4);
-*/
     for(int i=0; i<this->treeNum; i++)
         delete this->treePool[i].first;
     delete this->treePool;
@@ -286,26 +261,6 @@ void ParallelForest::newGeneration(std::vector<ParallelTree*>& bestTrees){
 std::pair<ParallelTree*, double>* ParallelForest::getTreePool(){
     return this->treePool;
 }
-
-ParallelTree* ParallelForest::getBest(double* x_vals, double* y_vals, int pointsNum){
-    if(this->treeNum<=0)
-        return nullptr;
-
-    int bestTree_id = 0;
-    double E = this->fitness(this->treePool[bestTree_id].first, x_vals, y_vals, pointsNum);
-    double bestE = E;
-    for(int i=1; i<this->treeNum; i++){
-        double E = this->fitness(this->treePool[i].first, x_vals, y_vals, pointsNum);
-        if(!std::isnan(E) && !std::isinf(E)){
-            if(E < bestE || std::isnan(bestE) || std::isinf(bestE)){
-                bestE = E;
-                bestTree_id = i;
-            }
-        }
-    }
-
-    return this->treePool[bestTree_id].first;
-};
 
 ParallelTree* ParallelForest::getBestTree(double* x_vals, double* y_vals, int points_no){
     this->updateBestTree(x_vals, y_vals, points_no);
@@ -328,8 +283,4 @@ std::string ParallelForest::toString(){
         s = s+"\n\nTree [ "+std::to_string(i)+" ]\n"+this->treePool[i].first->toString();
     s += "\n\n";
     return s;
-};
-
-std::string ParallelForest::toStringTree(int tree_id){
-    return this->treePool[tree_id].first->toString();
 };
