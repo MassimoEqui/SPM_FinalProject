@@ -8,8 +8,7 @@
 #include<iostream>
 #include "include/grammar/Leaf.h"
 
-Node::Node(double randmax, int randseed){
-	std::srand(randseed);
+Node::Node(double randmax){
 	this->randmax = randmax;
 	this->p_id = -1;
 	this->unop = -1;

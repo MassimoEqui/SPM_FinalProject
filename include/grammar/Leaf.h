@@ -13,7 +13,7 @@ class Leaf : public INode{
     double randmax;
 
     public:
-    Leaf(double randmax, int randseed);
+    Leaf(double randmax);
     ~Leaf();
     double evaluate(double x_val);
     void expandRandom(int depth);

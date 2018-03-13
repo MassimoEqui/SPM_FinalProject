@@ -6,10 +6,9 @@
 #include "include/grammar/Const.h"
 #include "include/grammar/Var.h"
 
-Leaf::Leaf(double randmax, int randseed){
+Leaf::Leaf(double randmax){
     this->child = nullptr;
-    this->randmax = randmax;
-    std::srand(randseed); 
+    this->randmax = randmax; 
 };
 
 Leaf::~Leaf(){

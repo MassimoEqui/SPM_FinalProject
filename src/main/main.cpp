@@ -2,20 +2,26 @@
 #include <stdio.h>
 #include<cstdlib>
 #include<ctime>
+#include<vector>
 
-#include "include/genetics/Forest.h"
+#include<ff/utils.hpp>
 
+#include "include/genetics/ParallelForest.h"
+
+using namespace ff;
 
 int main(int argc, char const *argv[])
 {
-	if(argc != 9){
-		std::cerr << "Wrong argument number\n";
-		return 1;
+	if(argc != 7){
+		std::cout << "6 parameters needed\n"<<
+			"\t./parallel_main.out tree_no depthmax threshold randmax gen_no err;\n"<<
+			"example\n"<<
+			"\t./parallel_main.out 1000 5 400 10 100 0.1\n";	
+		return 0;
 	}
 
 	//Setting the rand() environment
 	std::srand(std::time(nullptr));
-
 
 	//Reading pairs (x,f(x)) from stdin (usually from a file)
 	long points_no;
@@ -31,50 +37,76 @@ int main(int argc, char const *argv[])
 		std::cin >> y_vals[i];
 
 	std::cout << "input data loaded\n";
-
+	
 	//Generating a new pool of functions (trees)
-	int tree_no, depthmax, threshold, randmax, randseed, mutation_no, crossover_no, generation_no;
-	double E, err;
-	tree_no = std::atoi(argv[1]);
-	depthmax = std::atoi(argv[2]);
-	threshold = std::atoi(argv[3]);
-	randmax = std::atoi(argv[4]);
-	mutation_no = std::atoi(argv[5]);
-	crossover_no = std::atoi(argv[6]);
-	generation_no = std::atoi(argv[7]);
-	err = std::atof(argv[8]);
+	int tree_no = std::atoi(argv[1]);
+	int depthmax = std::atoi(argv[2]);
+	int threshold = std::atoi(argv[3]);
+	int randmax = std::atoi(argv[4]);
+	int generation_no = std::atoi(argv[5]);
+	double err = std::atof(argv[6]);
 
 	//good parameter setting: 1000 5 400 10 150 150 1000 0.1
 
-	randseed = std::rand();
-	Forest* forest = new Forest(tree_no, depthmax, threshold, randmax, randseed);
+	Forest* forest = new Forest(tree_no, depthmax, randmax);
 
 	//Performing the evolution cycle
 	int i = 0;
-	E = err + 1.0;
+	double E = err + 1.0;
 	Tree* bestTree;
-    while(E >= err && i++<generation_no){
+	double sel_time, mut_cross_time, newg_time;
+	sel_time = mut_cross_time = newg_time = -1.0;
+    while(E >= err && ++i<=generation_no){
+		std::vector<Tree*> newTrees;
+
 		//Selection
-        int* bestTrees = forest->selectBests(x_vals, y_vals, points_no);
-		//Mutation
-        for(int i=0; i<mutation_no; i++)
-            forest->mutation(bestTrees[std::rand()%threshold]);
-		//Crossover
-        for(int i=0; i<crossover_no; i++)
-            forest->crossover(bestTrees[std::rand()%threshold], bestTrees[std::rand()%threshold]);
-		//New generation
-        forest->newGeneration(bestTrees);
-		bestTree = forest->getBest(x_vals, y_vals, points_no);
-    	E = forest->fitness(bestTree, x_vals, y_vals, points_no);
-		if(i%1 == 0) std::cout << "generation "<<i<<"\n";
+		ffTime(START_TIME);
+        int* bestTrees = forest->selectBests(x_vals, y_vals, points_no, threshold);
+		ffTime(STOP_TIME);
+		sel_time = ffTime(GET_TIME);
+
+		//Mutation&Crossover
+		ffTime(START_TIME);
+        for(int i=0; i<threshold; i++){
+			int r = std::rand()%3;
+			if(r == 0) newTrees.push_back(forest->getTree(bestTrees[i])->copy());
+			if(r == 1) newTrees.push_back(forest->mutation(bestTrees[i]));
+			if(r == 2) {
+				//Extraction without replacement
+				int tree1_id, tree2_id;
+				tree1_id = bestTrees[i];
+				tree2_id = std::rand()%(threshold-1);
+				if(tree2_id >= tree1_id) ++tree2_id;
+				newTrees.push_back(forest->crossover(tree1_id, tree2_id));
+			}
+		}
+		ffTime(STOP_TIME);
+		mut_cross_time = ffTime(GET_TIME);
+		
+		ffTime(START_TIME);
+        forest->newGeneration(newTrees);
+		ffTime(STOP_TIME);
+		newg_time = ffTime(GET_TIME);
+
+		if(i%1 == 0){
+			bestTree = forest->getBestTree(x_vals, y_vals, points_no);
+			E = forest->getBestFitness(x_vals, y_vals, points_no);
+			std::cout << "Generation "<<i<<
+			"\n\tselection ---> "<<sel_time<<
+			"\n\tmut&cross ---> "<<mut_cross_time<<
+			"\n\tnew generation ---> "<<newg_time<<
+			"\n\tBest Tree = "<< bestTree->toString()<<
+			"\n\tFitness = "<<E<<"\n\n";
+		}
     }
 
-	bestTree = forest->getBest(x_vals, y_vals, points_no);
-    E = forest->fitness(bestTree, x_vals, y_vals, points_no);
-    std::cout << "GENERATION "<<i-1<<"\nBEST TREE = ";
-    bestTree = forest->getBest(x_vals, y_vals, points_no);
+	if(i > generation_no) i--;
+	bestTree = forest->getBestTree(x_vals, y_vals, points_no);
+    E = forest->getBestFitness(x_vals, y_vals, points_no);
+    std::cout << "\nGENERATION "<<i<<"\nBEST TREE = ";
     std::cout << bestTree->toString();
     std::cout << "\nFITNESS = "<<forest->fitness(bestTree, x_vals, y_vals, points_no) << "\n";
 
+	delete forest;
 	return 0;
 }

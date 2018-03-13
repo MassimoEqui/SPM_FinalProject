@@ -4,8 +4,7 @@
 //DEBUG
 #include<iostream>
 
-Tree::Tree(int depth, int randmax, int randseed){
-    std::srand(randseed);
+Tree::Tree(int depth, int randmax){
     this->depth = depth;
     this->randmax = randmax;
     this->root = nullptr;

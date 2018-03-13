@@ -30,7 +30,7 @@ class Node : public INode{
 	void setParameters(int p_id, int unop, int binop, int children_num);
 
 	public:
-	Node(double randmax, int randseed);
+	Node(double randmax);
 	~Node();
 	double evaluate(double x_val);
 	void expandRandom(int depth);

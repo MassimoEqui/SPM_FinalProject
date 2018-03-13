@@ -22,13 +22,13 @@ int main(int argc, char const *argv[]){
         std::cerr << "Wrong number of arguments\n";
 
     std::srand(std::time(nullptr));
-    int randseed = std::rand(), randmax = 10.0;
+    int randmax = 10.0;
     int treeNum = std::atoi(argv[1]);
     int depthmax = std::atoi(argv[2]);
     int threshold = std::atoi(argv[3]);
     std::cout << "TEST FOREST\nforest = new Forest(treeNum="<<treeNum<<", depthmax="<<depthmax
-                <<", threshold="<<threshold<<", randmax="<<randmax<<", randseed="<<randseed<<");\n\n";
-    Forest* forest = new Forest(treeNum, depthmax, threshold, randmax, randseed);
+                <<", threshold="<<threshold<<", randmax="<<randmax<<");\n\n";
+    Forest* forest = new Forest(treeNum, depthmax, randmax);
 /*
     std::cout << "REPRESENTATION\n";
     printRepresentation(forest, "forest");
@@ -73,7 +73,7 @@ int main(int argc, char const *argv[]){
 
     //complete evolution algorithm
     std::cout << "\n\nEVOLUTION TEST\n";
-    forest = new Forest(treeNum, depthmax, threshold, randmax, randseed);
+    forest = new Forest(treeNum, depthmax, randmax);
     std::cout << "\nGENERATION 0\nBEST TREE = ";
     bestTree = forest->getBest(x_vals, y_vals, points_num);
     std::cout << bestTree->toString();

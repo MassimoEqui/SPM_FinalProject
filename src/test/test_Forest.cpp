@@ -14,12 +14,12 @@ void printRepresentation(Forest* forest, std::string name){
 
 int main(int argc, char const *argv[]){
     std::srand(std::time(nullptr));
-    int randseed = std::rand(), randmax = 100.0;
+    int randmax = 100.0;
     int depthmax = std::atoi(argv[1]);
     int threshold = 4;
     std::cout << "TEST FOREST\nforest = new Forest(10, "<<depthmax<<", 4, "
-        <<randmax<<", "<<randseed<<");\n\n";
-    Forest* forest = new Forest(10, depthmax, threshold, randmax, randseed);
+        <<randmax<<");\n\n";
+    Forest* forest = new Forest(10, depthmax, randmax);
 
     std::cout << "REPRESENTATION\n";
     printRepresentation(forest, "forest");
@@ -55,8 +55,8 @@ int main(int argc, char const *argv[]){
 
 
     std::cout << "TEST FOREST\nforest = new Forest(10, "<<depthmax<<", 4, "
-        <<randmax<<", "<<randseed<<");\n\n";
-    forest = new Forest(10, depthmax, threshold, randmax, randseed);
+        <<randmax<<");\n\n";
+    forest = new Forest(10, depthmax, randmax);
     std::cout << "REPRESENTATION\n";
     printRepresentation(forest, "forest");
 

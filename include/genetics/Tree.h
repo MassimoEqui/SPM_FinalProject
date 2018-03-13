@@ -11,7 +11,7 @@ class Tree{
     int depth, randmax;
 
     public:
-    Tree(int depth, int randmax, int randseed);
+    Tree(int depth, int randmax);
     ~Tree();
     double evaluate(double x_val);
     void mutation(int depth);

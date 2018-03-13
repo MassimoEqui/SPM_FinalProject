@@ -19,9 +19,9 @@ void printRepresentation(INode* inode, std::string name, double x_val){
 
 int main(int argc, char const *argv[]){
     std::srand(std::time(nullptr));
-    int randseed = std::rand(), randmax = 100.0;
-    Node* node = new Node(randmax, randseed);
-    std::cout << "TEST NODE\nnode = Node("<<randmax<<", "<<randseed<<");\n\n";
+    int randmax = 100.0;
+    Node* node = new Node(randmax);
+    std::cout << "TEST NODE\nnode = Node("<<randmax<<");\n\n";
 
     std::cout << "REPRESENTATION\n";
     printRepresentation(node, "node", 0.0);

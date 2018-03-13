@@ -14,10 +14,10 @@ void printRepresentation(Tree* tree, std::string name, double x_val){
 
 int main(int argc, char const *argv[]){
     std::srand(std::time(nullptr));
-    int randseed = std::rand(), randmax = 100.0;
+    int randmax = 100.0;
     int depth = std::atoi(argv[1]);
-    Tree* tree = new Tree(depth, randmax, randseed);
-    std::cout << "TEST TREE\ntree = new Tree("<<depth<<", "<<randmax<<", "<<randseed<<");\n\n";
+    Tree* tree = new Tree(depth, randmax);
+    std::cout << "TEST TREE\ntree = new Tree("<<depth<<", "<<randmax<<");\n\n";
 
     std::cout << "REPRESENTATION\n";
     printRepresentation(tree, "tree", 1.0);

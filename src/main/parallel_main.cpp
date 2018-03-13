@@ -49,8 +49,7 @@ int main(int argc, char const *argv[])
 
 	//good parameter setting: 1000 5 400 10 150 150 1000 0.1
 
-	int randseed = std::rand();
-	ParallelForest* forest = new ParallelForest(tree_no, depthmax, randmax, randseed, (nw/2)+(nw%2), 2);
+	ParallelForest* forest = new ParallelForest(tree_no, depthmax, randmax, (nw/2)+(nw%2), 2);
 
 	//Performing the evolution cycle
 	int i = 0;

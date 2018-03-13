@@ -10,11 +10,11 @@ using namespace ff;
 #include<iostream>
 #include<iomanip>
 
-ParallelForest::ParallelForest(int treeNum, int depthmax, int randmax, int randseed, int nw_farm, int nw_parallelFor)
+ParallelForest::ParallelForest(int treeNum, int depthmax, int randmax, int nw_farm, int nw_parallelFor)
     :Forest(treeNum, depthmax, randmax){
     if(treeNum < 0)
         return;
-    std::srand(randseed);
+    
     this->treePool = new std::pair<Tree*, double>[treeNum];
     this->treeNum = treeNum;
     this->depthmax = depthmax;

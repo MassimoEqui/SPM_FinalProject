@@ -20,9 +20,9 @@ void printRepresentation(INode* inode, std::string name, double x_val){
 
 int main(int argc, char const *argv[]){
     std::srand(std::time(nullptr));
-    int randseed = std::rand(), randmax = 100.0;
-    Leaf* leaf = new Leaf(randmax, randseed);
-    std::cout << "TEST Leaf\nleaf = new Leaf("<<randmax<<", "<<randseed<<");\n\n";
+    int randmax = 100.0;
+    Leaf* leaf = new Leaf(randmax, );
+    std::cout << "TEST Leaf\nleaf = new Leaf("<<randmax<<");\n\n";
     std::cout << "REPRESENTATION\n";
     printRepresentation(leaf, "leaf", 0.0);
 
@@ -56,8 +56,8 @@ int main(int argc, char const *argv[]){
     delete leaf_1;
 
     //Leaf->expandLast(...)
-    leaf = new Leaf(randmax, randseed);
-    std::cout << "\nOPERATION: leaf = new Leaf("<<randmax<<", "<<randseed<<");\n";
+    leaf = new Leaf(randmax);
+    std::cout << "\nOPERATION: leaf = new Leaf("<<randmax<<");\n";
     std::cout << "REPRESENTATION\n";
     printRepresentation(leaf, "leaf", 0.0);
 
