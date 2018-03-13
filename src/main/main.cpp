@@ -6,7 +6,7 @@
 
 #include<ff/utils.hpp>
 
-#include "include/genetics/ParallelForest.h"
+#include "include/genetics/Forest.h"
 
 using namespace ff;
 

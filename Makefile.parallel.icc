@@ -1,5 +1,5 @@
 CC =icc
-CFLAGS = -I. -I$(HOME)/fastflow -std=c++11 -g -pthread -mmic
+CFLAGS = -I. -I/home/spm1501/fastflow -std=c++11 -g -pthread -mmic -DNO_DEFAULT_MAPPING
 OBJECTS = parallel_main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o ParallelForest.o
 
 .PHONY: allTests clean

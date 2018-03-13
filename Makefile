@@ -1,5 +1,5 @@
 CC =g++
-CFLAGS = -I. -std=c++11 -g -I$(HOME)/fastflow
+CFLAGS = -I. -std=c++11 -g -I$(HOME)/fastflow -DNO_DEFAULT_MAPPING
 OBJECTS = main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o
 
 .PHONY: allTests clean

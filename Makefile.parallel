@@ -1,5 +1,5 @@
 CC =g++
-CFLAGS = -I. -I$(HOME)/fastflow -std=c++11 -g -pthread
+CFLAGS = -I. -I$(HOME)/fastflow -std=c++11 -g -pthread -DNO_DEFAULT_MAPPING
 OBJECTS = parallel_main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o ParallelForest.o
 
 .PHONY: allTests clean
