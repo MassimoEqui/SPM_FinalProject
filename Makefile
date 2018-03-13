@@ -1,11 +1,11 @@
 CC =g++
-CFLAGS = -I. -std=c++11 -g -I$(HOME)/fastflow -DNO_DEFAULT_MAPPING
+CFLAGS = -I. -I$(HOME)/fastflow -std=c++11 -g -DNO_DEFAULT_MAPPING
 OBJECTS = main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o
 
 .PHONY: allTests clean
 	
 main.out: $(OBJECTS)
-	$(CC) $(CFLAGS) -o3 -o main.out $(OBJECTS)
+	$(CC) -o3 $(CFLAGS) $(OBJECTS) -o main.out
 
 main.o: ./src/main/main.cpp
 	$(CC) $(CFLAGS) -c ./src/main/main.cpp
