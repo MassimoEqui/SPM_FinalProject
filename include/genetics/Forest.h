@@ -11,14 +11,15 @@ class Forest{
     protected:
     std::pair<Tree*, double>* treePool;
     std::pair<Tree*, double> bestTree;
-    int treeNum, depthmax, nw_farm, nw_parallelFor;
+    long treeNum;
+    int depthmax, nw_F, nw_PF;
     bool fitnessUpdated, bestTreeUpdated;
     void updateBestTree(double* x_vals, double* y_vals, int points_no);
 
     virtual void updatePoolFitness(double* x_vals, double* y_vals, int points_no);
 
     public:
-    Forest(int treeNum, int depthmax, int randmax);
+    Forest(long treeNum, int depthmax, int randmax);
     ~Forest();
     int* selectBests(double* x_vals, double* y_vals, int points_no, int threshold);
     Tree* crossover(int tree1_id, int tree2_id);

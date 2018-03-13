@@ -39,7 +39,7 @@ int main(int argc, char const *argv[])
 	std::cout << "input data loaded\n";
 	
 	//Generating a new pool of functions (trees)
-	int tree_no = std::atoi(argv[1]);
+	long tree_no = std::atoi(argv[1]);
 	int depthmax = std::atoi(argv[2]);
 	int threshold = std::atoi(argv[3]);
 	int randmax = std::atoi(argv[4]);

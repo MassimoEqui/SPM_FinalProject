@@ -8,7 +8,7 @@
 #include<iostream>
 #include<iomanip>
 
-Forest::Forest(int treeNum, int depthmax, int randmax){
+Forest::Forest(long treeNum, int depthmax, int randmax){
     if(treeNum < 0 || depthmax < 0) return;
 
     this->treeNum = treeNum;

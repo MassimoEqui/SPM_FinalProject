@@ -12,11 +12,11 @@ using namespace ff;
 
 int main(int argc, char const *argv[])
 {
-	if(argc != 8){
-		std::cout << "7 parameters needed\n"<<
-			"\t./parallel_main.out tree_no depthmax threshold randmax gen_no err nw;\n"<<
+	if(argc != 9){
+		std::cout << "8 parameters needed\n"<<
+			"\t./parallel_main.out tree_no depthmax threshold randmax gen_no err nw_F nw_PF;\n"<<
 			"example\n"<<
-			"\t./parallel_main.out 1000 5 400 10 100 0.1 4\n";	
+			"\t./parallel_main.out 1000 5 400 10 100 0.1 4 2\n";	
 		return 0;
 	}
 
@@ -39,17 +39,18 @@ int main(int argc, char const *argv[])
 	std::cout << "input data loaded\n";
 	
 	//Generating a new pool of functions (trees)
-	int tree_no = std::atoi(argv[1]);
+	long tree_no = std::atoi(argv[1]);
 	int depthmax = std::atoi(argv[2]);
 	int threshold = std::atoi(argv[3]);
 	int randmax = std::atoi(argv[4]);
 	int generation_no = std::atoi(argv[5]);
 	double err = std::atof(argv[6]);
-	int nw = std::atoi(argv[7]);
+	int nw_F = std::atoi(argv[7]);
+	int nw_PF = std::atoi(argv[8]);
 
 	//good parameter setting: 1000 5 400 10 150 150 1000 0.1
 
-	ParallelForest* forest = new ParallelForest(tree_no, depthmax, randmax, (nw/2)+(nw%2), 2);
+	ParallelForest* forest = new ParallelForest(tree_no, depthmax, randmax, nw_F, nw_PF);
 
 	//Performing the evolution cycle
 	int i = 0;

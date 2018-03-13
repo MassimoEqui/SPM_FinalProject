@@ -10,7 +10,7 @@ using namespace ff;
 #include<iostream>
 #include<iomanip>
 
-ParallelForest::ParallelForest(int treeNum, int depthmax, int randmax, int nw_farm, int nw_parallelFor)
+ParallelForest::ParallelForest(int treeNum, int depthmax, int randmax, int nw_F, int nw_PF)
     :Forest(treeNum, depthmax, randmax){
     if(treeNum < 0)
         return;
@@ -18,8 +18,8 @@ ParallelForest::ParallelForest(int treeNum, int depthmax, int randmax, int nw_fa
     this->treePool = new std::pair<Tree*, double>[treeNum];
     this->treeNum = treeNum;
     this->depthmax = depthmax;
-    this->nw_farm = nw_farm;
-    this->nw_parallelFor = nw_parallelFor;
+    this->nw_F = nw_F;
+    this->nw_PF = nw_PF;
     this->bestTree.first = nullptr;
     this->bestTree.second = -1;
     this->fitnessUpdated = false;
@@ -75,14 +75,14 @@ public:
 
 double ParallelForest::fitness(Tree* f, double* x_vals, double* y_vals, int points_no){
     double E = 0.0;
-    ParallelForReduce<double> pfr(this->nw_parallelFor);
+    ParallelForReduce<double> pfr(this->nw_PF);
     pfr.parallel_reduce(E, 0.0,
         0, points_no, 1, 0,
             [&](const long i, double& E){
                 double delta = y_vals[i] - f->evaluate(x_vals[i]);
                 E += delta*delta; },
             [&](double& s, const double& e){ s += e; },
-    this->nw_parallelFor);
+    this->nw_PF);
 
     return std::sqrt(E);
 };
@@ -91,8 +91,8 @@ void ParallelForest::updatePoolFitness(double* x_vals, double* y_vals, int point
     if(this->fitnessUpdated) return;
 
     std::vector<ff_node*> workers;
-	Emitter* emitter = new Emitter(this->nw_farm, this->treeNum);
-	for(int i=0; i<this->nw_farm; i++)
+	Emitter* emitter = new Emitter(this->nw_F, this->treeNum);
+	for(int i=0; i<this->nw_F; i++)
 		workers.push_back(new Worker(this, x_vals, y_vals, points_no));
 	ff_farm<> F;
 	F.add_emitter(emitter);
