@@ -6,7 +6,8 @@ Const::Const(int val){
 
 Const::~Const(){};
 
-double Const::evaluate(double x_val){ return (double)this->val; };
+//cast needed for compatibility with the icc compiler
+double Const::evaluate(double x_val){ return (long double)this->val; }; 
 
 void Const::expandRandom(int depth){};
 

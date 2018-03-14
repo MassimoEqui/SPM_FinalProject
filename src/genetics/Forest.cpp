@@ -4,10 +4,6 @@
 #include<cmath>
 #include<vector>
 
-//DEBUG
-#include<iostream>
-#include<iomanip>
-
 Forest::Forest(long treeNum, int depthmax, int randmax){
     if(treeNum < 0 || depthmax < 0) return;
 
