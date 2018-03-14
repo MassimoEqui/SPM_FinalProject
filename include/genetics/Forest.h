@@ -12,7 +12,7 @@ class Forest{
     std::pair<Tree*, double>* treePool;
     std::pair<Tree*, double> bestTree;
     long treeNum;
-    int depthmax, nw_F, nw_PF;
+    int depthmax;
     bool fitnessUpdated, bestTreeUpdated;
     void updateBestTree(double* x_vals, double* y_vals, int points_no);
 

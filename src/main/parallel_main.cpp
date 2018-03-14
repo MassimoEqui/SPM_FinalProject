@@ -105,9 +105,9 @@ int main(int argc, char const *argv[])
 	if(i > generation_no) i--;
 	bestTree = forest->getBestTree(x_vals, y_vals, points_no);
     E = forest->getBestFitness(x_vals, y_vals, points_no);
-    std::cout << "\nGENERATION "<<i<<"\nBEST TREE = ";
-    std::cout << bestTree->toString();
-    std::cout << "\nFITNESS = "<<forest->fitness(bestTree, x_vals, y_vals, points_no) << "\n";
+    std::cout << "\nGENERATION "<<i<<
+	"\nBEST TREE = "<<bestTree->toString()<<
+	"\nFITNESS = "<<E<<"\n";
 
 	delete forest;
 	return 0;

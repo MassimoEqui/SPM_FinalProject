@@ -3,6 +3,7 @@
 #include<cstdlib>
 #include<cmath>
 #include<vector>
+#include<functional>
 
 #include <ff/parallel_for.hpp>
 using namespace ff;
@@ -12,65 +13,121 @@ using namespace ff;
 
 ParallelForest::ParallelForest(int treeNum, int depthmax, int randmax, int nw_F, int nw_PF)
     :Forest(treeNum, depthmax, randmax){
-    if(treeNum < 0)
-        return;
-    
-    this->treePool = new std::pair<Tree*, double>[treeNum];
-    this->treeNum = treeNum;
-    this->depthmax = depthmax;
     this->nw_F = nw_F;
     this->nw_PF = nw_PF;
-    this->bestTree.first = nullptr;
-    this->bestTree.second = -1;
-    this->fitnessUpdated = false;
-    this->bestTreeUpdated = false;
-    for(int i=0; i<treeNum; i++){
-        this->treePool[i].first = new Tree(std::rand()%(depthmax+1), randmax);
-        this->treePool[i].second = -1.0;
-    }
 };
 
 ParallelForest::~ParallelForest(){};
 
 class Emitter: public ff_node {
 private:
-	int nw, dim;
+	int nw, tree_no, delta;
+    std::pair<Tree*, double>* treePool;
+
 public:
-	Emitter(int nw, int dim){ this->nw = nw; this->dim = dim; };
+	Emitter(int nw, int tree_no, std::pair<Tree*, double>* treePool){
+        this->nw = nw;
+        this->tree_no = tree_no;
+        this->treePool = treePool;
+        this->delta = tree_no/nw;
+    };
 
 	void* svc(void* task){
-		int delta = this->dim/this->nw;
-		int i;
-		for(i=0; i<this->nw-1; i++)
-			ff_send_out((void*)(new std::pair<int,int>(i*delta,(i+1)*delta)));
-		ff_send_out((void*)(new std::pair<int,int>(i*delta,dim)));
-		ff_send_out(EOS);
-		return nullptr;
-	}
+		int i, i_start;
+
+		for(i=0; i<=this->nw; i++){
+            i_start = i*this->delta;
+            if(i == this->nw) this->delta = tree_no - i_start;
+            if(this->delta >0 ){
+                std::pair<Tree*, double>* partialTreePool = new std::pair<Tree*, double>[this->delta];
+                for(int j=0; j<this->delta; j++){
+                    partialTreePool[j] = this->treePool[i_start + j];
+                }
+                ff_send_out((void*)(new std::pair<int,std::pair<Tree*, double>*>(i_start,partialTreePool)));
+            }
+        }
+		return EOS;
+	};
 };
 
 class Worker: public ff_node {
 private:
-	ParallelForest* forest;
+    std::function<double(Tree*,double*,double*,int)> fitness;
+    int nw, tree_no, delta, points_no;
     double* x_vals, *y_vals;
-    int points_no;
 public:
-	Worker(ParallelForest* forest, double* x_vals, double*y_vals, int points_no){
-        this->forest = forest;
+	Worker(std::function<double(Tree*,double*,double*,int)>& fitness, int nw, int tree_no, double* x_vals, double*y_vals, int points_no){
+        this->fitness = fitness;
+        this->nw = nw;
+        this->tree_no = tree_no;
+        this->delta = tree_no/nw;
         this->x_vals = x_vals;
         this->y_vals = y_vals;
         this->points_no = points_no;
     };
 
 	void* svc(void* task){
-		int i_start = (int)(((std::pair<int,int>*)task)->first);
-		int i_stop = (int)(((std::pair<int,int>*)task)->second);
-        std::pair<Tree*, double>* treePool = forest->getTreePool();
-		for(int i=i_start; i<i_stop; i++)
-			treePool[i].second =
-                forest->fitness(treePool[i].first, this->x_vals, this->y_vals, points_no);
+		int i_start = (((std::pair<int,std::pair<Tree*, double>*>*)task)->first);
+		std::pair<Tree*, double>* partialTreePool =
+            (((std::pair<int,std::pair<Tree*, double>*>*)task)->second);
+        
+
+        if(this->tree_no - i_start < this->delta)
+            this->delta = this->tree_no - i_start;
+        
+        for(int i=0; i<this->delta; i++){
+			partialTreePool[i].second =
+                this->fitness(partialTreePool[i].first, this->x_vals, this->y_vals, points_no);
+
+            
+        }
+
+        ff_send_out((void*)(task));
+        
 		return GO_ON;
-	}
+	};
+};
+
+class Collector: public ff_node {
+private:
+	int nw, tree_no, delta;
+    std::pair<Tree*, double>* treePool;
+    double* poolFitnesses;
+
+public:
+	Collector(int nw, int tree_no, std::pair<Tree*, double>* treePool){
+        this->nw = nw;
+        this->tree_no = tree_no;
+        this->treePool = treePool;
+        this->delta = tree_no/nw;
+        this->poolFitnesses = new double[tree_no];
+    };
+
+	void* svc(void* task){
+		int i_start = (int)(((std::pair<int,std::pair<Tree*, double>*>*)task)->first);
+		std::pair<Tree*, double>* partialTreePool =
+            (std::pair<Tree*, double>*)(((std::pair<int,std::pair<Tree*, double>*>*)task)->second);
+        
+        if(this->tree_no - i_start < this->delta){
+            this->delta = this->tree_no - i_start;
+        }
+                
+        for(int i = 0; i<this->delta; i++) {
+            this->poolFitnesses[i_start + i] = partialTreePool[i].second;
+        }
+                
+        delete partialTreePool;
+        delete (std::pair<int,std::pair<Tree*, double>*>*)task;
+        
+		return GO_ON;
+	};
+
+    void svc_end(){
+        for(int i=0; i<this->tree_no; i++){
+            this->treePool[i].second = this->poolFitnesses[i];
+        }
+        delete this->poolFitnesses;
+    }
 };
 
 double ParallelForest::fitness(Tree* f, double* x_vals, double* y_vals, int points_no){
@@ -91,12 +148,17 @@ void ParallelForest::updatePoolFitness(double* x_vals, double* y_vals, int point
     if(this->fitnessUpdated) return;
 
     std::vector<ff_node*> workers;
-	Emitter* emitter = new Emitter(this->nw_F, this->treeNum);
-	for(int i=0; i<this->nw_F; i++)
-		workers.push_back(new Worker(this, x_vals, y_vals, points_no));
+	Emitter* emitter = new Emitter(this->nw_F, this->treeNum, this->treePool);
+    std::function<double(Tree*,double*,double*,int)> fit =
+            [this](Tree* tree, double* x_vals, double* y_vals, int points_no)->double
+                { return this->fitness(tree, x_vals, y_vals, points_no); };
+
+	for(int i=0; i<this->nw_F; i++)       
+        workers.push_back(new Worker(fit, this->nw_F, this->treeNum, x_vals, y_vals, points_no));
 	ff_farm<> F;
+    Collector* collector = new Collector(this->nw_F, this->treeNum, this->treePool);
 	F.add_emitter(emitter);
 	F.add_workers(workers);
-	F.remove_collector();
+	F.add_collector(collector);
 	F.run_and_wait_end();
 };

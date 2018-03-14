@@ -42,9 +42,10 @@ double Forest::fitness(Tree* f, double* x_vals, double* y_vals, int points_no){
 
 void Forest::updatePoolFitness(double* x_vals, double* y_vals, int points_no){
     if(this->fitnessUpdated) return;
-		for(int i=0; i<this->treeNum; i++)
-			treePool[i].second =
-                this->fitness(treePool[i].first, x_vals, y_vals, points_no);
+    for(int i=0; i<this->treeNum; i++)
+        treePool[i].second =
+            this->fitness(treePool[i].first, x_vals, y_vals, points_no);
+    this->fitnessUpdated = true;
 };
 
 void Forest::updateBestTree(double* x_vals, double* y_vals, int points_no){

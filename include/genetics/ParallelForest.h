@@ -8,7 +8,7 @@
 #include "include/genetics/Forest.h"
 class ParallelForest: public Forest{
     private:
-    int nw_farm, nw_parallelFor;
+    int nw_F, nw_PF;
 
     protected:
     virtual void updatePoolFitness(double* x_vals, double* y_vals, int points_no);
