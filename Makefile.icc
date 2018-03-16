@@ -1,5 +1,5 @@
 CC =icc
-CFLAGS = -I. -I/home/spm1501/fastflow -std=c++11 -DNO_DEFAULT_MAPPING
+CFLAGS = -I. -I/home/spm1501/fastflow -std=c++14 -DNO_DEFAULT_MAPPING
 OBJECTS = main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o
 
 .PHONY: allTests clean
