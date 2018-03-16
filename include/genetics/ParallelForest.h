@@ -4,20 +4,23 @@
 #include<string>
 #include<utility>
 #include<vector>
+#include<memory>
 
+#include <ff/parallel_for.hpp>
 #include "include/genetics/Forest.h"
 class ParallelForest: public Forest{
     private:
-    int nw_F, nw_PF;
+    int nw;
+    std::unique_ptr<ff::ParallelFor> pf;
 
     protected:
     virtual void updatePoolFitness(double* x_vals, double* y_vals, int points_no);
 
     public:
-    ParallelForest(int treeNum, int depthmax, int randmax, int nw_F, int nw_PF);
+    ParallelForest(int treeNum, int depthmax, int randmax, int nw);
     ~ParallelForest();
 
-    virtual double fitness(Tree* f, double* x_vals, double* y_vals, int points_no);
+    //virtual double fitness(Tree* f, double* x_vals, double* y_vals, int points_no);
 };
 
 #endif
