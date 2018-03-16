@@ -17,6 +17,5 @@ INode* Const::setChild(int child_id, INode* child){ return nullptr; };
 
 INode* Const::copyToEnd(){ return new Const(this->val); };
 
-
 //cast needed for compatibility with the icc compiler
 std::string Const::toString(){ return std::to_string((long double)this->val); };

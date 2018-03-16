@@ -220,7 +220,7 @@ Tree* Forest::getTree(int tree_id){
 std::string Forest::toString(){
     std::string s = "";
     for(int i=0; i<this->treeNum; i++)
-        s = s+"\n\nTree [ "+std::to_string(i)+" ]\n"+this->treePool[i].first->toString();
+        s = s+"\n\nTree [ "+std::to_string((long long)i)+" ]\n"+this->treePool[i].first->toString();
     s += "\n\n";
     return s;
 };
