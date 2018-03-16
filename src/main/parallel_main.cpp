@@ -68,14 +68,14 @@ int main(int argc, char const *argv[])
 
 		//Mutation&Crossover
 		ffTime(START_TIME);
-        for(int i=0; i<threshold; i++){
+        for(int j=0; j<threshold; j++){
 			int r = std::rand()%3;
-			if(r == 0) newTrees.push_back(forest->getTree(bestTrees[i])->copy());
-			if(r == 1) newTrees.push_back(forest->mutation(bestTrees[i]));
+			if(r == 0) newTrees.push_back(forest->getTree(bestTrees[j])->copy());
+			if(r == 1) newTrees.push_back(forest->mutation(bestTrees[j]));
 			if(r == 2) {
 				//Extraction without replacement
 				int tree1_id, tree2_id;
-				tree1_id = bestTrees[i];
+				tree1_id = bestTrees[j];
 				tree2_id = std::rand()%(threshold-1);
 				if(tree2_id >= tree1_id) ++tree2_id;
 				newTrees.push_back(forest->crossover(tree1_id, tree2_id));

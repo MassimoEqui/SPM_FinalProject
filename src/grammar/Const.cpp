@@ -5,9 +5,7 @@ Const::Const(int val){
 };
 
 Const::~Const(){};
-
-//cast needed for compatibility with the icc compiler
-double Const::evaluate(double x_val){ return (long double)this->val; }; 
+double Const::evaluate(double x_val){ return this->val; }; 
 
 void Const::expandRandom(int depth){};
 
@@ -19,4 +17,6 @@ INode* Const::setChild(int child_id, INode* child){ return nullptr; };
 
 INode* Const::copyToEnd(){ return new Const(this->val); };
 
-std::string Const::toString(){ return std::to_string(this->val); };
+
+//cast needed for compatibility with the icc compiler
+std::string Const::toString(){ return std::to_string((long double)this->val); };
