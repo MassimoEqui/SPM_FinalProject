@@ -6,7 +6,7 @@
 
 #include "include/genetics/Forest.h"
 #include "include/grammar/grammar.h"
-
+/*
 void printRepresentation(Forest* forest, std::string name){
     std::cout << name+"->toString() =\n"<< forest->toString() <<"\n";
 };
@@ -16,8 +16,8 @@ void printRepresentation(Forest* forest, int* bestTrees, int threshold){
         std::cout << "Tree [ "<<std::to_string(bestTrees[i])+" ]\n"
                     <<forest->toStringTree(bestTrees[i])<<"\n\n";
 };
-
-int main(int argc, char const *argv[]){
+*/
+int main(int argc, char const *argv[]){/*
     if(argc != 4)
         std::cerr << "Wrong number of arguments\n";
 
@@ -36,7 +36,7 @@ int main(int argc, char const *argv[]){
     double x_vals[10] = {1.1, 2.89, 34.56, 45.654, 78.75, 123.456, 198.3426, 294.45, 357.865};
     double y_vals[10] = {2.331, 25.1376, 41279.2, 95157.1, 488374, 1.88164e+06,
                             7.80276e+06, 2.55291e+07, 4.58308e+07, 1};
-*/
+*//*
     //Reading the input values
     int points_num;
     double *x_vals, *y_vals;
@@ -107,6 +107,6 @@ int main(int argc, char const *argv[]){
     std::cout << "\nFITNESS = "<<forest->fitness(bestTree, x_vals, y_vals, points_num) << "\n";
 
     delete forest;
-
+*/
     return 0;
 }

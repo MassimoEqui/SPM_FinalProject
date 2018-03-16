@@ -13,7 +13,7 @@
 //using namespace std;
 
 int main(int argc, char const *argv[])
-{
+{/*
 	//Setting the rand() environment
 	std::srand(std::time(nullptr));
 
@@ -102,7 +102,7 @@ int main(int argc, char const *argv[])
 		std::cout << "(Node,p_id=rand(),depth="<<i<<")node value = " << node->evaluate(1) << "\n\n";
 	};
 	delete node;
-
+*/
 	//getchar();
 	return 0;
 }

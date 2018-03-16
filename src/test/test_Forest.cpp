@@ -12,7 +12,7 @@ void printRepresentation(Forest* forest, std::string name){
     //std::cout << name+"->evaluate("<<x_val<<") = " << forest->evaluate(x_val) << "\n";
 };
 
-int main(int argc, char const *argv[]){
+int main(int argc, char const *argv[]){/*
     std::srand(std::time(nullptr));
     int randmax = 100.0;
     int depthmax = std::atoi(argv[1]);
@@ -71,6 +71,6 @@ int main(int argc, char const *argv[]){
     printRepresentation(forest, "forest");
 
     delete forest;
-
+*/
     return 0;
 }

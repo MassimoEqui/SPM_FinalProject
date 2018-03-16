@@ -1,0 +1,17 @@
+
+DESIRED TREE: [ cos(x)-[ x^3 ] ]
+REPRESENTATION
+tree->toString() = [ cos(x)-[ x^3.000000 ] ]
+DEBUG: node->toString()=[ x^3.000000 ]
+DEBUG: node->children[0]->evaluate()=1
+DEBUG: node->children[1]->evaluate()=3
+
+tree->evaluate(1) = -0.459698
+tree->getDepth() = 2
+DEBUG: node->toString()=[ x^3.000000 ]
+DEBUG: node->children[0]->evaluate()=-95.2896
+DEBUG: node->children[1]->evaluate()=3
+
+DEBUG:******
+-865304
+DEBUG:******

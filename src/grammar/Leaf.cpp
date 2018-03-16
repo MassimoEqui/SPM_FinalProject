@@ -2,6 +2,8 @@
 
 #include<cstdlib>
 #include<ctime>
+//DEBUG
+#include<iostream>
 
 #include "include/grammar/Const.h"
 #include "include/grammar/Var.h"
@@ -17,8 +19,7 @@ Leaf::~Leaf(){
     }
 }
 
-double Leaf::evaluate(double x_val){
-    if(this->child != nullptr)
+double Leaf::evaluate(double x_val){if(this->child != nullptr)
         return this->child->evaluate(x_val);
     else
         return -1.0;

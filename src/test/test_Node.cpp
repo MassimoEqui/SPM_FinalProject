@@ -17,7 +17,7 @@ void printRepresentation(INode* inode, std::string name, double x_val){
     std::cout << "END CHILDREN LIST\n";
 };
 
-int main(int argc, char const *argv[]){
+int main(int argc, char const *argv[]){/*
     std::srand(std::time(nullptr));
     int randmax = 100.0;
     Node* node = new Node(randmax);
@@ -70,6 +70,6 @@ int main(int argc, char const *argv[]){
     delete node;
     std::cout << "REPRESENTATION\n";
     printRepresentation(node_1, "node_1", 2.42);
-
+*/
     return 0;
 }

@@ -18,7 +18,7 @@ void printRepresentation(INode* inode, std::string name, double x_val){
     delete children;
 };
 
-int main(int argc, char const *argv[]){
+int main(int argc, char const *argv[]){/*
     std::srand(std::time(nullptr));
     int randmax = 100.0;
     Leaf* leaf = new Leaf(randmax, );
@@ -72,5 +72,6 @@ int main(int argc, char const *argv[]){
     printRepresentation(leaf, "leaf", 0.0);
     
     delete leaf;
+*/
     return 0;
 }
