@@ -14,6 +14,8 @@
 int main(int argc, char* const argv[]){
     std::srand(std::time(nullptr));
     
+    std::chrono::time_point<std::chrono::steady_clock> x;
+
     Forest* forest = new Forest(0,0,0);
     Tree* tree;
 

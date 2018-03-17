@@ -19,6 +19,7 @@ class ParallelForest: public Forest{
     public:
     ParallelForest(int treeNum, int depthmax, int randmax, int nw);
     ~ParallelForest();
+
 };
 
 #endif

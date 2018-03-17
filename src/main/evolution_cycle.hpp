@@ -31,26 +31,26 @@ void evolution_cycle(Forest* forest, long tree_no, int depthmax, int threshold,
 	double E = err + 1.0;
 	Tree* bestTree;
 	std::chrono::duration<double> sel_time, mut_cross_time, newg_time, gen_time, overall_time;
-	std::chrono::steady_clock::time_point start, end, gen_start, gen_end, overall_start, overall_end;
-	overall_start = std::chrono::steady_clock::now();
-    overall_start = std::chrono::steady_clock::now();
+	std::chrono::system_clock::time_point start, end, gen_start, gen_end, overall_start, overall_end;
+	overall_start = std::chrono::system_clock::now();
+    overall_start = std::chrono::system_clock::now();
     while(E >= err && ++i<=generation_no){
-		gen_start = std::chrono::steady_clock::now();
+		gen_start = std::chrono::system_clock::now();
 		std::vector<Tree*> newTrees;
 		int* bestTrees;
 
 		//Selection
 		//ffTime(START_TIME);
-		start = std::chrono::steady_clock::now();
+		start = std::chrono::system_clock::now();
         bestTrees = forest->selectBests(x_vals, y_vals, points_no, threshold);
-		end = std::chrono::steady_clock::now();
+		end = std::chrono::system_clock::now();
 		//ffTime(STOP_TIME);
 		//sel_time = ffTime(GET_TIME);
 		sel_time = end - start;
 
 		//Mutation&Crossover
 		//ffTime(START_TIME);
-		start = std::chrono::steady_clock::now();
+		start = std::chrono::system_clock::now();
         for(int j=0; j<threshold; j++){
 			int r = std::rand()%3;
 			if(r == 0) newTrees.push_back(forest->getTree(bestTrees[j])->copy());
@@ -64,20 +64,20 @@ void evolution_cycle(Forest* forest, long tree_no, int depthmax, int threshold,
 				newTrees.push_back(forest->crossover(tree1_id, tree2_id));
 			}
 		}
-		end = std::chrono::steady_clock::now();
+		end = std::chrono::system_clock::now();
 		//ffTime(STOP_TIME);
 		//mut_cross_time = ffTime(GET_TIME);
 		mut_cross_time = end - start;
 		
 		//ffTime(START_TIME);
-		start = std::chrono::steady_clock::now();
+		start = std::chrono::system_clock::now();
         forest->newGeneration(newTrees);
-		end = std::chrono::steady_clock::now();
+		end = std::chrono::system_clock::now();
 		//ffTime(STOP_TIME);
 		//newg_time = ffTime(GET_TIME);
 		newg_time = end - start;
 
-		gen_end = std::chrono::steady_clock::now();
+		gen_end = std::chrono::system_clock::now();
 		gen_time = gen_end - gen_start;
 
 		if(i%1 == 0){
@@ -93,7 +93,7 @@ void evolution_cycle(Forest* forest, long tree_no, int depthmax, int threshold,
             "\n";
 		}
     }
-	overall_end = std::chrono::steady_clock::now();
+	overall_end = std::chrono::system_clock::now();
 	overall_time = overall_end - overall_start;
 
 	if(i > generation_no) i--;
