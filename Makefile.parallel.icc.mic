@@ -7,7 +7,7 @@ OBJECTS = parallel_main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o ParallelFo
 parallel_main.out: $(OBJECTS)
 	$(CC) -O3 $(CFLAGS) $(OBJECTS) -o parallel_main.out
 
-parallel_main.o: ./src/main/parallel_main.cpp
+parallel_main.o: ./src/main/parallel_main.cpp ./src/main/evolution_cycle.hpp
 	$(CC) $(CFLAGS) -c ./src/main/parallel_main.cpp
 
 Node.o: ./include/grammar/Node.h ./include/grammar/INode.h ./src/grammar/Node.cpp 

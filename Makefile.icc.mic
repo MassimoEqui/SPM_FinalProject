@@ -7,7 +7,7 @@ OBJECTS = main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o
 main.out: $(OBJECTS)
 	$(CC) -O3 $(CFLAGS) $(OBJECTS) -o main.out
 
-main.o: ./src/main/main.cpp
+main.o: ./src/main/main.cpp ./src/main/evolution_cycle.hpp
 	$(CC) $(CFLAGS) -c ./src/main/main.cpp
 
 Node.o: ./include/grammar/Node.h ./include/grammar/INode.h ./src/grammar/Node.cpp 

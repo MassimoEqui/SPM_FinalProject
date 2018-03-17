@@ -19,8 +19,6 @@ class ParallelForest: public Forest{
     public:
     ParallelForest(int treeNum, int depthmax, int randmax, int nw);
     ~ParallelForest();
-
-    //virtual double fitness(Tree* f, double* x_vals, double* y_vals, int points_no);
 };
 
 #endif
