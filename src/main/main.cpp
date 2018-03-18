@@ -9,9 +9,9 @@ int main(int argc, char const *argv[])
 {
 	if(argc != 8){
 		std::cout <<"7 parameters needed\n"<<
-			"\t./parallel_main.out tree_no depthmax threshold randmax gen_no err debug;\n"<<
+			"\t./main.out tree_no depthmax threshold randmax gen_no err debug;\n"<<
 			"example\n"<<
-			"\t./parallel_main.out 12000 5 4000 10 20 0.5 no\n";	
+			"\t./main.out 12000 5 4000 10 20 0.5 no\n";	
 		return 0;
 	}
 

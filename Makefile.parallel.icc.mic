@@ -5,7 +5,7 @@ OBJECTS = parallel_main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o ParallelFo
 .PHONY: allTests clean
 	
 parallel_main.out: $(OBJECTS)
-	$(CC) -O3 $(CFLAGS) $(OBJECTS) -o parallel_main.out
+	$(CC) $(CFLAGS) -O3 $(OBJECTS) -o parallel_main.out
 
 parallel_main.o: ./src/main/parallel_main.cpp ./src/main/evolution_cycle.hpp
 	$(CC) $(CFLAGS) -c ./src/main/parallel_main.cpp

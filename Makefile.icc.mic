@@ -5,7 +5,7 @@ OBJECTS = main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o
 .PHONY: allTests clean
 	
 main.out: $(OBJECTS)
-	$(CC) -O3 $(CFLAGS) $(OBJECTS) -o main.out
+	$(CC) $(CFLAGS) -O3 $(OBJECTS) -o main.out
 
 main.o: ./src/main/main.cpp ./src/main/evolution_cycle.hpp
 	$(CC) $(CFLAGS) -c ./src/main/main.cpp
