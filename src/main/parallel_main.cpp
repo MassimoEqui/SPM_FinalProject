@@ -7,11 +7,11 @@
 
 int main(int argc, char const *argv[])
 {
-	if(argc != 8){
-		std::cout << "7 parameters needed\n"<<
-			"\t./parallel_main.out tree_no depthmax threshold randmax gen_no err nw;\n"<<
+	if(argc != 9){
+		std::cout << "8 parameters needed\n"<<
+			"\t./parallel_main.out tree_no depthmax threshold randmax gen_no err nw debug;\n"<<
 			"example\n"<<
-			"\t./parallel_main.out 1000 5 400 10 50 0.5 4\n";	
+			"\t./parallel_main.out 12000 5 4000 10 20 0.5 4 no\n";
 		return 0;
 	}
 
@@ -26,9 +26,11 @@ int main(int argc, char const *argv[])
 	int generation_no = std::atoi(argv[5]);
 	double err = std::atof(argv[6]);
 	int nw = std::atoi(argv[7]);
+	bool debug = false;
+	if(std::strcmp(argv[8],"yes")==0) debug = true; 
 
 	ParallelForest* forest = new ParallelForest(tree_no, depthmax, randmax, nw);
-	evolution_cycle(forest, tree_no, depthmax, threshold, randmax, generation_no, err, true, nw);
+	evolution_cycle(forest, tree_no, depthmax, threshold, randmax, generation_no, err, true, nw, debug);
 
 	return 0;
 }

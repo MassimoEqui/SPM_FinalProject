@@ -14,7 +14,7 @@
 int main(int argc, char* const argv[]){
     std::srand(std::time(nullptr));
     
-    std::chrono::time_point<std::chrono::steady_clock> x;
+    std::chrono::time_point<std::chrono::system_clock> x;
 
     Forest* forest = new Forest(0,0,0);
     Tree* tree;
@@ -33,24 +33,24 @@ int main(int argc, char* const argv[]){
 
 	std::cout << "input data loaded\n";
 
-    std::cout <<"DEPTH, Evaluate Time(microseconds), Fitness Time(microseconds)\n";
+    std::cout <<"Depth, Evaluate Time(microseconds), Fitness Time(microseconds)\n";
     for(int i=1; i<=DEPTHMAX; i++){
         std::chrono::duration<double, std::micro> duration_sum_evaluate;
         std::chrono::duration<double, std::micro> duration_sum_fitness;
-        std::chrono::steady_clock::time_point start, end;
+        std::chrono::system_clock::time_point start, end;
         duration_sum_evaluate = start - start;
         duration_sum_fitness = start - start;
         for(int j=0; j<TREE_NO; j++){
             tree = new Tree(i, MAXRANDNUM);
             double r = ((double)std::rand()/(double)RAND_MAX)*(double)RANGE_SIZE;
-            start = std::chrono::steady_clock::now();
+            start = std::chrono::system_clock::now();
             tree->evaluate(r);
-            end = std::chrono::steady_clock::now();
+            end = std::chrono::system_clock::now();
             duration_sum_evaluate += end - start;
 
-            start = std::chrono::steady_clock::now();
+            start = std::chrono::system_clock::now();
             forest->fitness(tree, x_vals, y_vals, points_no);
-            end = std::chrono::steady_clock::now();
+            end = std::chrono::system_clock::now();
             duration_sum_fitness += end - start;
         }
         std::cout<<i<<

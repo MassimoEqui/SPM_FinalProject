@@ -1,16 +1,17 @@
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+#include<string>
 
 #include "src/main/evolution_cycle.hpp"
 
 int main(int argc, char const *argv[])
 {
-	if(argc != 7){
-		std::cout <<"6 parameters needed\n"<<
-			"\t./parallel_main.out tree_no depthmax threshold randmax gen_no err;\n"<<
+	if(argc != 8){
+		std::cout <<"7 parameters needed\n"<<
+			"\t./parallel_main.out tree_no depthmax threshold randmax gen_no err debug;\n"<<
 			"example\n"<<
-			"\t./parallel_main.out 1000 5 400 10 50 0.5\n";	
+			"\t./parallel_main.out 12000 5 4000 10 20 0.5 no\n";	
 		return 0;
 	}
 
@@ -24,9 +25,11 @@ int main(int argc, char const *argv[])
 	int randmax = std::atoi(argv[4]);
 	int generation_no = std::atoi(argv[5]);
 	double err = std::atof(argv[6]);
+	bool debug = false;
+	if(std::strcmp(argv[7],"yes")==0) debug = true; 
 
 	Forest* forest = new Forest(tree_no, depthmax, randmax);
-	evolution_cycle(forest, tree_no, depthmax, threshold, randmax, generation_no, err, false);
+	evolution_cycle(forest, tree_no, depthmax, threshold, randmax, generation_no, err, false, 1, debug);
 
 	return 0;
 }
