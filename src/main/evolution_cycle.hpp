@@ -98,10 +98,16 @@ void evolution_cycle(Forest* forest, long tree_no, int depthmax, int threshold,
 		"\nOVERALL TIME(s) = "<<overall_time.count()<<"\n";
 	}
 	else{
-		std::cout <<"results"<<
-		" nw "<<nw<<" s "<<overall_time.count()<<
-		" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
-		" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<<" fitness "<<E<<"\n";
+		if(parallel)
+			std::cout <<"results"<<
+			" nw "<<nw<<" s "<<overall_time.count()<<
+			" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
+			" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<<" fitness "<<E<<"\n";
+		else
+			std::cout <<"results"<<
+			" seq s "<<overall_time.count()<<
+			" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
+			" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<<" fitness "<<E<<"\n";
 	}
 
 	delete forest;
