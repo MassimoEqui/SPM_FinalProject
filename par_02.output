@@ -1,0 +1,21 @@
+Script started on ke 21. maaliskuuta 2018 00.15.06
+]0;spm17c18@r720-phi:~/SPM_FinalProject[?1034h[spm17c18@r720-phi SPM_FinalProject]$ for ((i=0; i<12; i+=1)); do ./parallel_main.out 12000 5 4000 10 25 -1 1 no < input_cos\(x\)-pow\(x\,3\)10--3.txt ; done[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cuptime[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+ 00:15:09 up 104 days,  7:07,  2 users,  load average: 0.12, 0.49, 0.55
+]0;spm17c18@r720-phi:~/SPM_FinalProject[spm17c18@r720-phi SPM_FinalProject]$ uptimefor ((i=0; i<12; i+=1)); do ./parallel_main.out 12000 5 4000 10 25 -1 1 no < input_cos\(x\)-pow\(x\,3\)10--3.txt ; done[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C no < input_cos\(x\)-pow\(x\,3\)10-3[1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C2 no < input_cos\(x\)-pow\(x\,3\)10-[1@3[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+results nw 2 s 25.7863 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 2 s 27.6481 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 2 s 24.789 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 2 s 24.6604 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 2 s 26.6455 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 2 s 24.6215 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 2 s 31.1684 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 2 s 32.7158 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 2 s 29.0895 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 2 s 28.5027 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 2 s 29.5689 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 2 s 27.3192 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+]0;spm17c18@r720-phi:~/SPM_FinalProject[spm17c18@r720-phi SPM_FinalProject]$ exit
+
+Script done on ke 21. maaliskuuta 2018 00.23.35
