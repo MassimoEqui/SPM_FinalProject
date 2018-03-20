@@ -1,6 +1,20 @@
-Script started on ti 20. maaliskuuta 2018 23.32.23
-]0;spm17c18@r720-phi:~/SPM_FinalProject[?1034h[spm17c18@r720-phi SPM_FinalProject]$ ./main.out 12000 5 4000 10 25 -1 no < input_cos\(x\)-pow\(x\,3\)10-3.txt 
-results nw 1 s 50.2497 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+Script started on ti 20. maaliskuuta 2018 23.55.05
+]0;spm17c18@r720-phi:~/SPM_FinalProject[?1034h[spm17c18@r720-phi SPM_FinalProject]$ for ((i=0; i<12; i+=1)); do ./main.out 12000 5 4000 10 25 -1 no < input_cos\(x\)-pow\(x\,3\)10-3.txt ; donne[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cuptime[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+ 23:55:10 up 104 days,  6:47,  2 users,  load average: 0.27, 0.43, 0.33
+]0;spm17c18@r720-phi:~/SPM_FinalProject[spm17c18@r720-phi SPM_FinalProject]$ uptimefor ((i=0; i<12; i+=1)); do ./main.out 12000 5 4000 10 25 -1 no < input_cos\(x\)-pow\(x\,3\)10-3.txt ; donne
+results nw 1 s 33.5157 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 1 s 36.5498 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.12308
+results nw 1 s 28.4644 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 1 s 52.0983 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123068
+results nw 1 s 28.9703 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 1 s 36.6361 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.122994
+results nw 1 s 46.2568 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 1 s 27.9285 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 1 s 33.0612 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123076
+results nw 1 s 34.3436 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 1 s 28.8967 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+results nw 1 s 36.214 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
 ]0;spm17c18@r720-phi:~/SPM_FinalProject[spm17c18@r720-phi SPM_FinalProject]$ exit
 
-Script done on ti 20. maaliskuuta 2018 23.34.01
+Script done on ke 21. maaliskuuta 2018 00.02.45
