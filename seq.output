@@ -1,0 +1,6 @@
+Script started on ti 20. maaliskuuta 2018 23.32.23
+]0;spm17c18@r720-phi:~/SPM_FinalProject[?1034h[spm17c18@r720-phi SPM_FinalProject]$ ./main.out 12000 5 4000 10 25 -1 no < input_cos\(x\)-pow\(x\,3\)10-3.txt 
+results nw 1 s 50.2497 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 25 err -1 fitness 0.123081
+]0;spm17c18@r720-phi:~/SPM_FinalProject[spm17c18@r720-phi SPM_FinalProject]$ exit
+
+Script done on ti 20. maaliskuuta 2018 23.34.01
