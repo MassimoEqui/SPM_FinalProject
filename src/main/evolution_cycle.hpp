@@ -29,11 +29,9 @@ void evolution_cycle(Forest* forest, long tree_no, int depthmax, int threshold,
 	double E = err + 1.0;
 	Tree* bestTree;
 	std::chrono::duration<double> sel_time, mut_cross_time, newg_time, gen_time, overall_time;
-	std::chrono::system_clock::time_point start, end, gen_start, gen_end, overall_start, overall_end;
+	std::chrono::system_clock::time_point start, end, overall_start, overall_end;
     overall_start = std::chrono::system_clock::now();
     while(E >= err && ++i<=generation_no){
-		gen_start = std::chrono::system_clock::now();
-
 		std::vector<Tree*> newTrees;
 		int* bestTrees;
 
@@ -67,12 +65,14 @@ void evolution_cycle(Forest* forest, long tree_no, int depthmax, int threshold,
     	end = std::chrono::system_clock::now();
 		newg_time = end - start;
 
-		gen_end = std::chrono::system_clock::now();
-		gen_time = gen_end - gen_start;
 		
 		if(debug){
+    		start = std::chrono::system_clock::now();
 			bestTree = forest->getBestTree(x_vals, y_vals, points_no);
 			E = forest->getBestFitness(x_vals, y_vals, points_no);
+    		end = std::chrono::system_clock::now();
+			sel_time += end - start;
+			gen_time = sel_time + mut_cross_time + newg_time;
 
 			std::cout << "Generation "<<i<<
 			"\n\tSelection Time(s) = "<<sel_time.count()<<
