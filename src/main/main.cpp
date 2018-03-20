@@ -8,10 +8,10 @@
 int main(int argc, char const *argv[])
 {
 	if(argc != 8){
-		std::cout <<"7 parameters needed\n"<<
-			"\t./main.out tree_no depthmax threshold randmax gen_no err debug;\n"<<
+		std::cout <<"7 parameters needed and an input file to be specified\n"<<
+			"Usage: ./main.out tree_no depthmax threshold randmax gen_no err debug < input_f(x).txt\n"<<
 			"example\n"<<
-			"\t./main.out 12000 5 4000 10 20 0.5 no\n";	
+			"./main.out 12000 5 4000 10 25 0.5 no < input_cos(x)-pow(x,3)10-3.txt\n";	
 		return 0;
 	}
 

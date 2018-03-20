@@ -6,14 +6,10 @@
 #include<functional>
 
 using namespace ff;
-//DEBUG
-#include<iostream>
-#include<iomanip>
 
 ParallelForest::ParallelForest(int treeNum, int depthmax, int randmax, int nw)
     :Forest(treeNum, depthmax, randmax){
     this->nw = nw;
-    //this->pf = std::make_unique<ParallelFor>(nw);
     this->pf = std::unique_ptr<ff::ParallelFor>(new ParallelFor(nw));
 };
 

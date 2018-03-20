@@ -4,8 +4,7 @@
 #include<ctime>
 #include<cmath>
 #include<limits>
-//DEBUG
-#include<iostream>
+
 #include "include/grammar/Leaf.h"
 
 Node::Node(double randmax){

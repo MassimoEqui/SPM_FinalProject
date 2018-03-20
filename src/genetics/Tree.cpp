@@ -1,8 +1,6 @@
 #include "include/genetics/Tree.h"
 
 #include<cstdlib>
-//DEBUG
-#include<iostream>
 
 Tree::Tree(int depth, int randmax){
     this->depth = depth;

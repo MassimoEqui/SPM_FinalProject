@@ -2,7 +2,7 @@ CC =g++
 CFLAGS = -I. -I$(HOME)/fastflow -std=c++14 -DNO_DEFAULT_MAPPING -g
 OBJECTS = main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o
 
-.PHONY: allTests clean
+.PHONY: test clean
 	
 main.out: $(OBJECTS)
 	$(CC) -O3 $(CFLAGS) $(OBJECTS) -o main.out
@@ -33,7 +33,7 @@ clean:
 	@for s in *.out ; do if [ -e $$s ] ; then rm $$s ; fi done
 	@echo "cleanup done"
 
-allTests:
+test:
 	$(CC) $(CFLAGS) -c ./src/test/test_*.cpp
 	@for s in test_*.o ; do \
 	$(CC) $(CFLAGS) -o $${s%.o}.out $$s Node.o Const.o Var.o Leaf.o Tree.o Forest.o ; \

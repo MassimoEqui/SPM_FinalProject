@@ -2,8 +2,6 @@
 
 #include<cstdlib>
 #include<ctime>
-//DEBUG
-#include<iostream>
 
 #include "include/grammar/Const.h"
 #include "include/grammar/Var.h"
