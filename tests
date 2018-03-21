@@ -1,0 +1,126 @@
+Script started on ke 21. maaliskuuta 2018 01.25.21
+]0;spm17c18@r720-phi:~/SPM_FinalProject[?1034h[spm17c18@r720-phi SPM_FinalProject]$ source test.sh 
+ 01:25:32 up 104 days,  8:18,  2 users,  load average: 0.12, 0.36, 0.93
+results seq s 27.5786 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results seq s 36.0029 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123068
+results seq s 30.9326 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123072
+results seq s 30.9079 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results seq s 23.2771 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results seq s 26.8604 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results seq s 30.2291 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 7.74264
+results seq s 29.0054 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 22.622
+results seq s 32.8623 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results seq s 25.1853 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results seq s 23.3944 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results seq s 29.4177 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 1 s 25.9413 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 1 s 31.2081 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 1 s 23.1875 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 1 s 22.3358 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 1 s 25.0953 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 1 s 36.8005 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 1 s 25.556 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 1 s 28.9187 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 1 s 34.6882 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 1 s 25.158 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 1 s 25.6136 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 1 s 27.2682 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 2 s 23.5985 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 2 s 20.3511 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 2 s 20.4657 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 2 s 22.6827 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 2 s 24.7343 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 2 s 24.1021 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 2 s 21.0217 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 2 s 21.6412 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 2 s 22.5654 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 2 s 23.7129 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 2 s 22.3937 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 2 s 22.4823 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 4 s 19.9948 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 4 s 17.7649 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 4 s 18.2216 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 4 s 19.1743 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 4 s 17.5086 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 4 s 18.1871 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 4 s 18.1092 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 4 s 17.9539 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 4 s 18.179 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 4 s 17.3975 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 4 s 18.1439 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 4 s 17.4002 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 6 s 13.9094 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 6 s 16.154 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 6 s 16.2088 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 6 s 16.9661 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 6 s 16.5713 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 6 s 15.866 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123069
+results nw 6 s 17.1213 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 6 s 15.5125 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 6 s 15.7704 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 6 s 12.9711 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 6 s 15.6851 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 6 s 16.2233 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 8 s 13.8594 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 8 s 16.6654 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 8 s 12.401 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 8 s 14.5101 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 8 s 15.0602 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 8 s 14.1908 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 8 s 15.8357 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 8 s 16.8087 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 8 s 13.991 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 8 s 15.6892 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123022
+results nw 8 s 14.6688 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 8 s 16.1683 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 10 s 14.3603 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 10 s 11.5953 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 10 s 13.4892 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 22.622
+results nw 10 s 13.3906 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 10 s 10.6244 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 10 s 12.7967 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 10 s 13.1791 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 10 s 11.9367 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 10 s 14.9859 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 10 s 13.8303 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 10 s 12.3016 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 10 s 11.4496 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 12 s 9.51012 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 12 s 12.9345 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 12 s 10.9061 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 12 s 11.7309 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 12 s 11.7711 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 12 s 12.2164 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 12 s 14.7067 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 12 s 10.5547 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 12 s 12.3847 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 12 s 10.9609 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 12 s 11.9084 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 12 s 11.0551 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 14 s 11.207 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 14 s 11.8099 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123071
+results nw 14 s 12.1774 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 14 s 9.51449 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 14 s 11.4146 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 14 s 11.6201 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123069
+results nw 14 s 10.3055 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 14 s 12.7748 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 14 s 11.6652 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 14 s 14.0838 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 14 s 11.2838 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 14 s 10.9406 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 16 s 11.9248 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 16 s 11.0359 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 16 s 9.73428 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 16 s 10.546 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 16 s 11.8773 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123007
+results nw 16 s 11.3543 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 16 s 10.3029 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 16 s 11.5008 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 16 s 10.2971 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 16 s 10.0457 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 16 s 12.1467 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+results nw 16 s 11.0068 tree_no 12000 depthmax 5 threshold 4000 randmax 10 gen_no 20 err -1 fitness 0.123081
+]0;spm17c18@r720-phi:~/SPM_FinalProject[spm17c18@r720-phi SPM_FinalProject]$ exit
+
+Script done on ke 21. maaliskuuta 2018 02.04.59
