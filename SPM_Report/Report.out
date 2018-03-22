@@ -1,0 +1,10 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{User Manual}{}% 2
+\BOOKMARK [1][-]{section.3}{Structure of the code}{}% 3
+\BOOKMARK [1][-]{section.4}{Parallelization Choices}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Decomposition Strategy}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Implementation of the Parallel Part of the Code}{section.4}% 6
+\BOOKMARK [1][-]{section.5}{Expected Results}{}% 7
+\BOOKMARK [1][-]{section.6}{Achieved Results}{}% 8
+\BOOKMARK [2][-]{subsection.6.1}{Xeon}{section.6}% 9
+\BOOKMARK [2][-]{subsection.6.2}{Xeon PHI}{section.6}% 10
