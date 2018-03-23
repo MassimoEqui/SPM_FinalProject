@@ -1,26 +1,22 @@
 #ifndef _INCLUDE_PARALLELGENETICS_PARALLELFOREST_H
 #define _INCLUDE_PARALLELGENETICS_PARALLELFOREST_H
 
-#include<string>
-#include<utility>
 #include<vector>
-#include<memory>
+#include<thread>
 
-#include <ff/parallel_for.hpp>
 #include "include/genetics/Forest.h"
 
-class ParallelForest: public Forest{
+class ThreadForest : public Forest{
     private:
     int nw;
-    std::unique_ptr<ff::ParallelFor> pf;
+    static void worker(ThreadForest* forest, int i_start, int i_stop, double* x_vals, double* y_vals, int points_no);
 
     protected:
     virtual void updatePoolFitness(double* x_vals, double* y_vals, int points_no);
 
     public:
-    ParallelForest(int treeNum, int depthmax, int randmax, int nw);
-    ~ParallelForest();
-
+    ThreadForest(int treeNum, int depthmax, int randmax, int nw);
+    ~ThreadForest();
 };
 
 #endif
