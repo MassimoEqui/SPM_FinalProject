@@ -1,14 +1,14 @@
 CC =icc
 CFLAGS = -I. -I/home/spm1501/fastflow -std=c++14 -pthread -mmic -DNO_DEFAULT_MAPPING
-OBJECTS = parallel_main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o ParallelForest.o
+OBJECTS = ff_main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o FF_Forest.o
 
 .PHONY: test clean
 	
-parallel_main.out: $(OBJECTS)
-	$(CC) -O3 $(CFLAGS) $(OBJECTS) -o parallel_main.out
+ff_main.out: $(OBJECTS)
+	$(CC) -O3 $(CFLAGS) $(OBJECTS) -o ff_main.out
 
-parallel_main.o: ./src/main/parallel_main.cpp ./src/main/evolution_cycle.hpp
-	$(CC) $(CFLAGS) -c ./src/main/parallel_main.cpp
+ff_main.o: ./src/main/ff_main.cpp ./src/main/evolution_cycle.hpp
+	$(CC) $(CFLAGS) -c ./src/main/ff_main.cpp
 
 Node.o: ./include/grammar/Node.h ./include/grammar/INode.h ./src/grammar/Node.cpp 
 	$(CC) $(CFLAGS) -c ./src/grammar/Node.cpp
@@ -28,8 +28,8 @@ Tree.o: ./include/genetics/Tree.h ./include/grammar/INode.h ./src/genetics/Tree.
 Forest.o: ./include/genetics/Forest.h ./include/grammar/INode.h ./src/genetics/Forest.cpp
 	$(CC) $(CFLAGS) -c ./src/genetics/Forest.cpp
 
-ParallelForest.o: ./include/genetics/ParallelForest.h ./include/grammar/INode.h ./src/genetics/ParallelForest.cpp
-	$(CC) $(CFLAGS) -c ./src/genetics/ParallelForest.cpp
+FF_Forest.o: ./include/genetics/FF_Forest.h ./include/grammar/INode.h ./src/genetics/FF_Forest.cpp
+	$(CC) $(CFLAGS) -c ./src/genetics/FF_Forest.cpp
 
 clean:
 	@for s in *.o ; do if [ -e $$s ] ; then rm $$s ; fi done

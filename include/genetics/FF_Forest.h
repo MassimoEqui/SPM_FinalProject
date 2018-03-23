@@ -1,5 +1,5 @@
-#ifndef _INCLUDE_PARALLELGENETICS_PARALLELFOREST_H
-#define _INCLUDE_PARALLELGENETICS_PARALLELFOREST_H
+#ifndef _INCLUDE_GENETICS_FF_FOREST_H
+#define _INCLUDE_GENETICS_FF_FOREST_H
 
 #include<string>
 #include<utility>
@@ -9,7 +9,7 @@
 #include <ff/parallel_for.hpp>
 #include "include/genetics/Forest.h"
 
-class ParallelForest: public Forest{
+class FF_Forest: public Forest{
     private:
     int nw;
     std::unique_ptr<ff::ParallelFor> pf;
@@ -18,8 +18,8 @@ class ParallelForest: public Forest{
     virtual void updatePoolFitness(double* x_vals, double* y_vals, int points_no);
 
     public:
-    ParallelForest(int treeNum, int depthmax, int randmax, int nw);
-    ~ParallelForest();
+    FF_Forest(int treeNum, int depthmax, int randmax, int nw);
+    ~FF_Forest();
 
 };
 

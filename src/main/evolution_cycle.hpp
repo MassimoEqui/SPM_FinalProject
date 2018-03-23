@@ -8,7 +8,7 @@
 
 using namespace ff;
 
-void evolution_cycle(Forest* forest, long tree_no, int depthmax, int threshold,
+double evolution_cycle(Forest* forest, long tree_no, int depthmax, int threshold,
     int randmax, int generation_no, double err, bool parallel, int nw, bool debug){
 
 	//Reading pairs (x,f(x)) from stdin (usually from a file)
@@ -97,6 +97,7 @@ void evolution_cycle(Forest* forest, long tree_no, int depthmax, int threshold,
 		"\nFITNESS = "<<E<<
 		"\nOVERALL TIME(s) = "<<overall_time.count()<<"\n";
 	}
+	return E;/*
 	else{
 		if(parallel)
 			std::cout <<"results"<<
@@ -109,6 +110,5 @@ void evolution_cycle(Forest* forest, long tree_no, int depthmax, int threshold,
 			" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
 			" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<<" fitness "<<E<<"\n";
 	}
-
-	delete forest;
+*/
 };

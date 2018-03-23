@@ -1,4 +1,4 @@
-#include "include/genetics/ParallelForest.h"
+#include "include/genetics/FF_Forest.h"
 
 #include<cstdlib>
 #include<cmath>
@@ -7,15 +7,15 @@
 
 using namespace ff;
 
-ParallelForest::ParallelForest(int treeNum, int depthmax, int randmax, int nw)
+FF_Forest::FF_Forest(int treeNum, int depthmax, int randmax, int nw)
     :Forest(treeNum, depthmax, randmax){
     this->nw = nw;
     this->pf = std::unique_ptr<ff::ParallelFor>(new ParallelFor(nw));
 };
 
-ParallelForest::~ParallelForest(){};
+FF_Forest::~FF_Forest(){};
 
-void ParallelForest::updatePoolFitness(double* x_vals, double* y_vals, int points_no){
+void FF_Forest::updatePoolFitness(double* x_vals, double* y_vals, int points_no){
     if(this->fitnessUpdated) return;
     this->pf->parallel_for(0, this->treeNum, 1, 0, [&](const long i){
         treePool[i].second =

@@ -29,8 +29,18 @@ int main(int argc, char const *argv[])
 	bool debug = false;
 	if(std::strcmp(argv[8],"yes")==0) debug = true; 
 
+	std::chrono::duration<double> time;
+	std::chrono::system_clock::time_point start, end;
+    start = std::chrono::system_clock::now();
 	ThreadForest* forest = new ThreadForest(tree_no, depthmax, randmax, nw);
-	evolution_cycle(forest, tree_no, depthmax, threshold, randmax, generation_no, err, true, nw, debug);
+	double E = evolution_cycle(forest, tree_no, depthmax, threshold, randmax, generation_no, err, true, nw, debug);
+	end = std::chrono::system_clock::now();
+	time = end - start;
 
+	std::cout <<"results"<<
+	" thr nw "<<nw<<" s "<<time.count()<<
+	" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
+	" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<<" fitness "<<E<<"\n";
+	delete forest;
 	return 0;
 }
