@@ -76,10 +76,10 @@ int* Forest::selectBests(double* x_vals, double* y_vals, int points_no, int thre
 
     int* bestTrees_idx = new int[threshold];
     std::vector<int> indices(this->treeNum);
-    std::iota(begin(indices), end(indices), 0);
+    std::iota(indices.begin(), indices.end(), 0);
 
     std::sort(
-        begin(indices), end(indices),
+        indices.begin(), indices.end(),
         [&](int i, int j) {
             if(std::isnan(this->treePool[i].second) || std::isinf(this->treePool[i].second))
                 return false;
