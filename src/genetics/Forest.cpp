@@ -4,6 +4,8 @@
 #include<cmath>
 #include<vector>
 
+#include<algorithm>
+
 Forest::Forest(long treeNum, int depthmax, int randmax){
     if(treeNum < 0 || depthmax < 0) return;
 
@@ -66,41 +68,26 @@ int* Forest::selectBests(double* x_vals, double* y_vals, int points_no, int thre
     this->updatePoolFitness(x_vals, y_vals, points_no);
 
     int* bestTrees_idx = new int[threshold];
-    double bestTrees_E[threshold];
+    std::vector<int> indices(this->treeNum);
+    std::iota(begin(indices), end(indices), 0);
 
-    bool full = false;
-    int j = 0;
-    for(int i=0; i<this->treeNum; i++){
-        int maxE_idx = -1;
-        double E = this->treePool[i].second;
+    std::sort(
+        begin(indices), end(indices),
+        [&](int i, int j) {
+            if(std::isnan(this->treePool[i].second) || std::isinf(this->treePool[i].second))
+                return false;
+            
+            if(std::isnan(this->treePool[j].second) || std::isinf(this->treePool[j].second))
+                return true;
 
-        double maxE = E;
-        if(!full){
-            bestTrees_idx[j] = i;
-            bestTrees_E[j] = E;
-            j++;
-            if(j == threshold)
-                full = true;
+            return this->treePool[i].second < this->treePool[j].second; 
         }
-        else if(!std::isnan(E) && !std::isinf(E)){
-            j = 0;
-            bool done = false;
-            while(!done && j<threshold){
-                if(bestTrees_E[j]>maxE ||
-                    std::isnan(bestTrees_E[j]) || std::isinf(bestTrees_E[j])){
-                    maxE = bestTrees_E[j];
-                    maxE_idx = j;
-                }
-                j++;
-            }
-        }
-
-        if(maxE_idx >= 0){
-            bestTrees_idx[maxE_idx] = i;
-            bestTrees_E[maxE_idx] = E;
-        }
-    }
-    return bestTrees_idx;
+    );
+    
+    for(int i=0; i<threshold; i++)
+        bestTrees_idx[i] = indices[i];
+    
+   return bestTrees_idx;
 };
 
 Tree* Forest::crossover(int tree1_id, int tree2_id){
