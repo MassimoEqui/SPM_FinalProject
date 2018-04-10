@@ -37,7 +37,7 @@ int main(int argc, char const *argv[])
 	time = end - start;
 
 	std::cout <<"results"<<
-	" seq s "<<time.count()<<
+	" seq comptime(s) "<<time.count()<<" upfittime(s) "<<forest->getFitnessUpdateTime().count()<<
 	" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
 	" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<<" fitness "<<E<<"\n";
 	delete forest;

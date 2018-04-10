@@ -87,9 +87,9 @@ double evolution_cycle(Forest* forest, long tree_no, int depthmax, int threshold
 	overall_end = std::chrono::system_clock::now();
 	overall_time = overall_end - overall_start;
 
-	if(i > generation_no) i--;
     E = forest->getBestFitness(x_vals, y_vals, points_no);
 	if(debug){
+		if(i > generation_no) i--;
 		bestTree = forest->getBestTree(x_vals, y_vals, points_no);
 		std::cout <<
 		"\nGENERATION "<<i<<
@@ -97,18 +97,5 @@ double evolution_cycle(Forest* forest, long tree_no, int depthmax, int threshold
 		"\nFITNESS = "<<E<<
 		"\nOVERALL TIME(s) = "<<overall_time.count()<<"\n";
 	}
-	return E;/*
-	else{
-		if(parallel)
-			std::cout <<"results"<<
-			" nw "<<nw<<" s "<<overall_time.count()<<
-			" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
-			" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<<" fitness "<<E<<"\n";
-		else
-			std::cout <<"results"<<
-			" seq s "<<overall_time.count()<<
-			" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
-			" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<<" fitness "<<E<<"\n";
-	}
-*/
+	return E;
 };

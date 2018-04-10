@@ -4,6 +4,7 @@
 #include<string>
 #include<utility>
 #include<vector>
+#include<chrono>
 
 #include "include/genetics/Tree.h"
 
@@ -14,6 +15,8 @@ class Forest{
     long treeNum;
     int depthmax;
     bool fitnessUpdated, bestTreeUpdated;
+	std::chrono::duration<double> fitnessUpdate_time;
+
     void updateBestTree(double* x_vals, double* y_vals, int points_no);
 
     virtual void updatePoolFitness(double* x_vals, double* y_vals, int points_no);
@@ -29,6 +32,8 @@ class Forest{
     Tree* getBestTree(double* x_vals, double* y_vals, int pointsNum);
     double getBestFitness(double* x_vals, double* y_vals, int pointsNum);
     Tree* getTree(int tree_id);
+    std::chrono::duration<double> getFitnessUpdateTime();
+    std::chrono::duration<double> resetFitnessUpdateTime();
     std::string toString();
     
     virtual double fitness(Tree* f, double* x_vals, double* y_vals, int points_no);

@@ -1,11 +1,11 @@
 CC =icc
-CFLAGS = -I. -I/home/spm1501/fastflow -std=c++14 -pthread -mmic -DNO_DEFAULT_MAPPING
+CFLAGS = -I. -I/home/spm1501/fastflow -std=c++14 -pthread -mmic -DNO_DEFAULT_MAPPING -O3
 OBJECTS = ff_main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o FF_Forest.o
 
 .PHONY: test clean
 	
 ff_main.out: $(OBJECTS)
-	$(CC) -O3 $(CFLAGS) $(OBJECTS) -o ff_main.out
+	$(CC) $(CFLAGS) $(OBJECTS) -o ff_main.out
 
 ff_main.o: ./src/main/ff_main.cpp ./src/main/evolution_cycle.hpp
 	$(CC) $(CFLAGS) -c ./src/main/ff_main.cpp

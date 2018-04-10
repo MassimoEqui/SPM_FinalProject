@@ -38,7 +38,7 @@ int main(int argc, char const *argv[])
 	time = end - start;
 
 	std::cout <<"results"<<
-	" ff nw "<<nw<<" s "<<time.count()<<
+	" ff nw "<<nw<<" comptime(s) "<<time.count()<<
 	" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
 	" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<<" fitness "<<E<<"\n";
 	delete forest;
