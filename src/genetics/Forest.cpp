@@ -73,7 +73,7 @@ int* Forest::selectBests(double* x_vals, double* y_vals, int points_no, int thre
     if(threshold > this->treeNum) return nullptr;
 
     this->updatePoolFitness(x_vals, y_vals, points_no);
-/*
+
     int* bestTrees_idx = new int[threshold];
     std::vector<int> indices(this->treeNum);
     std::iota(begin(indices), end(indices), 0);
@@ -94,44 +94,7 @@ int* Forest::selectBests(double* x_vals, double* y_vals, int points_no, int thre
     for(int i=0; i<threshold; i++)
         bestTrees_idx[i] = indices[i];
     
-   return bestTrees_idx;*/
-
-    int* bestTrees_idx = new int[threshold];
-    double bestTrees_E[threshold];
-
-    bool full = false;
-    int j = 0;
-    for(int i=0; i<this->treeNum; i++){
-        int maxE_idx = -1;
-        double E = this->treePool[i].second;
-
-        double maxE = E;
-        if(!full){
-            bestTrees_idx[j] = i;
-            bestTrees_E[j] = E;
-            j++;
-            if(j == threshold)
-                full = true;
-        }
-        else if(!std::isnan(E) && !std::isinf(E)){
-            j = 0;
-            bool done = false;
-            while(!done && j<threshold){
-                if(bestTrees_E[j]>maxE ||
-                    std::isnan(bestTrees_E[j]) || std::isinf(bestTrees_E[j])){
-                    maxE = bestTrees_E[j];
-                    maxE_idx = j;
-                }
-                j++;
-            }
-        }
-
-        if(maxE_idx >= 0){
-            bestTrees_idx[maxE_idx] = i;
-            bestTrees_E[maxE_idx] = E;
-        }
-    }
-    return bestTrees_idx;
+   return bestTrees_idx;
 
 };
 
