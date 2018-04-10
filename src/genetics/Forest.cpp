@@ -3,7 +3,7 @@
 #include<cstdlib>
 #include<cmath>
 #include<vector>
-
+#include<numeric>
 #include<algorithm>
 
 Forest::Forest(long treeNum, int depthmax, int randmax){
