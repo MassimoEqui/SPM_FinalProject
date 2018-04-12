@@ -1,14 +1,14 @@
-CC =g++
-CFLAGS = -I. -I$(HOME)/fastflow -std=c++14 -DNO_DEFAULT_MAPPING -g -O3
-OBJECTS = main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o
+CC =icc
+CFLAGS = -I. -std=c++14 -DNO_DEFAULT_MAPPING -g -O3 -mmic
+OBJECTS = test_main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o TestForest.o
 
 .PHONY: test clean
-	
-main.out: $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) -o main.out
 
-main.o: ./src/main/main.cpp ./src/main/evolution_cycle.hpp
-	$(CC) $(CFLAGS) -c ./src/main/main.cpp
+test_main.out: $(OBJECTS)
+	$(CC) -O3 $(CFLAGS) $(OBJECTS) -o test_main.out
+
+test_main.o: ./src/main/test_main.cpp ./src/main/evolution_cycle.hpp
+	$(CC) $(CFLAGS) -c ./src/main/test_main.cpp
 
 Node.o: ./include/grammar/Node.h ./include/grammar/INode.h ./src/grammar/Node.cpp 
 	$(CC) $(CFLAGS) -c ./src/grammar/Node.cpp
@@ -27,6 +27,9 @@ Tree.o: ./include/genetics/Tree.h ./include/grammar/INode.h ./src/genetics/Tree.
 
 Forest.o: ./include/genetics/Forest.h ./include/grammar/INode.h ./src/genetics/Forest.cpp
 	$(CC) $(CFLAGS) -c ./src/genetics/Forest.cpp
+
+TestForest.o: ./include/genetics/TestForest.h ./include/grammar/INode.h ./src/genetics/TestForest.cpp
+	$(CC) $(CFLAGS) -c ./src/genetics/TestForest.cpp
 
 clean:
 	@for s in *.o ; do if [ -e $$s ] ; then rm $$s ; fi done
