@@ -19,9 +19,6 @@ Tree::~Tree(){ delete this->root; };
 double Tree::evaluate(double x_val){
     if(this->root != nullptr){
         double x = 0;
-        //intentional active wait
-        for(int i=0; i<10; i++)
-            x = std::cos(std::rand())+x;
 
         return this->root->evaluate(x_val);
     }
