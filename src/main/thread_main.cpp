@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
 		std::cout << "8 parameters needed and an input file to be specified\n"<<
 			"Usage: ./thread_main.out tree_no depthmax threshold randmax gen_no err nw debug  < input_f(x).txt\n"<<
 			"example\n"<<
-			"./thread_main.out 12000 5 4000 10 20 0.5 8 no < input_cos(x)-pow(x,3)10-3.txt\n";
+			"./thread_main.out 12000 5 4000 10 20 0.5 8 no < \"input_cos(x)-pow(x,3)10-3.txt\"\n";
 		return 0;
 	}
 
@@ -38,7 +38,8 @@ int main(int argc, char const *argv[])
 	time = end - start;
 
 	std::cout <<"results"<<
-	" thr nw "<<nw<<" comptime(s) "<<time.count()<<
+	" thr nw "<<nw<<
+	" comptime(s) "<<time.count()<<" upfittime(s) "<<forest->getFitnessUpdateTime().count()<<
 	" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
 	" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<<" fitness "<<E<<"\n";
 	delete forest;

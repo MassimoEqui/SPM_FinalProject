@@ -14,6 +14,9 @@ ThreadForest::~ThreadForest(){};
 
 void ThreadForest::updatePoolFitness(double* x_vals, double* y_vals, int points_no){
     if(this->fitnessUpdated) return;
+    std::chrono::system_clock::time_point start, end;
+    start = std::chrono::system_clock::now();
+
     int delta = this->treeNum/this->nw;
     std::vector<std::thread> pool;
     for(int i=0; i<this->nw-1; i++)
@@ -23,6 +26,8 @@ void ThreadForest::updatePoolFitness(double* x_vals, double* y_vals, int points_
     for(int i=0; i<this->nw; i++)
         pool[i].join();
 
+    end = std::chrono::system_clock::now();
+    this->fitnessUpdate_time += end - start;
     this->fitnessUpdated = true;
 };
 

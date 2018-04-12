@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
 		std::cout <<"7 parameters needed and an input file to be specified\n"<<
 			"Usage: ./main.out tree_no depthmax threshold randmax gen_no err debug < input_f(x).txt\n"<<
 			"example\n"<<
-			"./main.out 12000 5 4000 10 20 0.5 no < input_cos(x)-pow(x,3)10-3.txt\n";	
+			"./main.out 12000 5 4000 10 20 0.5 no < \"input_cos(x)-pow(x,3)10-3.txt\"\n";	
 		return 0;
 	}
 
@@ -30,8 +30,9 @@ int main(int argc, char const *argv[])
 
 	std::chrono::duration<double> time;
 	std::chrono::system_clock::time_point start, end;
-    start = std::chrono::system_clock::now();
 	Forest* forest = new Forest(tree_no, depthmax, randmax);
+
+    start = std::chrono::system_clock::now();
 	double E = evolution_cycle(forest, tree_no, depthmax, threshold, randmax, generation_no, err, false, 1, debug);
 	end = std::chrono::system_clock::now();
 	time = end - start;
