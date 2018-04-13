@@ -19,6 +19,7 @@ class FF_Forest: public Forest{
 
     public:
     FF_Forest(int treeNum, int depthmax, int randmax, int nw);
+    FF_Forest(std::pair<Tree*, double>* treePool, int treeNum, int depthmax, int randmax, int nw);
     ~FF_Forest();
 
 };

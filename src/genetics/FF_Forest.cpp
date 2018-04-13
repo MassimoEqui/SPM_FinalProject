@@ -13,6 +13,12 @@ FF_Forest::FF_Forest(int treeNum, int depthmax, int randmax, int nw)
     this->pf = std::unique_ptr<ff::ParallelFor>(new ParallelFor(nw));
 };
 
+FF_Forest::FF_Forest(std::pair<Tree*, double>* treePool, int treeNum, int depthmax, int randmax, int nw)
+    :Forest(treePool, treeNum, depthmax, randmax){
+    this->nw = nw;
+    this->pf = std::unique_ptr<ff::ParallelFor>(new ParallelFor(nw));
+};
+
 FF_Forest::~FF_Forest(){};
 
 void FF_Forest::updatePoolFitness(double* x_vals, double* y_vals, int points_no){    

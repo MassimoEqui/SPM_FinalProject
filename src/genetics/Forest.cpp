@@ -9,6 +9,27 @@
 Forest::Forest(long treeNum, int depthmax, int randmax){
     if(treeNum < 0 || depthmax < 0) return;
 
+    initializeVariables(treeNum, depthmax);
+    for(int i=0; i<treeNum; i++){
+        this->treePool[i].first = new Tree(std::rand()%(depthmax+1), randmax);
+        this->treePool[i].second = -1.0;
+    }
+};
+
+Forest::Forest(std::pair<Tree*, double>* treePool, long treeNum, int depthmax, int randmax){
+    if(treeNum < 0 || depthmax < 0) return;
+
+    initializeVariables(treeNum, depthmax);
+    this->treePool = treePool;
+};
+
+Forest::~Forest(){
+    for(int i=0; i<this->treeNum; i++)
+        delete this->treePool[i].first;
+    delete this->treePool;
+};
+
+void Forest::initializeVariables(long treeNum, int depthmax){
     this->treeNum = treeNum;
     this->depthmax = depthmax;
     this->treePool = new std::pair<Tree*, double>[treeNum];
@@ -17,16 +38,6 @@ Forest::Forest(long treeNum, int depthmax, int randmax){
     this->fitnessUpdate_time = std::chrono::system_clock::duration::zero();
     this->fitnessUpdated = false;
     this->bestTreeUpdated = false;
-    for(int i=0; i<treeNum; i++){
-        this->treePool[i].first = new Tree(std::rand()%(depthmax+1), randmax);
-        this->treePool[i].second = -1.0;
-    }
-};
-
-Forest::~Forest(){
-    for(int i=0; i<this->treeNum; i++)
-        delete this->treePool[i].first;
-    delete this->treePool;
 };
 
 double Forest::fitness(Tree* f, double* x_vals, double* y_vals, int points_no){

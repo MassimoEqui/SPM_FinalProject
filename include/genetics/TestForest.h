@@ -13,8 +13,8 @@ class TestForest: public Forest{
     TestForest(int treeNum, int depthmax, int randmax, int nw);
     ~TestForest();
     void setFitnessUpdated();
-    std::chrono::duration<double> updatePoolFitness(double* x_vals, double* y_vals, int points_no, int partition);
-
+    std::chrono::duration<double> updatePoolFitness(double* x_vals, double* y_vals, int points_no, int worker_idx);
+    std::pair<Tree*, double>* getTreePool();
 };
 
 #endif

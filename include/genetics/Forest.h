@@ -9,6 +9,9 @@
 #include "include/genetics/Tree.h"
 
 class Forest{
+    private:
+    void initializeVariables(long treeNum, int depthMax);
+
     protected:
     std::pair<Tree*, double>* treePool;
     std::pair<Tree*, double> bestTree;
@@ -23,6 +26,7 @@ class Forest{
 
     public:
     Forest(long treeNum, int depthmax, int randmax);
+    Forest(std::pair<Tree*, double>* treePool, long treeNum, int depthmax, int randmax);
     ~Forest();
     int* selectBests(double* x_vals, double* y_vals, int points_no, int threshold);
     Tree* crossover(int tree1_id, int tree2_id);

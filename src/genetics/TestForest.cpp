@@ -38,3 +38,13 @@ std::chrono::duration<double> TestForest::updatePoolFitness(double* x_vals, doub
 void TestForest::setFitnessUpdated(){
     this->fitnessUpdated = true;
 }
+
+std::pair<Tree*, double>* TestForest::getTreePool(){
+    std::pair<Tree*, double>* treePool_copy = new std::pair<Tree*, double>[this->treeNum];
+
+    for(int i=0; i<this->treeNum; i++){
+        treePool_copy[i].first = this->treePool[i].first->copy();
+        treePool_copy[i].second = this->treePool[i].second;
+    }
+    return treePool_copy;
+};

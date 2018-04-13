@@ -1,6 +1,6 @@
 CC =icc
-CFLAGS = -I. -std=c++14 -DNO_DEFAULT_MAPPING -g -O3 -mmic
-OBJECTS = test_main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o TestForest.o
+CFLAGS = -I. -I$(HOME)/fastflow -std=c++14 -pthread -DNO_DEFAULT_MAPPING -g -O3 -mmic
+OBJECTS = test_main.o Node.o Const.o Var.o Leaf.o Tree.o Forest.o TestForest.o FF_Forest.o
 
 .PHONY: test clean
 
@@ -30,6 +30,9 @@ Forest.o: ./include/genetics/Forest.h ./include/grammar/INode.h ./src/genetics/F
 
 TestForest.o: ./include/genetics/TestForest.h ./include/grammar/INode.h ./src/genetics/TestForest.cpp
 	$(CC) $(CFLAGS) -c ./src/genetics/TestForest.cpp
+
+FF_Forest.o: ./include/genetics/FF_Forest.h ./include/grammar/INode.h ./src/genetics/FF_Forest.cpp
+	$(CC) $(CFLAGS) -c ./src/genetics/FF_Forest.cpp
 
 clean:
 	@for s in *.o ; do if [ -e $$s ] ; then rm $$s ; fi done
