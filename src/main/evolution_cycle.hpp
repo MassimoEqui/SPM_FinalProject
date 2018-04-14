@@ -5,13 +5,11 @@
 #include<ff/utils.hpp>
 
 #include "include/genetics/Forest.h"
+#include "include/genetics/TestForest.h"
 
 using namespace ff;
 
-double evolution_cycle(Forest* forest, long tree_no, int depthmax, int threshold,
-    int randmax, int generation_no, double err, bool parallel, int nw, bool debug){
-
-	//Reading pairs (x,f(x)) from stdin (usually from a file)
+long read_input(double** _x_vals, double** _y_vals){
 	long points_no;
 	double *x_vals, *y_vals;
 	std::cin >> points_no;
@@ -23,6 +21,15 @@ double evolution_cycle(Forest* forest, long tree_no, int depthmax, int threshold
 	
 	for(int i=0; i<points_no; i++)
 		std::cin >> y_vals[i];
+
+	*_x_vals = x_vals;
+	*_y_vals = y_vals;
+
+	return points_no;
+};
+
+double evolution_cycle(Forest* forest, int threshold, double* x_vals, double* y_vals, int points_no, 
+	int generation_no, double err, bool debug){
 
 	//Performing the evolution cycle
 	int i = 0;
@@ -98,4 +105,56 @@ double evolution_cycle(Forest* forest, long tree_no, int depthmax, int threshold
 		"\nOVERALL TIME(s) = "<<overall_time.count()<<"\n";
 	}
 	return E;
+};
+
+double splitted_evolution_cycle(TestForest* test_forest, int threshold, double* x_vals, double* y_vals, int points_no, 
+	int generation_no, double err, int nw){
+	std::vector<std::chrono::duration<double>> partition_times;
+
+	int i = 0;
+	double E = err + 1.0;
+	Tree* bestTree;
+	std::chrono::system_clock::time_point upfit_start, upfit_end;
+	std::chrono::duration<double> upfit_time = std::chrono::system_clock::duration::zero();
+    while(E >= err && ++i<=generation_no){
+		std::vector<Tree*> newTrees;
+		int* bestTrees;
+
+		//Selection
+		upfit_start = std::chrono::system_clock::now();
+
+		for(int j=0; j<nw; j++)
+			partition_times.push_back(test_forest->updatePoolFitness(x_vals, y_vals, points_no, j));
+		test_forest->setFitnessUpdated();
+
+		upfit_end = std::chrono::system_clock::now();
+		upfit_time = upfit_end - upfit_start,
+        bestTrees = test_forest->selectBests(x_vals, y_vals, points_no, threshold);
+
+		//Mutation&Crossover
+        for(int j=0; j<threshold; j++){
+			int r = std::rand()%3;
+			if(r == 0) newTrees.push_back(test_forest->getTree(bestTrees[j])->copy());
+			if(r == 1) newTrees.push_back(test_forest->mutation(bestTrees[j]));
+			if(r == 2) {
+				//Extraction without replacement
+				int tree1_id, tree2_id;
+				tree1_id = bestTrees[j];
+				tree2_id = std::rand()%(threshold-1);
+				if(tree2_id >= tree1_id) ++tree2_id;
+				newTrees.push_back(test_forest->crossover(tree1_id, tree2_id));
+			}
+		}
+
+		//Replication
+        test_forest->newGeneration(newTrees);
+
+		std::cout << "\nGENERATION "<<i<<"\n"<<
+		"sel_time "<<upfit_time.count()<<"\n";
+		for(int j=0; j<nw; j++)
+			std::cout << "partition "<<j<<" time(s) = " << partition_times[j].count() << "\n";
+		partition_times.clear();
+    }
+
+    return test_forest->getBestFitness(x_vals, y_vals, points_no);
 };

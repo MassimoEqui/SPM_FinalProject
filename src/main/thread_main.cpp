@@ -33,7 +33,12 @@ int main(int argc, char const *argv[])
 	std::chrono::system_clock::time_point start, end;
     start = std::chrono::system_clock::now();
 	ThreadForest* forest = new ThreadForest(tree_no, depthmax, randmax, nw);
-	double E = evolution_cycle(forest, tree_no, depthmax, threshold, randmax, generation_no, err, true, nw, debug);
+
+	//Reading the input points
+	double *x_vals, *y_vals;
+	long points_no = read_input(&x_vals, &y_vals);
+
+	double E = evolution_cycle(forest, threshold, x_vals, y_vals, points_no, generation_no, err, debug);
 	end = std::chrono::system_clock::now();
 	time = end - start;
 

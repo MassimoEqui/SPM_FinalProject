@@ -19,8 +19,11 @@ Forest::Forest(long treeNum, int depthmax, int randmax){
 Forest::Forest(std::pair<Tree*, double>* treePool, long treeNum, int depthmax, int randmax){
     if(treeNum < 0 || depthmax < 0) return;
 
-    initializeVariables(treeNum, depthmax);
-    this->treePool = treePool;
+    initializeVariables(treeNum, depthmax);    
+    for(int i=0; i<treeNum; i++){
+        this->treePool[i].first = treePool[i].first->copy();
+        this->treePool[i].second = treePool[i].second;
+    }
 };
 
 Forest::~Forest(){

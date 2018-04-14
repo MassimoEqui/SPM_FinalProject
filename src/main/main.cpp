@@ -31,9 +31,13 @@ int main(int argc, char const *argv[])
 	std::chrono::duration<double> time;
 	std::chrono::system_clock::time_point start, end;
 	Forest* forest = new Forest(tree_no, depthmax, randmax);
+	
+	//Reading the input points
+	double *x_vals, *y_vals;
+	long points_no = read_input(&x_vals, &y_vals);
 
     start = std::chrono::system_clock::now();
-	double E = evolution_cycle(forest, tree_no, depthmax, threshold, randmax, generation_no, err, false, 1, debug);
+	double E = evolution_cycle(forest, threshold, x_vals, y_vals, points_no, generation_no, err, debug);
 	end = std::chrono::system_clock::now();
 	time = end - start;
 
