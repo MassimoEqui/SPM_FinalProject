@@ -1,0 +1,592 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 35.44     14.30    14.30 252000000     0.00     0.00  Node::evaluate(double)
+  7.83     17.46     3.16                             pow.L
+  7.64     20.54     3.08                             cos.N
+  6.82     23.29     2.75                             sin.N
+  5.90     25.67     2.38                             exp.L
+  5.76     27.99     2.33 1186265000     0.00     0.00  Leaf::evaluate(double)
+  4.74     29.90     1.91 603505000     0.00     0.00  Const::evaluate(double)
+  4.67     31.79     1.89 582760000     0.00     0.00  Var::evaluate(double)
+  3.98     33.39     1.61                             Node::~Node()
+  3.45     34.78     1.39                             log.L
+  2.60     35.83     1.05   252001     0.00     0.00  Forest::fitness(Tree*, double*, double*, int)
+  2.45     36.82     0.99                             Const::~Const()
+  2.32     37.76     0.94                             Var::~Var()
+  1.45     38.34     0.59 252000000     0.00     0.00  Tree::evaluate(double)
+  0.84     38.68     0.34                             cos
+  0.81     39.01     0.33                             Leaf::~Leaf()
+  0.69     39.29     0.28                             pow
+  0.62     39.54     0.25                             __libm_error_support
+  0.50     39.74     0.20                             sin
+  0.22     39.83     0.09                             exp
+  0.15     39.89     0.06                             isinfl
+  0.15     39.95     0.06   284738     0.00     0.00  Node::~Node()
+  0.14     40.00     0.06   266872     0.00     0.00  Node::copyToEnd()
+  0.11     40.05     0.05                             Tree::~Tree()
+  0.10     40.09     0.04        1     0.04     0.04  TestForest::getTreePool()
+  0.10     40.13     0.04                             log
+  0.06     40.15     0.03  3862595     0.00     0.00  Node::setChild(int, INode*)
+  0.05     40.17     0.02   266872     0.00     0.00  Tree::copy()
+  0.05     40.19     0.02    26872     0.00     0.00  Forest::crossover(int, int)
+  0.05     40.21     0.02       20     0.00     1.05  Forest::selectBests(double*, double*, int, int)
+  0.05     40.23     0.02        1     0.02    22.33  evolution_cycle(Forest*, int, double*, double*, int, int, double, bool)
+  0.05     40.25     0.02                             cos.A
+  0.02     40.26     0.01  1291632     0.00     0.00  Leaf::setChild(int, INode*)
+  0.02     40.27     0.01  1291632     0.00     0.00  Leaf::copyToEnd()
+  0.02     40.28     0.01    59499     0.00     0.00  Node::expandRandom(int)
+  0.02     40.29     0.01    26598     0.00     0.00  Forest::getTree(int)
+  0.02     40.30     0.01      166     0.00     0.00  void std::__introsort_loop<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::alloc
+ator<int> > >, long, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}>(__gnu_cxx::__normal_iterator<int*, std::vector<int,
+ std::allocator<int> > >, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}, long, Forest::selectBests(double*, double*, in
+t, int)::{lambda(int, int)#1})
+  0.02     40.31     0.01       21     0.00     1.05  Forest::updatePoolFitness(double*, double*, int)
+  0.02     40.32     0.01                             __isinf
+  0.01     40.33     0.01   657563     0.00     0.00  Const::copyToEnd()
+  0.01     40.33     0.01   634069     0.00     0.00  Var::copyToEnd()
+  0.01     40.34     0.01                             Var::setChild(int, INode*)
+  0.01     40.34     0.01                             Const::setChild(int, INode*)
+  0.00     40.34     0.00  1254009     0.00     0.00  Leaf::~Leaf()
+  0.00     40.34     0.00   637806     0.00     0.00  Const::~Const()
+  0.00     40.34     0.00   616203     0.00     0.00  Var::~Var()
+  0.00     40.34     0.00   390428     0.00     0.00  Node::getChildren()
+  0.00     40.34     0.00   252000     0.00     0.00  Tree::~Tree()
+  0.00     40.34     0.00   187695     0.00     0.00  Node::getChildrenNum()
+  0.00     40.34     0.00    93342     0.00     0.00  Leaf::expandRandom(int)
+  0.00     40.34     0.00    93342     0.00     0.00  Leaf::Leaf(int)
+  0.00     40.34     0.00    80274     0.00     0.00  Tree::getDepth()
+  0.00     40.34     0.00    46675     0.00     0.00  Const::Const(int)
+  0.00     40.34     0.00    46667     0.00     0.00  Var::Var()
+  0.00     40.34     0.00    41725     0.00     0.00  Tree::getRandomSubtree(int)
+  0.00     40.34     0.00    26530     0.00     0.00  Tree::mutation(int)
+  0.00     40.34     0.00    26530     0.00     0.00  Forest::mutation(int)
+  0.00     40.34     0.00    12019     0.00     0.00  Tree::setRoot(Node*)
+  0.00     40.34     0.00    12000     0.00     0.00  Node::Node(double)
+  0.00     40.34     0.00    12000     0.00     0.00  Tree::Tree(int, int)
+  0.00     40.34     0.00     3028     0.00     0.00  Tree::getRoot()
+  0.00     40.34     0.00      173     0.00     0.00  void std::vector<Tree*, std::allocator<Tree*> >::_M_insert_aux<Tree*>(__gnu_cxx::__normal
+_iterator<Tree**, std::vector<Tree*, std::allocator<Tree*> > >, Tree*&&)
+  0.00     40.34     0.00       20     0.00     0.01  Forest::newGeneration(std::vector<Tree*, std::allocator<Tree*> >&)
+  0.00     40.34     0.00       20     0.00     0.00  std::vector<Tree*, std::allocator<Tree*> >::vector()
+  0.00     40.34     0.00       20     0.00     0.00  std::vector<int, std::allocator<int> >::vector(unsigned long, int const&, std::allocator<
+int> const&)
+  0.00     40.34     0.00       20     0.00     0.00  void std::__insertion_sort<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::alloc
+ator<int> > >, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::
+allocator<int> > >, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}, Forest::selectBests(double*, double*, int, int)::{la
+mbda(int, int)#1})
+  0.00     40.34     0.00        1     0.00     0.00  splitted_evolution_cycle(TestForest*, long, int, int, int, double*, double*, int, int, do
+uble, int)
+  0.00     40.34     0.00        1     0.00     0.00  Var::toString()
+  0.00     40.34     0.00        1     0.00     0.00  Leaf::expandLast(int, int)
+  0.00     40.34     0.00        1     0.00     0.00  Tree::toString()
+  0.00     40.34     0.00        1     0.00     1.05  Forest::getBestFitness(double*, double*, int)
+  0.00     40.34     0.00        1     0.00     0.00  Forest::getFitnessUpdateTime()
+  0.00     40.34     0.00        1     0.00     0.01  Forest::Forest(long, int, int)
+  0.00     40.34     0.00        1     0.00     0.00  Forest::~Forest()
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+^L
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.02% of 40.34 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     55.4    0.00   22.34                 main [1]
+                0.02   22.31       1/1           evolution_cycle(Forest*, int, double*, double*, int, int, double, bool) [2]
+                0.00    0.01       1/1           Forest::Forest(long, int, int) [46]
+                0.00    0.00       1/1           Forest::~Forest() [51]
+                0.00    0.00       1/1           Forest::getFitnessUpdateTime() [93]
+-----------------------------------------------
+                0.02   22.31       1/1           main [1]
+[2]     55.4    0.02   22.31       1         evolution_cycle(Forest*, int, double*, double*, int, int, double, bool) [2]
+                0.02   21.02      20/20          Forest::selectBests(double*, double*, int, int) [5]
+                0.00    1.05       1/1           Forest::getBestFitness(double*, double*, int) [17]
+                0.00    0.13      20/20          Forest::newGeneration(std::vector<Tree*, std::allocator<Tree*> >&) [26]
+                0.02    0.03   26872/26872       Forest::crossover(int, int) [31]
+                0.00    0.02   26530/26530       Forest::mutation(int) [38]
+                0.00    0.01   26598/266872      Tree::copy() [25]
+                0.01    0.00   26598/26598       Forest::getTree(int) [43]
+                0.00    0.00     173/173         void std::vector<Tree*, std::allocator<Tree*> >::_M_insert_aux<Tree*>(__gnu_cxx::__normal_iter
+ator<Tree**, std::vector<Tree*, std::allocator<Tree*> > >, Tree*&&) [85]
+                0.00    0.00      20/20          std::vector<Tree*, std::allocator<Tree*> >::vector() [86]
+-----------------------------------------------
+                0.00    1.05       1/21          Forest::getBestFitness(double*, double*, int) [17]
+                0.01   21.00      20/21          Forest::selectBests(double*, double*, int, int) [5]
+[3]     54.7    0.01   22.05      21         Forest::updatePoolFitness(double*, double*, int) [3]
+                1.05   21.00  252000/252001      Forest::fitness(Tree*, double*, double*, int) [4]
+-----------------------------------------------
+                0.00    0.00       1/252001      __do_global_ctors_aux [33]
+                1.05   21.00  252000/252001      Forest::updatePoolFitness(double*, double*, int) [3]
+[4]     54.7    1.05   21.00  252001         Forest::fitness(Tree*, double*, double*, int) [4]
+                0.59   20.42 252000000/252000000     Tree::evaluate(double) [6]
+-----------------------------------------------
+                0.02   21.02      20/20          evolution_cycle(Forest*, int, double*, double*, int, int, double, bool) [2]
+[5]     52.2    0.02   21.02      20         Forest::selectBests(double*, double*, int, int) [5]
+                0.01   21.00      20/21          Forest::updatePoolFitness(double*, double*, int) [3]
+                0.01    0.00     166/166         void std::__introsort_loop<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<
+int> > >, long, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std:
+:allocator<int> > >, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}, long, Forest::selectBests(double*, double*, int, in
+t)::{lambda(int, int)#1}) [44]
+                0.00    0.00      20/20          std::vector<int, std::allocator<int> >::vector(unsigned long, int const&, std::allocator<int> 
+const&) [87]
+                0.00    0.00      20/20          void std::__insertion_sort<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<
+int> > >, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::alloc
+ator<int> > >, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}, Forest::selectBests(double*, double*, int, int)::{lambda(
+int, int)#1}) [88]
+-----------------------------------------------
+                0.59   20.42 252000000/252000000     Forest::fitness(Tree*, double*, double*, int) [4]
+[6]     52.1    0.59   20.42 252000000         Tree::evaluate(double) [6]
+               14.30    6.12 252000000/252000000     Node::evaluate(double) [7]
+-----------------------------------------------
+                             2334127000             Node::evaluate(double) [7]
+               14.30    6.12 252000000/252000000     Tree::evaluate(double) [6]
+[7]     50.6   14.30    6.12 252000000+2334127000 Node::evaluate(double) [7]
+                2.33    3.80 1186265000/1186265000     Leaf::evaluate(double) [8]
+                             2334127000             Node::evaluate(double) [7]
+-----------------------------------------------
+                2.33    3.80 1186265000/1186265000     Node::evaluate(double) [7]
+[8]     15.2    2.33    3.80 1186265000         Leaf::evaluate(double) [8]
+                1.91    0.00 603505000/603505000     Const::evaluate(double) [13]
+                1.89    0.00 582760000/582760000     Var::evaluate(double) [14]
+-----------------------------------------------
+                                                 <spontaneous>
+[9]      7.8    3.16    0.00                 pow.L [9]
+-----------------------------------------------
+                                                 <spontaneous>
+[10]     7.6    3.08    0.00                 cos.N [10]
+-----------------------------------------------
+                                                 <spontaneous>
+[11]     6.8    2.75    0.00                 sin.N [11]
+-----------------------------------------------
+                                                 <spontaneous>
+[12]     5.9    2.38    0.00                 exp.L [12]
+-----------------------------------------------
+                1.91    0.00 603505000/603505000     Leaf::evaluate(double) [8]
+[13]     4.7    1.91    0.00 603505000         Const::evaluate(double) [13]
+-----------------------------------------------
+                1.89    0.00 582760000/582760000     Leaf::evaluate(double) [8]
+[14]     4.7    1.89    0.00 582760000         Var::evaluate(double) [14]
+-----------------------------------------------
+                                                 <spontaneous>
+[15]     4.0    1.61    0.00                 Node::~Node() [15]
+-----------------------------------------------
+                                                 <spontaneous>
+[16]     3.4    1.39    0.00                 log.L [16]
+-----------------------------------------------
+                0.00    1.05       1/1           evolution_cycle(Forest*, int, double*, double*, int, int, double, bool) [2]
+[17]     2.6    0.00    1.05       1         Forest::getBestFitness(double*, double*, int) [17]
+                0.00    1.05       1/21          Forest::updatePoolFitness(double*, double*, int) [3]
+-----------------------------------------------
+                                                 <spontaneous>
+[18]     2.5    0.99    0.00                 Const::~Const() [18]
+-----------------------------------------------
+                                                 <spontaneous>
+[19]     2.3    0.94    0.00                 Var::~Var() [19]
+-----------------------------------------------
+                                                 <spontaneous>
+[20]     0.8    0.34    0.00                 cos [20]
+-----------------------------------------------
+                                                 <spontaneous>
+[21]     0.8    0.33    0.00                 Leaf::~Leaf() [21]
+-----------------------------------------------
+                                                 <spontaneous>
+[22]     0.7    0.28    0.00                 pow [22]
+-----------------------------------------------
+                                                 <spontaneous>
+[23]     0.6    0.25    0.00                 __libm_error_support [23]
+-----------------------------------------------
+                                                 <spontaneous>
+[24]     0.5    0.20    0.00                 sin [24]
+-----------------------------------------------
+                0.00    0.01   26530/266872      Forest::mutation(int) [38]
+                0.00    0.01   26598/266872      evolution_cycle(Forest*, int, double*, double*, int, int, double, bool) [2]
+                0.00    0.02   53744/266872      Forest::crossover(int, int) [31]
+                0.01    0.07  160000/266872      Forest::newGeneration(std::vector<Tree*, std::allocator<Tree*> >&) [26]
+[25]     0.3    0.02    0.11  266872         Tree::copy() [25]
+                0.06    0.05  266872/266872      Node::copyToEnd() [27]
+-----------------------------------------------
+                0.00    0.13      20/20          evolution_cycle(Forest*, int, double*, double*, int, int, double, bool) [2]
+[26]     0.3    0.00    0.13      20         Forest::newGeneration(std::vector<Tree*, std::allocator<Tree*> >&) [26]
+                0.01    0.07  160000/266872      Tree::copy() [25]
+                0.05    0.00  240000/284738      Node::~Node() [30]
+                0.00    0.00  240000/252000      Tree::~Tree() [73]
+-----------------------------------------------
+                             2529238             Node::copyToEnd() [27]
+                0.06    0.05  266872/266872      Tree::copy() [25]
+[27]     0.3    0.06    0.05  266872+2529238 Node::copyToEnd() [27]
+                0.01    0.02 1291632/1291632     Leaf::copyToEnd() [36]
+                0.02    0.00 3820870/3862595     Node::setChild(int, INode*) [37]
+                             2529238             Node::copyToEnd() [27]
+-----------------------------------------------
+                                                 <spontaneous>
+[28]     0.2    0.09    0.00                 exp [28]
+-----------------------------------------------
+                                                 <spontaneous>
+[29]     0.1    0.06    0.00                 isinfl [29]
+-----------------------------------------------
+                             2403061             Node::~Node() [30]
+                0.00    0.00   12000/284738      Forest::~Forest() [51]
+                0.01    0.00   32738/284738      Node::expandRandom(int) [40]
+                0.05    0.00  240000/284738      Forest::newGeneration(std::vector<Tree*, std::allocator<Tree*> >&) [26]
+[30]     0.1    0.06    0.00  284738+2403061 Node::~Node() [30]
+                0.00    0.00 1246132/1254009     Leaf::~Leaf() [69]
+                             2403061             Node::~Node() [30]
+-----------------------------------------------
+                0.02    0.03   26872/26872       evolution_cycle(Forest*, int, double*, double*, int, int, double, bool) [2]
+[31]     0.1    0.02    0.03   26872         Forest::crossover(int, int) [31]
+                0.00    0.02   53744/266872      Tree::copy() [25]
+                0.00    0.00   41725/3862595     Node::setChild(int, INode*) [37]
+                0.00    0.00   53744/80274       Tree::getDepth() [77]
+                0.00    0.00   41725/41725       Tree::getRandomSubtree(int) [80]
+                0.00    0.00   41725/390428      Node::getChildren() [72]
+                0.00    0.00   41725/187695      Node::getChildrenNum() [74]
+                0.00    0.00   12019/12019       Tree::setRoot(Node*) [81]
+                0.00    0.00    3028/3028        Tree::getRoot() [84]
+-----------------------------------------------
+                                                 <spontaneous>
+[32]     0.1    0.05    0.00                 Tree::~Tree() [32]
+-----------------------------------------------
+                                                 <spontaneous>
+[33]     0.1    0.00    0.04                 __do_global_ctors_aux [33]
+                0.04    0.00       1/1           TestForest::getTreePool() [35]
+                0.00    0.00       1/252001      Forest::fitness(Tree*, double*, double*, int) [4]
+                0.00    0.00       1/1           splitted_evolution_cycle(TestForest*, long, int, int, int, double*, double*, int, int, double,
+ int) [89]
+                0.00    0.00       1/1           Var::toString() [90]
+                0.00    0.00       1/1           Leaf::expandLast(int, int) [91]
+                0.00    0.00       1/1           Tree::toString() [92]
+-----------------------------------------------
+                                                 <spontaneous>
+[34]     0.1    0.04    0.00                 log [34]
+-----------------------------------------------
+                0.04    0.00       1/1           __do_global_ctors_aux [33]
+[35]     0.1    0.04    0.00       1         TestForest::getTreePool() [35]
+-----------------------------------------------
+                0.01    0.02 1291632/1291632     Node::copyToEnd() [27]
+[36]     0.1    0.01    0.02 1291632         Leaf::copyToEnd() [36]
+                0.01    0.00 1291632/1291632     Leaf::setChild(int, INode*) [42]
+                0.01    0.00  657563/657563      Const::copyToEnd() [47]
+                0.01    0.00  634069/634069      Var::copyToEnd() [48]
+-----------------------------------------------
+                0.00    0.00   41725/3862595     Forest::crossover(int, int) [31]
+                0.02    0.00 3820870/3862595     Node::copyToEnd() [27]
+[37]     0.1    0.03    0.00 3862595         Node::setChild(int, INode*) [37]
+-----------------------------------------------
+                0.00    0.02   26530/26530       evolution_cycle(Forest*, int, double*, double*, int, int, double, bool) [2]
+[38]     0.1    0.00    0.02   26530         Forest::mutation(int) [38]
+                0.00    0.01   26530/266872      Tree::copy() [25]
+                0.00    0.01   26530/26530       Tree::mutation(int) [41]
+                0.00    0.00   26530/80274       Tree::getDepth() [77]
+-----------------------------------------------
+                                                 <spontaneous>
+[39]     0.0    0.02    0.00                 cos.A [39]
+-----------------------------------------------
+                              143234             Node::expandRandom(int) [40]
+                0.00    0.00   20196/59499       Forest::Forest(long, int, int) [46]
+                0.01    0.00   39303/59499       Tree::mutation(int) [41]
+[40]     0.0    0.01    0.01   59499+143234  Node::expandRandom(int) [40]
+                0.01    0.00   32738/284738      Node::~Node() [30]
+                0.00    0.00  202733/390428      Node::getChildren() [72]
+                0.00    0.00   93342/93342       Leaf::Leaf(int) [76]
+                0.00    0.00   93342/93342       Leaf::expandRandom(int) [75]
+                0.00    0.00    7877/1254009     Leaf::~Leaf() [69]
+                              143234             Node::expandRandom(int) [40]
+-----------------------------------------------
+                0.00    0.01   26530/26530       Forest::mutation(int) [38]
+[41]     0.0    0.00    0.01   26530         Tree::mutation(int) [41]
+                0.01    0.00   39303/59499       Node::expandRandom(int) [40]
+                0.00    0.00   62137/390428      Node::getChildren() [72]
+                0.00    0.00   62137/187695      Node::getChildrenNum() [74]
+-----------------------------------------------
+                0.01    0.00 1291632/1291632     Leaf::copyToEnd() [36]
+[42]     0.0    0.01    0.00 1291632         Leaf::setChild(int, INode*) [42]
+-----------------------------------------------
+                0.01    0.00   26598/26598       evolution_cycle(Forest*, int, double*, double*, int, int, double, bool) [2]
+[43]     0.0    0.01    0.00   26598         Forest::getTree(int) [43]
+-----------------------------------------------
+                               23288             void std::__introsort_loop<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<
+int> > >, long, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std:
+:allocator<int> > >, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}, long, Forest::selectBests(double*, double*, int, in
+t)::{lambda(int, int)#1}) [44]
+                0.01    0.00     166/166         Forest::selectBests(double*, double*, int, int) [5]
+[44]     0.0    0.01    0.00     166+23288   void std::__introsort_loop<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int>
+ > >, long, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::all
+ocator<int> > >, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}, long, Forest::selectBests(double*, double*, int, int)::
+{lambda(int, int)#1}) [44]
+                               23288             void std::__introsort_loop<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<
+int> > >, long, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std:
+:allocator<int> > >, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}, long, Forest::selectBests(double*, double*, int, in
+t)::{lambda(int, int)#1}) [44]
+-----------------------------------------------
+                                                 <spontaneous>
+[45]     0.0    0.01    0.00                 __isinf [45]
+-----------------------------------------------
+                0.00    0.01       1/1           main [1]
+[46]     0.0    0.00    0.01       1         Forest::Forest(long, int, int) [46]
+                0.00    0.00   20196/59499       Node::expandRandom(int) [40]
+                0.00    0.00   12000/12000       Tree::Tree(int, int) [83]
+-----------------------------------------------
+                0.01    0.00  657563/657563      Leaf::copyToEnd() [36]
+[47]     0.0    0.01    0.00  657563         Const::copyToEnd() [47]
+-----------------------------------------------
+                0.01    0.00  634069/634069      Leaf::copyToEnd() [36]
+[48]     0.0    0.01    0.00  634069         Var::copyToEnd() [48]
+-----------------------------------------------
+                                                 <spontaneous>
+[49]     0.0    0.01    0.00                 Var::setChild(int, INode*) [49]
+-----------------------------------------------
+                                                 <spontaneous>
+[50]     0.0    0.01    0.00                 Const::setChild(int, INode*) [50]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[51]     0.0    0.00    0.00       1         Forest::~Forest() [51]
+                0.00    0.00   12000/284738      Node::~Node() [30]
+                0.00    0.00   12000/252000      Tree::~Tree() [73]
+-----------------------------------------------
+                0.00    0.00    7877/1254009     Node::expandRandom(int) [40]
+                0.00    0.00 1246132/1254009     Node::~Node() [30]
+[69]     0.0    0.00    0.00 1254009         Leaf::~Leaf() [69]
+                0.00    0.00  637806/637806      Const::~Const() [70]
+                0.00    0.00  616203/616203      Var::~Var() [71]
+-----------------------------------------------
+                0.00    0.00  637806/637806      Leaf::~Leaf() [69]
+[70]     0.0    0.00    0.00  637806         Const::~Const() [70]
+-----------------------------------------------
+                0.00    0.00  616203/616203      Leaf::~Leaf() [69]
+[71]     0.0    0.00    0.00  616203         Var::~Var() [71]
+-----------------------------------------------
+                0.00    0.00   41725/390428      Forest::crossover(int, int) [31]
+                0.00    0.00   62137/390428      Tree::mutation(int) [41]
+                0.00    0.00   83833/390428      Tree::getRandomSubtree(int) [80]
+                0.00    0.00  202733/390428      Node::expandRandom(int) [40]
+[72]     0.0    0.00    0.00  390428         Node::getChildren() [72]
+-----------------------------------------------
+                0.00    0.00   12000/252000      Forest::~Forest() [51]
+                0.00    0.00  240000/252000      Forest::newGeneration(std::vector<Tree*, std::allocator<Tree*> >&) [26]
+[73]     0.0    0.00    0.00  252000         Tree::~Tree() [73]
+-----------------------------------------------
+                0.00    0.00   41725/187695      Forest::crossover(int, int) [31]
+                0.00    0.00   62137/187695      Tree::mutation(int) [41]
+                0.00    0.00   83833/187695      Tree::getRandomSubtree(int) [80]
+[74]     0.0    0.00    0.00  187695         Node::getChildrenNum() [74]
+-----------------------------------------------
+                0.00    0.00   93342/93342       Node::expandRandom(int) [40]
+[75]     0.0    0.00    0.00   93342         Leaf::expandRandom(int) [75]
+                0.00    0.00   46675/46675       Const::Const(int) [78]
+                0.00    0.00   46667/46667       Var::Var() [79]
+-----------------------------------------------
+                0.00    0.00   93342/93342       Node::expandRandom(int) [40]
+[76]     0.0    0.00    0.00   93342         Leaf::Leaf(int) [76]
+-----------------------------------------------
+                0.00    0.00   26530/80274       Forest::mutation(int) [38]
+                0.00    0.00   53744/80274       Forest::crossover(int, int) [31]
+[77]     0.0    0.00    0.00   80274         Tree::getDepth() [77]
+-----------------------------------------------
+                0.00    0.00   46675/46675       Leaf::expandRandom(int) [75]
+[78]     0.0    0.00    0.00   46675         Const::Const(int) [78]
+-----------------------------------------------
+                0.00    0.00   46667/46667       Leaf::expandRandom(int) [75]
+[79]     0.0    0.00    0.00   46667         Var::Var() [79]
+-----------------------------------------------
+                0.00    0.00   41725/41725       Forest::crossover(int, int) [31]
+[80]     0.0    0.00    0.00   41725         Tree::getRandomSubtree(int) [80]
+                0.00    0.00   83833/390428      Node::getChildren() [72]
+                0.00    0.00   83833/187695      Node::getChildrenNum() [74]
+-----------------------------------------------
+                0.00    0.00   12019/12019       Forest::crossover(int, int) [31]
+[81]     0.0    0.00    0.00   12019         Tree::setRoot(Node*) [81]
+-----------------------------------------------
+                0.00    0.00   12000/12000       Tree::Tree(int, int) [83]
+[82]     0.0    0.00    0.00   12000         Node::Node(double) [82]
+-----------------------------------------------
+                0.00    0.00   12000/12000       Forest::Forest(long, int, int) [46]
+[83]     0.0    0.00    0.00   12000         Tree::Tree(int, int) [83]
+                0.00    0.00   12000/12000       Node::Node(double) [82]
+-----------------------------------------------
+                0.00    0.00    3028/3028        Forest::crossover(int, int) [31]
+[84]     0.0    0.00    0.00    3028         Tree::getRoot() [84]
+-----------------------------------------------
+                0.00    0.00     173/173         evolution_cycle(Forest*, int, double*, double*, int, int, double, bool) [2]
+[85]     0.0    0.00    0.00     173         void std::vector<Tree*, std::allocator<Tree*> >::_M_insert_aux<Tree*>(__gnu_cxx::__normal_iterator
+<Tree**, std::vector<Tree*, std::allocator<Tree*> > >, Tree*&&) [85]
+-----------------------------------------------
+                0.00    0.00      20/20          evolution_cycle(Forest*, int, double*, double*, int, int, double, bool) [2]
+[86]     0.0    0.00    0.00      20         std::vector<Tree*, std::allocator<Tree*> >::vector() [86]
+-----------------------------------------------
+                0.00    0.00      20/20          Forest::selectBests(double*, double*, int, int) [5]
+[87]     0.0    0.00    0.00      20         std::vector<int, std::allocator<int> >::vector(unsigned long, int const&, std::allocator<int> cons
+t&) [87]
+-----------------------------------------------
+                0.00    0.00      20/20          Forest::selectBests(double*, double*, int, int) [5]
+[88]     0.0    0.00    0.00      20         void std::__insertion_sort<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int>
+ > >, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator
+<int> > >, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}, Forest::selectBests(double*, double*, int, int)::{lambda(int,
+ int)#1}) [88]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [33]
+[89]     0.0    0.00    0.00       1         splitted_evolution_cycle(TestForest*, long, int, int, int, double*, double*, int, int, double, int
+) [89]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [33]
+[90]     0.0    0.00    0.00       1         Var::toString() [90]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [33]
+[91]     0.0    0.00    0.00       1         Leaf::expandLast(int, int) [91]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [33]
+[92]     0.0    0.00    0.00       1         Tree::toString() [92]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[93]     0.0    0.00    0.00       1         Forest::getFitnessUpdateTime() [93]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+^L
+Index by function name
+
+   [2] evolution_cycle(Forest*, int, double*, double*, int, int, double, bool) [30] Node::~Node() [43] Forest::getTree(int)
+  [89] splitted_evolution_cycle(TestForest*, long, int, int, int, double*, double*, int, int, double, int) [15] Node::~Node() [38] Forest::muta
+tion(int)
+  [35] TestForest::getTreePool() [80] Tree::getRandomSubtree(int) [31] Forest::crossover(int, int)
+  [14] Var::evaluate(double)  [25] Tree::copy()           [46] Forest::Forest(long, int, int)
+  [49] Var::setChild(int, INode*) [84] Tree::getRoot()    [51] Forest::~Forest()
+  [90] Var::toString()        [81] Tree::setRoot(Node*)   [85] void std::vector<Tree*, std::allocator<Tree*> >::_M_insert_aux<Tree*>(__gnu_cxx:
+:__normal_iterator<Tree**, std::vector<Tree*, std::allocator<Tree*> > >, Tree*&&)
+  [48] Var::copyToEnd()        [6] Tree::evaluate(double) [86] std::vector<Tree*, std::allocator<Tree*> >::vector()
+  [79] Var::Var()             [77] Tree::getDepth()       [87] std::vector<int, std::allocator<int> >::vector(unsigned long, int const&, std::a
+llocator<int> const&)
+  [71] Var::~Var()            [41] Tree::mutation(int)    [88] void std::__insertion_sort<__gnu_cxx::__normal_iterator<int*, std::vector<int, s
+td::allocator<int> > >, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}>(__gnu_cxx::__normal_iterator<int*, std::vector<i
+nt, std::allocator<int> > >, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}, Forest::selectBests(double*, double*, int, 
+int)::{lambda(int, int)#1})
+  [19] Var::~Var()            [92] Tree::toString()       [44] void std::__introsort_loop<__gnu_cxx::__normal_iterator<int*, std::vector<int, s
+td::allocator<int> > >, long, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}>(__gnu_cxx::__normal_iterator<int*, std::ve
+ctor<int, std::allocator<int> > >, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}, long, Forest::selectBests(double*, do
+uble*, int, int)::{lambda(int, int)#1})
+  [91] Leaf::expandLast(int, int) [83] Tree::Tree(int, int) [45] __isinf
+  [75] Leaf::expandRandom(int) [73] Tree::~Tree()         [23] __libm_error_support
+   [8] Leaf::evaluate(double) [32] Tree::~Tree()          [20] cos
+  [42] Leaf::setChild(int, INode*) [13] Const::evaluate(double) [39] cos.A
+  [36] Leaf::copyToEnd()      [50] Const::setChild(int, INode*) [10] cos.N
+  [76] Leaf::Leaf(int)        [47] Const::copyToEnd()     [28] exp
+  [69] Leaf::~Leaf()          [78] Const::Const(int)      [12] exp.L
+  [21] Leaf::~Leaf()          [70] Const::~Const()        [29] isinfl
+  [72] Node::getChildren()    [18] Const::~Const()        [34] log
+  [40] Node::expandRandom(int) [5] Forest::selectBests(double*, double*, int, int) [16] log.L
+  [74] Node::getChildrenNum() [26] Forest::newGeneration(std::vector<Tree*, std::allocator<Tree*> >&) [22] pow
+   [7] Node::evaluate(double) [17] Forest::getBestFitness(double*, double*, int) [9] pow.L
+  [37] Node::setChild(int, INode*) [3] Forest::updatePoolFitness(double*, double*, int) [24] sin
+  [27] Node::copyToEnd()      [93] Forest::getFitnessUpdateTime() [11] sin.N
+  [82] Node::Node(double)      [4] Forest::fitness(Tree*, double*, double*, int)
+

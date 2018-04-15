@@ -1,0 +1,80 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+ 26.50      7.91     7.91                             Node::evaluate(double)
+ 15.97     12.67     4.77                             cos.N
+ 15.19     17.20     4.53                             pow.L
+  8.98     19.88     2.68                             sin.N
+  7.27     22.05     2.17                             exp.L
+  4.06     23.26     1.21                             Forest::fitness(Tree*, double*, double*, int)
+  3.52     24.31     1.05                             Leaf::evaluate(double)
+  3.15     25.25     0.94                             log.L
+  2.87     26.11     0.86                             Node::~Node()
+  2.15     26.75     0.64                             Const::evaluate(double)
+  1.17     27.10     0.35                             Tree::evaluate(double)
+  1.16     27.44     0.35                             Var::evaluate(double)
+  1.16     27.79     0.35                             Var::~Var()
+  1.07     28.11     0.32                             Leaf::~Leaf()
+  1.01     28.41     0.30                             Const::~Const()
+  0.99     28.70     0.30                             cos
+  0.67     28.90     0.20                             __libm_error_support
+  0.64     29.09     0.19                             exp
+  0.59     29.27     0.18                             sin
+  0.47     29.41     0.14                             pow
+  0.23     29.48     0.07                             log
+  0.17     29.53     0.05                             Tree::~Tree()
+  0.17     29.58     0.05                             Node::copyToEnd()
+  0.12     29.61     0.04                             ceil
+  0.08     29.64     0.03                             lrint
+  0.07     29.66     0.02                             Leaf::~Leaf()
+  0.07     29.68     0.02                             Forest::selectBests(double*, double*, int, int)
+  0.07     29.70     0.02                             void std::__introsort_loop<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::alloc
+ator<int> > >, long, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}>(__gnu_cxx::__normal_iterator<int*, std::vector<int,
+ std::allocator<int> > >, Forest::selectBests(double*, double*, int, int)::{lambda(int, int)#1}, long, Forest::selectBests(double*, double*, in
+t, int)::{lambda(int, int)#1})
+  0.07     29.72     0.02                             sin.A
+  0.05     29.73     0.02                             Leaf::copyToEnd()
+  0.03     29.74     0.01                             Leaf::expandRandom(int)
+  0.03     29.75     0.01                             Node::expandRandom(int)
+  0.03     29.76     0.01                             Node::setChild(int, INode*)
+  0.03     29.77     0.01                             Node::~Node()
+  0.03     29.78     0.01                             isinfl
+  0.03     29.79     0.01                             matherr
+  0.02     29.80     0.01                             Leaf::setChild(int, INode*)
+  0.02     29.80     0.01                             Tree::getRandomSubtree(int)
+  0.02     29.81     0.01                             Tree::getDepth()
+  0.02     29.81     0.01                             Const::~Const()
+  0.02     29.82     0.01                             Const::~Const()
+  0.02     29.82     0.01                             __isinf
+  0.02     29.83     0.01                             cos.A
+  0.02     29.83     0.01                             isinfd
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
