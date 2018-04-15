@@ -59,7 +59,7 @@ int main(int argc, char const *argv[])
 	std::cout <<"results"<<
 	" splitseq nw "<<nw<<" comptime(s) "<<time.count()<<" upfittime(s) "<<test_forest->getFitnessUpdateTime().count()<<
 	" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
-	" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<<" fitness "<<E<<"\n";
+	" randmax "<<randmax<<" gen_no "<<generation_no<<" points_no "<<points_no<<" err "<<err<<" fitness "<<E<<"\n";
 
 	delete test_forest;
 
@@ -76,7 +76,7 @@ int main(int argc, char const *argv[])
 		std::cout <<"results"<<
 		" seq comptime(s) "<<time.count()<<" upfittime(s) "<<forest->getFitnessUpdateTime().count()<<
 		" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
-		" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<<" fitness "<<E<<"\n";
+		" randmax "<<randmax<<" gen_no "<<generation_no<<" points_no "<<points_no<<" err "<<err<<" fitness "<<E<<"\n";
 		delete forest;
 	}
 
@@ -94,7 +94,8 @@ int main(int argc, char const *argv[])
 		" ff nw "<<nw<<
 		" comptime(s) "<<time.count()<<" upfittime(s) "<<ff_forest->getFitnessUpdateTime().count()<<
 		" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
-		" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<<" fitness "<<E<<"\n";
+		" randmax "<<randmax<<" gen_no "<<generation_no<<" points_no "<<points_no<<
+		" err "<<err<<" fitness "<<E<<"\n";
 		delete ff_forest;
 	}
 
