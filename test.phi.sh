@@ -1,23 +1,38 @@
 #!/bin/bash
 uptime
 
-#sequntial
+#sequential
+#standard execution
 for ((i=0; i<7; i+=1)); do ./main.out 2400 5 800 10 20 -1 no < input_cos\(x\)-pow\(x\,3\)10-3.txt ; done
 
+#less trees
+for ((i=0; i<7; i+=1)); do ./main.out 1200 5 400 10 20 -1 no < input_cos\(x\)-pow\(x\,3\)10-3.txt ; done
+
+#more input points
+for ((i=0; i<5; i+=1)); do ./main.out 2400 5 800 10 20 -1 no < input_cos\(x\)-pow\(x\,3\)10-4.txt ; done
+
 #fastflow
-for ((i=0; i<7; i+=1)); do ./ff_main.out 2400 5 800 10 20 -1 1 no < input_cos\(x\)-pow\(x\,3\)10-3.txt ; done
-
-for((j=2; j<=9; j+=1)); do
+#standard execution
+for((j=1; j<=128; j*=2)); do
 	for ((i=0; i<7; i+=1)); do ./ff_main.out 2400 5 800 10 20 -1 $j no < input_cos\(x\)-pow\(x\,3\)10-3.txt ; done done
 
-for((j=10; j<=80; j+=10)); do
-	for ((i=0; i<7; i+=1)); do ./ff_main.out 2400 5 800 10 20 -1 $j no < input_cos\(x\)-pow\(x\,3\)10-3.txt ; done done
+#less trees
+for((j=1; j<=128; j*=2)); do
+	for ((i=0; i<7; i+=1)); do ./ff_main.out 1200 5 400 10 20 -1 $j no < input_cos\(x\)-pow\(x\,3\)10-3.txt ; done done
+
+#more input points
+for((j=1; j<=128; j*=2)); do
+	for ((i=0; i<5; i+=1)); do ./ff_main.out 2400 5 800 10 20 -1 $j no < input_cos\(x\)-pow\(x\,3\)10-4.txt ; done done
 
 #threads
-for ((i=0; i<7; i+=1)); do ./thread_main.out 2400 5 800 10 20 -1 1 no < input_cos\(x\)-pow\(x\,3\)10-3.txt ; done
-
-for((j=2; j<=9; j+=1)); do
+#standard execution
+for((j=1; j<=128; j*=2)); do
 	for ((i=0; i<7; i+=1)); do ./thread_main.out 2400 5 800 10 20 -1 $j no < input_cos\(x\)-pow\(x\,3\)10-3.txt ; done done
 
-for((j=10; j<=80; j+=10)); do
-	for ((i=0; i<7; i+=1)); do ./thread_main.out 2400 5 800 10 20 -1 $j no < input_cos\(x\)-pow\(x\,3\)10-3.txt ; done done
+#less trees
+for((j=1; j<=128; j*=2)); do
+	for ((i=0; i<7; i+=1)); do ./thread_main.out 1200 5 400 10 20 -1 $j no < input_cos\(x\)-pow\(x\,3\)10-3.txt ; done done
+
+#more input points
+for((j=1; j<=128; j*=2)); do
+	for ((i=0; i<5; i+=1)); do ./thread_main.out 2400 5 800 10 20 -1 $j no < input_cos\(x\)-pow\(x\,3\)10-4.txt ; done done

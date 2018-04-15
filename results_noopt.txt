@@ -1,0 +1,79 @@
+results seq comptime(s) 49.1253 upfittime(s) 47.9365 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results seq comptime(s) 48.7137 upfittime(s) 47.5518 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results seq comptime(s) 48.9293 upfittime(s) 47.7513 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results seq comptime(s) 48.6428 upfittime(s) 47.4809 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results seq comptime(s) 48.6117 upfittime(s) 47.4696 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results seq comptime(s) 48.5408 upfittime(s) 47.3896 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results seq comptime(s) 48.518 upfittime(s) 47.3866 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+
+results ff nw 1 comptime(s) 48.7691 upfittime(s) 47.4954 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 1 comptime(s) 48.8486 upfittime(s) 47.5964 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 1 comptime(s) 48.9821 upfittime(s) 47.723 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 1 comptime(s) 48.9283 upfittime(s) 47.6668 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 1 comptime(s) 48.9851 upfittime(s) 47.7341 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 1 comptime(s) 48.9583 upfittime(s) 47.7026 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 1 comptime(s) 49.0906 upfittime(s) 47.85 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 2 comptime(s) 32.9413 upfittime(s) 31.0975 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 2 comptime(s) 33.8024 upfittime(s) 31.9399 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 2 comptime(s) 32.6473 upfittime(s) 30.8186 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 2 comptime(s) 32.9816 upfittime(s) 31.2523 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 2 comptime(s) 34.338 upfittime(s) 32.5266 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 2 comptime(s) 32.5997 upfittime(s) 30.7869 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 2 comptime(s) 33.5237 upfittime(s) 31.7194 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 4 comptime(s) 22.4465 upfittime(s) 20.6598 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 4 comptime(s) 20.9509 upfittime(s) 19.2055 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 4 comptime(s) 22.4937 upfittime(s) 20.6818 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 4 comptime(s) 21.468 upfittime(s) 19.7557 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 4 comptime(s) 20.9774 upfittime(s) 19.2408 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 4 comptime(s) 19.4921 upfittime(s) 17.8649 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 4 comptime(s) 19.464 upfittime(s) 17.7804 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 8 comptime(s) 14.7334 upfittime(s) 12.5656 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 8 comptime(s) 14.829 upfittime(s) 12.8675 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 8 comptime(s) 14.5331 upfittime(s) 12.4057 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 8 comptime(s) 12.1679 upfittime(s) 10.4727 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 8 comptime(s) 16.1943 upfittime(s) 13.9194 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 8 comptime(s) 14.6853 upfittime(s) 12.7735 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 8 comptime(s) 15.1548 upfittime(s) 13.0493 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 16 comptime(s) 11.5641 upfittime(s) 8.8382 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 16 comptime(s) 11.6849 upfittime(s) 8.9711 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 16 comptime(s) 11.4521 upfittime(s) 8.816 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 16 comptime(s) 11.9501 upfittime(s) 9.27503 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 16 comptime(s) 12.4911 upfittime(s) 9.72269 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 16 comptime(s) 11.7291 upfittime(s) 8.96334 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 16 comptime(s) 12.3045 upfittime(s) 9.54518 tree_no 12000 depthmax 5 threshold 4000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 1 comptime(s) 10.8507 upfittime(s) 10.594 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 1 comptime(s) 10.6706 upfittime(s) 10.429 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 1 comptime(s) 10.8557 upfittime(s) 10.6136 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 1 comptime(s) 10.6354 upfittime(s) 10.3935 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 1 comptime(s) 10.8424 upfittime(s) 10.6001 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 1 comptime(s) 10.6562 upfittime(s) 10.4148 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 1 comptime(s) 10.8375 upfittime(s) 10.5954 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 2 comptime(s) 7.29114 upfittime(s) 6.96845 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 2 comptime(s) 6.34612 upfittime(s) 6.03848 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 2 comptime(s) 7.99882 upfittime(s) 7.64412 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 2 comptime(s) 7.7521 upfittime(s) 7.39723 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 2 comptime(s) 7.02497 upfittime(s) 6.6941 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 2 comptime(s) 9.66713 upfittime(s) 9.23658 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 2 comptime(s) 7.03772 upfittime(s) 6.71082 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 4 comptime(s) 4.33735 upfittime(s) 3.97776 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 4 comptime(s) 5.11363 upfittime(s) 4.717 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 4 comptime(s) 4.64018 upfittime(s) 4.25092 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 4 comptime(s) 5.75095 upfittime(s) 5.29325 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 4 comptime(s) 4.19821 upfittime(s) 3.84412 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 4 comptime(s) 5.51258 upfittime(s) 5.0269 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 4 comptime(s) 5.25591 upfittime(s) 4.84333 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 8 comptime(s) 3.69083 upfittime(s) 3.12574 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 8 comptime(s) 3.70398 upfittime(s) 3.16261 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 8 comptime(s) 3.62061 upfittime(s) 3.10003 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 8 comptime(s) 3.6423 upfittime(s) 3.11787 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 8 comptime(s) 3.7238 upfittime(s) 3.16033 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 8 comptime(s) 3.64352 upfittime(s) 3.08623 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 8 comptime(s) 3.70753 upfittime(s) 3.15463 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 16 comptime(s) 2.48714 upfittime(s) 1.90669 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 16 comptime(s) 2.61078 upfittime(s) 2.02568 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 16 comptime(s) 2.49264 upfittime(s) 1.90231 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 16 comptime(s) 2.73212 upfittime(s) 2.13861 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 16 comptime(s) 2.51133 upfittime(s) 1.92347 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 16 comptime(s) 2.70477 upfittime(s) 2.12084 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+results ff nw 16 comptime(s) 2.45524 upfittime(s) 1.87306 tree_no 3000 depthmax 5 threshold 1000 randmax 10 randseed 4 gen_no 20 err -1 fitness 0.123081
+
