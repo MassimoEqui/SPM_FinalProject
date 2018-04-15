@@ -8,6 +8,8 @@
 #include "include/genetics/FF_Forest.h"
 #include "src/main/evolution_cycle.hpp"
 
+#define EXECUTION_NO 7
+
 int main(int argc, char const *argv[])
 {
 	if(argc != 8){
@@ -30,13 +32,18 @@ int main(int argc, char const *argv[])
 	double err = std::atof(argv[6]);
 	int nw = std::atoi(argv[7]);
 
-	//Generating a new pool of functions (trees) to be reused
-	TestForest* test_forest = new TestForest(tree_no, depthmax, randmax, nw);
-	std::pair<Tree*, double>* treePool = test_forest->getTreePool();
-
+	//Chrono tools for measuring performances
 	std::chrono::duration<double> time;
 	std::chrono::system_clock::time_point start, end;
 	std::vector<std::chrono::duration<double>> partition_times;
+
+	//Generating a new pool of functions (trees) to be reused
+	start = std::chrono::system_clock::now();
+	TestForest* test_forest = new TestForest(tree_no, depthmax, randmax, nw);
+	end = std::chrono::system_clock::now();
+	time = end - start;
+	std::pair<Tree*, double>* treePool = test_forest->getTreePool();
+
 
 	/******************** SPLITTED SEQUENTIAL EXECUTION ********************/
 
@@ -45,9 +52,9 @@ int main(int argc, char const *argv[])
 
 	double E;
     start = std::chrono::system_clock::now();
-	E = splitted_evolution_cycle(test_forest, threshold, x_vals, y_vals, points_no, generation_no, err, nw);
+	E = splitted_evolution_cycle(test_forest, threshold, tree_no, depthmax, randmax, x_vals, y_vals, points_no, generation_no, err, nw);
 	end = std::chrono::system_clock::now();
-	time = end - start;
+	time += end - start;
 
 	std::cout <<"results"<<
 	" splitseq nw "<<nw<<" comptime(s) "<<time.count()<<" upfittime(s) "<<test_forest->getFitnessUpdateTime().count()<<
@@ -56,11 +63,12 @@ int main(int argc, char const *argv[])
 
 	delete test_forest;
 
+
 	/******************** STANDARD SEQUENTIAL EXECUTION ********************/
 	
-	for(int i=0; i<7; i++){
-		Forest* forest = new Forest(treePool, tree_no, depthmax, randmax);
+	for(int i=0; i<EXECUTION_NO; i++){
 		start = std::chrono::system_clock::now();
+		Forest* forest = new Forest(treePool, tree_no, depthmax, randmax);
 		E = evolution_cycle(forest, threshold, x_vals, y_vals, points_no, generation_no, err, false);
 		end = std::chrono::system_clock::now();
 		time = end - start;
@@ -72,11 +80,12 @@ int main(int argc, char const *argv[])
 		delete forest;
 	}
 
+
 	/******************** FASTFLOW EXECUTION ********************/
 
-	for(int i=0; i<7; i++){
-		FF_Forest* ff_forest = new FF_Forest(treePool, tree_no, depthmax, randmax, nw);
+	for(int i=0; i<EXECUTION_NO; i++){
 		start = std::chrono::system_clock::now();
+		FF_Forest* ff_forest = new FF_Forest(treePool, tree_no, depthmax, randmax, nw);
 		E = evolution_cycle(ff_forest, threshold, x_vals, y_vals, points_no, generation_no, err, false);
 		end = std::chrono::system_clock::now();
 		time = end - start;

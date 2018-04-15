@@ -107,29 +107,26 @@ double evolution_cycle(Forest* forest, int threshold, double* x_vals, double* y_
 	return E;
 };
 
-double splitted_evolution_cycle(TestForest* test_forest, int threshold, double* x_vals, double* y_vals, int points_no, 
+double splitted_evolution_cycle(TestForest* test_forest, long tree_no, int depthmax, int randmax, int threshold, double* x_vals, double* y_vals, int points_no, 
 	int generation_no, double err, int nw){
 	std::vector<std::chrono::duration<double>> partition_times;
 
 	int i = 0;
-	double E = err + 1.0;
 	Tree* bestTree;
-	std::chrono::system_clock::time_point upfit_start, upfit_end;
-	std::chrono::duration<double> upfit_time = std::chrono::system_clock::duration::zero();
-    while(E >= err && ++i<=generation_no){
+	std::chrono::system_clock::time_point start, end;
+	std::chrono::duration<double> sel_time = std::chrono::system_clock::duration::zero();
+    while(++i<=generation_no){
 		std::vector<Tree*> newTrees;
 		int* bestTrees;
 
 		//Selection
-		upfit_start = std::chrono::system_clock::now();
-
+		start = std::chrono::system_clock::now();
 		for(int j=0; j<nw; j++)
 			partition_times.push_back(test_forest->updatePoolFitness(x_vals, y_vals, points_no, j));
 		test_forest->setFitnessUpdated();
-
-		upfit_end = std::chrono::system_clock::now();
-		upfit_time = upfit_end - upfit_start,
         bestTrees = test_forest->selectBests(x_vals, y_vals, points_no, threshold);
+		end = std::chrono::system_clock::now();
+		sel_time = end - start;
 
 		//Mutation&Crossover
         for(int j=0; j<threshold; j++){
@@ -148,11 +145,19 @@ double splitted_evolution_cycle(TestForest* test_forest, int threshold, double* 
 
 		//Replication
         test_forest->newGeneration(newTrees);
-
+/*
 		std::cout << "\nGENERATION "<<i<<"\n"<<
-		"sel_time "<<upfit_time.count()<<"\n";
+		"sel_time "<<sel_time.count()<<"\n";
 		for(int j=0; j<nw; j++)
 			std::cout << "partition "<<j<<" time(s) = " << partition_times[j].count() << "\n";
+*/
+		for(int j=0; j<nw; j++){
+			std::cout <<"results"<<
+			" splitseq generation "<<i<<" sel_time(s) "<<sel_time.count()<<
+			" partition "<<j<<" upfit_time(s) "<<partition_times[j].count()<<
+			" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
+			" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<<"\n";
+		}
 		partition_times.clear();
     }
 
