@@ -48,7 +48,8 @@ int main(int argc, char const *argv[])
 	" ff nw "<<nw<<
 	" comptime(s) "<<time.count()<<" upfittime(s) "<<forest->getFitnessUpdateTime().count()<<
 	" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
-	" randmax "<<randmax<<" randseed "<<randseed<<" gen_no "<<generation_no<<" err "<<err<<" fitness "<<E<<"\n";
+	" randmax "<<randmax<<" randseed "<<randseed<<" gen_no "<<generation_no<<
+	" err "<<err<<" fitness "<<E<<" points_no "<<points_no<<"\n";
 	delete forest;
 	return 0;
 }
