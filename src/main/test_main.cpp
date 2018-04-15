@@ -16,7 +16,7 @@ int main(int argc, char const *argv[])
 		std::cout << "7 parameters needed and an input file to be specified\n"<<
 			"Usage: ./test_main.out tree_no depthmax threshold randmax gen_no err nw < input_f(x).txt\n"<<
 			"example\n"<<
-			"./test_main.out 12000 5 4000 10 20 0.5 8 < \"input_cos(x)-pow(x,3)10-3.txt\"\n";
+			"./test_main.out 12000 5 4000 10 20 -1 8 < \"input_cos(x)-pow(x,3)10-3.txt\"\n";
 		return 0;
 	}
 
