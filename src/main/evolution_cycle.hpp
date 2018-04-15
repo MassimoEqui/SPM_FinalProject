@@ -146,7 +146,7 @@ double splitted_evolution_cycle(TestForest* test_forest, long tree_no, int depth
 		//Replication
         test_forest->newGeneration(newTrees);
 
-		double E = test_forest->getBestFitness();
+		double E = test_forest->getBestFitness(x_vals, y_vals, points_no);
 
 		for(int j=0; j<nw; j++){
 			std::cout <<"results"<<
