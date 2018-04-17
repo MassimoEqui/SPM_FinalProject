@@ -8,7 +8,7 @@
 #include "include/genetics/FF_Forest.h"
 #include "src/main/evolution_cycle.hpp"
 
-#define EXECUTION_NO 7
+#define EXECUTION_NO 1
 
 int main(int argc, char const *argv[])
 {

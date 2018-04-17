@@ -146,14 +146,14 @@ double splitted_evolution_cycle(TestForest* test_forest, long tree_no, int depth
 		//Replication
         test_forest->newGeneration(newTrees);
 
-		double E = test_forest->getBestFitness(x_vals, y_vals, points_no);
+		//double E = test_forest->getBestFitness(x_vals, y_vals, points_no);
 
 		for(int j=0; j<nw; j++){
 			std::cout <<"results"<<
 			" splitseq generation "<<i<<" sel_time(s) "<<sel_time.count()<<
 			" partition "<<j<<" upfit_time(s) "<<partition_times[j].count()<<
 			" tree_no "<<tree_no<<" depthmax "<<depthmax<<" threshold "<<threshold<<
-			" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<<" fitness "<<E<<"\n";
+			" randmax "<<randmax<<" gen_no "<<generation_no<<" err "<<err<</*" fitness "<<E<<*/"\n";
 		}
 		partition_times.clear();
     }
